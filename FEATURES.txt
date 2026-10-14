@@ -1,0 +1,168 @@
+====================================================================
+ 850 Basic English — Complete Feature List
+====================================================================
+A mobile-first, dependency-free web game that teaches the 850 words
+of Ogden's Basic English to Hindi-speaking learners.
+
+--------------------------------------------------------------------
+ CORE PURPOSE
+--------------------------------------------------------------------
+- Teaches the 850 words of Ogden's Basic English to Hindi speakers
+- Mobile-first, zero dependencies (vanilla HTML/CSS/JavaScript)
+- Zero network calls — everything is local
+- Runs by double-clicking index.html from file:// (no server needed)
+- Installable PWA + full offline (service worker over http/https)
+- Saffron English design system: saffron/amber primary, emerald +
+  indigo accents, tactile 3D-lip controls, light + dark themes
+- System fonts + emoji/SVG icons only (no external fonts/CDNs, so
+  offline / file:// / zero-network stays intact)
+- English-only UI chrome; word content (Hindi/Devanagari/examples)
+  kept verbatim from the dataset
+
+--------------------------------------------------------------------
+ NAVIGATION (5-tab bottom bar)
+--------------------------------------------------------------------
+- Home     - dashboard: goal ring, mastery, mode grid, Continue
+- Learn    - flashcard session (category picker + cards)
+- Spelling - tile puzzle
+- Quiz     - 4-option rounds
+- Review   - spaced repetition, with a due-count badge
+- Stats, Listening, Typing and Settings are reached from the Home
+  mode grid and the header profile (settings) button.
+
+--------------------------------------------------------------------
+ 8 GAME MODES
+--------------------------------------------------------------------
+Home
+  - Streak counter, daily-goal progress ring
+  - Overall 850-word progress
+  - Per-category mastery chips
+  - "Continue" CTA that resumes the last mode
+
+Learn (Flashcards)
+  - Flip cards: front = English word + pronunciation (Devanagari + IPA)
+  - Back = Hindi + English meanings and both example sentences
+  - Tap / swipe / Enter to flip; "Again" / "Know it" buttons
+  - "Know it" seeds the SRS schedule
+
+Quiz
+  - 4-option multiple choice, 10 per round
+  - 4 variants: English->Hindi, Hindi->English, Audio->meaning,
+    Fill-the-blank
+  - Smart distractors (same category + difficulty, never repeat)
+
+Listening
+  - Word played via en-US SpeechSynthesis, pick the meaning
+  - Replay orb
+  - Hidden gracefully if no English voice is available
+
+Typing
+  - Given the Hindi meaning, type the English word
+  - Case-insensitive, trimmed, tolerant of "/" variants
+  - Diff-style correction on failure
+
+Spelling Puzzle
+  - Build the word letter-by-letter from shuffled tiles
+  - 3 equivalent input paths:
+      * Drag a tile onto a slot (wrong letter bounces back to tray)
+      * Tap a tile to place it
+      * Type on a physical keyboard (letters + Backspace / arrows)
+  - Difficulty ramp: (1) letters only, (2) +2-3 decoys,
+    (3) hide the English gloss (Hindi-only),
+    (4) words >= 6 letters with a soft 60s bonus timer
+  - Hints cost XP and never block (hear it / first letter /
+    English meaning / example sentence)
+  - Free "Show word" reveal button when stuck (0 XP, marks seen)
+  - Clean solve promotes one SRS box; two wrong completions queue
+    the word into Review
+  - Success card shows the word, pronunciation, and both examples
+
+Review
+  - Leitner / SM-2-lite: 6 boxes, intervals 0/1/2/4/8/16 days
+  - Correct -> up a box; wrong -> box 0 and re-queued in session
+  - Only due cards appear; tab shows the due count
+
+Stats
+  - Per-category mastery
+  - 14-day accuracy sparkline
+  - Words due, longest streak, level/XP
+  - Confirm-guarded reset
+
+Settings
+  - Hindi-first vs English-first prompts
+  - TTS voice + rate
+  - Sound on/off
+  - Daily goal size (10 / 20 / 30 / 50)
+  - Reset
+
+--------------------------------------------------------------------
+ GAMIFICATION
+--------------------------------------------------------------------
+- XP per correct answer (10 + 5 x difficulty)
+- Square-root level curve
+- Day-based streak (one missed day keeps it, >=2 days restarts)
+- Daily goal with progress ring (counts all answers, non-punitive)
+- Confetti celebration on goal / level completion
+- No lives, no punitive timers, no countdown pressure
+
+--------------------------------------------------------------------
+ SPEECH (TTS)
+--------------------------------------------------------------------
+- window.speechSynthesis with an explicit en-US voice
+- Handles the async voiceschanged event (plus a Safari poll)
+- Cancels any in-flight utterance before a new one
+- Graceful degradation: audio hidden / falls back to text if no
+  English voice is available
+
+--------------------------------------------------------------------
+ ACCESSIBILITY
+--------------------------------------------------------------------
+- Semantic HTML, real <button> elements
+- aria-live="polite" feedback region
+- Visible focus rings, accessible names on icon-only controls
+- Full keyboard play: 1-4 options, Enter/Space flip-advance,
+  Esc back, arrows + Backspace in Spelling
+- Drag is never the only input (tap + keyboard remain)
+- Colour is never the only signal (check/cross icons + text)
+- Respects prefers-color-scheme (light + dark) and
+  prefers-reduced-motion (animations + confetti disabled)
+- Text never under 15 px; touch targets >= 44x44 px
+
+--------------------------------------------------------------------
+ OFFLINE / PWA
+--------------------------------------------------------------------
+- manifest.webmanifest makes the app installable (portrait, SVG icon)
+- sw.js precaches the app shell + dataset, stale-while-revalidate
+- After the first load, works with the network disconnected
+- Zero runtime network calls: no analytics, fonts, or images
+  (inline SVG, emoji, CSS only)
+
+--------------------------------------------------------------------
+ ARCHITECTURE / DATA
+--------------------------------------------------------------------
+- One global namespace: window.B850
+- Classic scripts (no ES modules) so file:// works
+- Read-only dataset, normalised on boot (handles plough/plow
+  variants, defensive field guards)
+- Single versioned localStorage key "b850:v1"
+- State survives reload, tab backgrounding, and browser restart
+- Tolerant of corrupt or older saves (never crashes)
+- Data: Ogden's Basic English (public-domain word list) +
+  user-supplied Hindi glosses / Devanagari / examples
+
+--------------------------------------------------------------------
+ QUALITY
+--------------------------------------------------------------------
+- Lighthouse (mobile): Performance 81, Accessibility 100,
+  Best Practices 100, SEO 100
+- 0 external requests; 0 console / page errors
+- Test suites green:
+    Spelling 26/26, Core 22/22, Payload 14/14
+    Payload 141.9 KB (< 150 KB budget), Service Worker offline PASS
+
+====================================================================
+ What this is NOT
+====================================================================
+- No backend, no accounts, no network. Everything is on-device.
+- The dataset is read-only; no words are invented or edited.
+- No alert()/confirm() in the game loop (in-page sheets only).

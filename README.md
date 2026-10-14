@@ -1,8 +1,11 @@
 # 850 Basic English
 
 A mobile-first, dependency-free web game that teaches the **850 words of Ogden's Basic
-English** to **Hindi-speaking learners**. Vanilla HTML/CSS/JavaScript only — no frameworks,
-no build step, no network calls, no external assets.
+English** to **Hindi-speaking learners**. Styled with the **Saffron English** design
+system (warm saffron/amber + emerald + indigo, tactile "3D-lip" controls). Vanilla
+HTML/CSS/JavaScript only — no frameworks, no build step, no network calls, no external
+assets. All UI chrome is in **English**; the word content (Hindi glosses, Devanagari
+pronunciations, example sentences) is kept verbatim from the dataset.
 
 ![status](https://img.shields.io/badge/dependencies-none-brightgreen) ![license](https://img.shields.io/badge/license-your%20data-blue)
 
@@ -84,9 +87,10 @@ works (the browser blocks ES-module fetches on `file://`).
   survives reload, `pagehide`/tab backgrounding and browser restart.
 - **Screens** are plain functions that build a DOM node and hand it to `B850.ui.render`.
   `app.js` keeps the current screen name in `B850.ui` and swaps it; no router library.
-- **Modes** register as `B850.screens.<name>.render`. The tab bar (Learn · Quiz · Review ·
-  Stats) plus the Settings gear and Home brand are the navigation surfaces; in-game
-  screens are reachable from the Home mode grid and from "Continue".
+- **Modes** register as `B850.screens.<name>.render`. The bottom **5-tab bar**
+  (Home · Learn · Spelling · Quiz · Review, with a due-count badge on Review) plus the
+  header brand and the ⚙ profile button are the navigation surfaces; Stats, Listening,
+  Typing and Settings are reachable from the Home mode grid / header.
 
 ### How to swap or add word data
 
@@ -121,7 +125,7 @@ their Basic English PDF and are preserved verbatim in `data/words.js` (each row'
 | **Quiz** | 4-option multiple choice, 10 per round, four variants: English→Hindi, Hindi→English, Audio→meaning, Fill-the-blank. Distractors come from the same category + difficulty where possible, never equal the answer, never repeat; options are shuffled every time. |
 | **Listening** | Plays the word via `SpeechSynthesis` (`en-US`), learner picks the meaning, with a replay orb. Hidden gracefully when no English voice is available. |
 | **Typing** | Given the Hindi meaning, type the English word. Case-insensitive, trimmed, tolerant of `/` variants, diff-style correction on failure. |
-| **Spelling Puzzle** | Choose a Hindi meaning or an English definition, then spell the English word from shuffled **tappable tiles**. Tap any placed letter to remove it, or use a physical keyboard (`Backspace`/`←`/`→`); wrong attempts stay editable. Higher tiers add decoy letters, and words ≥ 6 letters get a soft 60 s bonus timer that awards XP but never fails. Hints cost XP (hear it / first letter / other-language meaning / example sentence). Clean solves promote one SRS box; repeated misses queue the word into Review. Success shows the word, pronunciation and example sentences. |
+| **Spelling Puzzle** | Produce the word letter-by-letter from shuffled **letter tiles**. Three equivalent input paths drive one state machine: **drag a tile onto a slot** (Pointer Events, mouse + touch), **tap a tile** to place it at the cursor, or **type** on a physical keyboard (letters + `Backspace`/`←`/`→`). Dropping or tapping a letter that isn't in the word **bounces it back to the tray** (soft error tone, `aria-live`); the round is never lost. A free **"Show word"** button reveals the answer when stuck (0 XP, marks the word seen). Difficulty ramp by word length/difficulty: (1) letters only, (2) +2–3 decoys, (3) hide the English gloss (Hindi-only), (4) words ≥ 6 letters with a soft 60 s bonus timer that awards XP but never fails. Hints cost XP and never block (hear it / first letter / English meaning / example sentence). Clean solve promotes one SRS box; two wrong completions queue the word into Review. Success card shows the word, pronunciation and both example sentences. |
 | **Review** | Leitner/SM-2-lite: 6 boxes, intervals 0/1/2/4/8/16 days. Correct → up a box; wrong → box 0 and re-queued later in the same session (after ≥ 3 other cards when possible). Only due cards appear; the tab shows the due count. |
 | **Stats** | Per-category mastery, accuracy sparkline (14 days), words due, longest streak, level/XP, confirm-guarded reset. |
 | **Settings** | Hindi-first vs English-first prompts, TTS voice + rate, sound on/off, daily goal size (10/20/30/50), reset. All persisted. |
@@ -161,12 +165,16 @@ countdown pressure.
 
 ## Decisions (judgement calls made where the spec was ambiguous)
 
-1. **Tab bar labels.** The spec names four tabs (Learn · Quiz · Review · Stats) but also
-   defines Home. The bar ships as **Home · Quiz · Review · Stats**: Learn hosts the
-   flashcard session, the Home tab is the landing/progress screen with the mode grid
-   (Learn, Quiz, Listening, Typing, Review, Stats). "Continue" on Home resumes the last
-   active mode. This keeps all four required tabs while keeping the navigation one level
-   deep.
+1. **Tab bar labels.** The bar ships as a **5-tab** bottom nav — **Home · Learn ·
+   Spelling · Quiz · Review** — with a due-count badge on Review. Learn hosts the
+   flashcard session and Spelling hosts the tile puzzle; Review shows spaced-repetition
+   work. Stats, Listening, Typing and Settings are **not** tabs: Stats and the other
+   in-game modes live in the Home mode grid, and Settings sits behind the header ⚙/profile
+   button. "Continue" on Home resumes the last active mode. This keeps the primary
+   learning loop one tap away while keeping the bar to the five highest-traffic screens.
+   The UI chrome is **English-only** (per design); the word content — English word,
+   Devanagari pronunciation, IPA, Hindi meaning and bilingual example sentences — is
+   dataset data, not chrome, so it stays as provided.
 2. **Streak rule.** "Day-based streak" — a streak increments on any day with ≥ 1 answer.
    A gap of exactly one day preserves the count (so it is visible the day after); a gap of
    two or more days restarts it at 1. Longest streak is computed from per-day answer
@@ -205,6 +213,27 @@ countdown pressure.
      loses the round. Hints cost XP (audio 5, first letter 5, meaning 10, sentence 15) and
      never block; a clean solve is full XP and promotes one SRS box. One-letter words (two:
      , I) are excluded from the deck — a single tile is not a puzzle.
+ 14. **Spelling input: drag + tap + keyboard, and a free reveal.** Drag is the primary,
+      visual path (Pointer Events, one API for mouse and touch); tap-to-place and the physical
+      keyboard remain as equivalent fallbacks, so drag is never the only way to play
+      (accessibility). A tile whose letter is *not in the word* bounces back to the tray on
+      drop **or** tap (soft error tone, `aria-live`, round not lost); a letter that *is* in the
+      word is accepted into a slot even in the wrong position (the learner can rearrange or
+      backspace) — the keyboard path keeps its own wrong-letter feedback. The **"Show word"**
+      button is a free safety valve: it reveals the answer, marks the word *seen*, and shows
+      the teach card with 0 XP (not a clean solve, so no SRS promote).
+
+  15. **Saffron English design system.** The app is skinned with the Saffron English
+       tokens: warm saffron/amber primary (#D97706, lip #B45309), emerald secondary
+       (#10B981), indigo tertiary, a light + dark surface set, 8-pt spacing, a 480 px
+       max-width canvas, and tactile "3D-lip" controls (2 px border + 3–4 px bottom lip
+       that collapses on press → translateY). **System fonts + emoji/SVG icons only** — the
+       mockups' Google Fonts (Plus Jakarta Sans / Tiro Devanagari), Tailwind CDN and
+       Material Symbols are deliberately **not** used, because they would break the
+       offline / `file://` / zero-network guarantees; the font stack carries a Devanagari
+       fallback (Noto Sans Devanagari / Mangal / Nirmala UI) for the word content. All
+       chrome is in English (see Decision 1); the design is a pure reskin — no game
+       mechanics, SRS, XP, TTS or state logic changed.
 
 ## Lighthouse
 
