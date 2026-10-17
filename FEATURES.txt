@@ -1,5 +1,5 @@
 ====================================================================
- 850 Basic English — Complete Feature List
+  850 Basic English — Complete Feature List
 ====================================================================
 A mobile-first, dependency-free web game that teaches the 850 words
 of Ogden's Basic English to Hindi-speaking learners.
@@ -8,6 +8,8 @@ of Ogden's Basic English to Hindi-speaking learners.
  CORE PURPOSE
 --------------------------------------------------------------------
 - Teaches the 850 words of Ogden's Basic English to Hindi speakers
+- Also ships a playable 45-topic English grammar course (5 levels,
+  450 exercises, 225 example sentences, one data file per topic)
 - Mobile-first, zero dependencies (vanilla HTML/CSS/JavaScript)
 - Zero network calls — everything is local
 - Runs by double-clicking index.html from file:// (no server needed)
@@ -27,11 +29,12 @@ of Ogden's Basic English to Hindi-speaking learners.
 - Spelling - tile puzzle
 - Quiz     - 4-option rounds
 - Review   - spaced repetition, with a due-count badge
-- Stats, Listening, Typing and Settings are reached from the Home
-  mode grid and the header profile (settings) button.
+- Grammar, Stats, Listening, Typing and Settings are reached from
+  the Home mode grid and the header profile (settings) button.
+  (A 6th tab does not fit a 360 px phone, so Grammar stays on Home.)
 
 --------------------------------------------------------------------
- 8 GAME MODES
+ MODES — 10 LIVE
 --------------------------------------------------------------------
 Home
   - Streak counter, daily-goal progress ring
@@ -95,6 +98,68 @@ Settings
   - Daily goal size (10 / 20 / 30 / 50)
   - Reset
 
+Grammar
+  - 45 topics in 5 levels, English + Hindi titles
+  - Level list -> topic (RULE card, summary, Hindi explanation,
+    3 rule points, keywords, 5 examples) -> practice
+  - Rule card = formula pattern, 3 labelled forms (positive /
+    negative / question, or form / example / avoid on the skills
+    topics), exceptions, and a Hindi memory tip
+  - 450 exercises (10 per topic): chooser, cloze, word-order,
+    spot-the-mistake
+  - One data file per topic under data/grammar/, so any single topic
+    can be edited without touching the other 44
+  - Session = 10 items mixed across the level, instant feedback
+  - Keyword chips cross-link into the 850-word deck (pronunciation,
+    Hindi meaning, examples) when the keyword is a Basic English word
+  - Mastery per topic (done at 6 correct), +12 XP per correct answer
+  - Grammar progress rides in the same "b850:v1" save, migrates old
+    saves safely, and never touches the 850-word seen/learned maps
+
+--------------------------------------------------------------------
+ GRAMMAR COURSE (45 topics, 5 levels) — LIVE
+--------------------------------------------------------------------
+- data/grammar/ holds ONE FILE PER TOPIC: t01-alphabet-basic-words.js
+  through t45-daily-speaking-practice.js, plus index.js. Each topic
+  file is a classic script that pushes its own object onto
+  window.GRAMMAR_TOPICS, so load order does not matter and a missing
+  file cannot scramble the others. index.js loads last and rebuilds
+  the two arrays the app already uses (grammarTopics and
+  grammarExercises), so the screen, the store and the tests needed no
+  change for the split.
+- Topic fields (inside each t*.js file):
+    id, topic (slug), title, titleHindi, level (1-5), levelLabel,
+    keywords[], summary, explanationHindi (2-4 sentences),
+    points[3] (key rules), rules {pattern, forms[3], exceptions,
+    hindiTip}, examples[5] {en, hi, note}, exercises[10],
+    sourceOrder, source
+- Coverage by level:
+    Level 1 — Basic Grammar        10 topics (alphabet .. am/is/are)
+    Level 2 — Making Sentences      8 topics (subject/predicate .. modals)
+    Level 3 — Tenses                9 topics (simple present .. future perfect)
+    Level 4 — Important Grammar     8 topics (prepositions .. question words)
+    Level 5 — Speaking & Writing   10 topics (everyday sentences .. daily practice)
+  Total 45 topics, 67 keywords carried over from the source list.
+- Planned learning loop per topic:
+    * Learn card: summary + keyword chips; every keyword that also
+      exists in the 850-word dataset is cross-linked, so tapping
+      "under" opens its pronunciation, Hindi meaning and example
+    * Practice: 4 exercise types (chooser, cloze, word order, spot)
+    * Topic screen also shows the Hindi explanation and the 3 rules
+    * Mastery: seen / correct / wrong per topic, same XP curve as
+      the word modes (10 + 5 x difficulty), same streak and goal
+    * Level progress bar + "next topic" CTA on Home
+    * Level 5 speaking topics link out to Typing + TTS practice
+      using that topic's keywords as the deck
+- Storage: extends the single "b850:v1" state with a `grammar` map,
+  migrating old saves safely (missing keys default, never crash).
+- Payload impact measured (gzipped): the 46 grammar data files are
+  89.1 KB, the grammar screen 5.2 KB, CSS +0.5 KB. The whole app now
+  measures 204.8 KB across 65 files, inside the 220 KB budget, with
+  225 examples, 450 exercises and 135 rule forms.
+  The topic files are kept pretty-printed on purpose - they are meant
+  to be edited by hand; minifying them would recover ~13 KB gzipped.
+
 --------------------------------------------------------------------
  GAMIFICATION
 --------------------------------------------------------------------
@@ -142,13 +207,21 @@ Settings
 --------------------------------------------------------------------
 - One global namespace: window.B850
 - Classic scripts (no ES modules) so file:// works
-- Read-only dataset, normalised on boot (handles plough/plow
-  variants, defensive field guards)
+- Screens are registered dynamically: B850.screens.<id>.render()
+  (so a new mode needs no router change, only a script tag)
+- Read-only datasets, normalised on boot (handles plough/plow
+  variants, defensive field guards):
+    data/words.js    - 850 words (pronunciation, EN + HI glosses,
+                       two example sentences each)
+    data/grammar/    - 45 topic files (t01..t45), each self-registering
+                       on window.GRAMMAR_TOPICS, plus index.js which
+                       derives grammarTopics + grammarExercises
 - Single versioned localStorage key "b850:v1"
 - State survives reload, tab backgrounding, and browser restart
 - Tolerant of corrupt or older saves (never crashes)
 - Data: Ogden's Basic English (public-domain word list) +
-  user-supplied Hindi glosses / Devanagari / examples
+  user-supplied Hindi glosses / Devanagari / examples; grammar
+  topics from the user-supplied 45-topic curriculum
 
 --------------------------------------------------------------------
  QUALITY
@@ -158,7 +231,178 @@ Settings
 - 0 external requests; 0 console / page errors
 - Test suites green:
     Spelling 26/26, Core 22/22, Payload 14/14
-    Payload 141.9 KB (< 150 KB budget), Service Worker offline PASS
+    test/course.test.js 40/40 (grammar course end to end)
+- Grammar course measured end to end: 89.1 KB of data plus a 5.2 KB
+  screen. Measured total now: 204.8 KB gzipped across 65 shipped
+  files, inside the 220 KB budget (225 examples, 450 exercises and
+  135 rule forms). The detailed content is ~4x the first pass and the
+  split files stay readable.
+
+====================================================================
+ IMPLEMENTATION PLAN — GRAMMAR COURSE
+====================================================================
+Goal: turn data/grammar.js into a playable grammar course without
+touching the word dataset and without adding dependencies or a build
+step.
+
+STATUS: Phases 0, 1, 2, 3 and 4 are DONE. The optional Phase 3 SRS
+  hand-off is deliberately deferred (see KNOWN LIMITS).
+  - Phase 0: 45 topics x (5 examples + 10 exercises) = 225 sentences
+    and 450 exercises, plus a Hindi explanation and 3 rule points per
+    topic, authored then validated to 0 problems.
+  - Phase 1: script tags, BRAND map, state.grammar + migration, SW
+    precache (cache b850-v3), Home grammar card with progress.
+  - Phase 2: js/modes/grammar.js renders levels -> topic -> practice
+    -> result; word-order items use tap-to-place tiles.
+  - Phase 3: Stats gained a Grammar block (5 level rows with done
+    counts and mastery bars, plus topics done, grammar accuracy and
+    the weakest level); grammar answers already feed XP, streak and
+    the daily goal without touching the 850-word seen/learned maps.
+  - Phase 4: one suite, test/course.test.js (37/37), runs the real app
+    scripts under a DOM shim and loads exactly the files index.html
+    lists - so an unlisted or missing topic file fails the build. It
+    covers wiring, all 45 topics, per-topic detail, levels, topic,
+    practice scoring, stats, the home card and legacy-save migration.
+
+EFFORT SUMMARY
+  Phase 0  Content (sentences + exercises)      1.5 - 2.0 days
+  Phase 1  Data plumbing / store                0.5 day
+  Phase 2  Screens (levels, topic, practice)    1.0 - 1.5 days
+  Phase 3  Integration (stats, SRS, a11y)       0.5 - 1.0 day
+  Phase 4  Tests + docs                         0.5 day
+  TOTAL                                         4.0 - 5.5 days
+
+PHASE 0 — Content (dominant cost, do this first)
+  - Add per-topic example sentences to the data (3-5 per topic,
+    ~180-225 sentences), each with:
+        { en: "...", hi: "Devanagari translation", note: "why" }
+  - Add exercises for the 4 planned types, stored pre-computed (no
+    build step, no runtime generation guesswork):
+      A. chooser  - "Which sentence is correct?" 3 options, 1 right
+      B. order    - scrambled word array + the answer string
+      C. cloze    - sentence with a blank + 4 keyword options
+      D. spot     - a wrong sentence + the corrected version
+  - Keep sentences inside the 850-word Basic English vocabulary
+    wherever possible. This doubles as a testable quality bar: scan
+    every example for words outside the dataset and fix or justify.
+  - Hindi must be natural Devanagari, same style as the word data.
+  - Split storage if grammar.js grows past ~40 KB raw: keep topics
+    in data/grammar.js and put sentences/exercises in
+    data/grammar-exercises.js (adds one <script> tag, nothing else).
+  - Decision needed: hand-write, or AI-draft then human-review.
+    AI drafting is fine for English; Hindi must be reviewed by a
+    Hindi speaker before shipping.
+
+PHASE 1 — Data plumbing (0.5 day)
+  - index.html: add <script src="data/grammar.js"></script> directly
+    after data/words.js (and the exercises file if split).
+  - js/app.js: add grammar to the BRAND map so the header subtitle
+    reads "Grammar".
+  - js/store.js: extend state with
+        grammar: { <topicId>: { seen, correct, wrong, last, done } },
+        grammarLast: <topicId>
+    plus a migration so saves created before this change load with
+    empty defaults. Keep the key "b850:v1" and do not renumber it;
+    make the reader tolerant instead.
+  - sw.js: add the new data files to the precache list and bump the
+    cache version so existing installs refresh.
+  - js/modes/home.js: add one entry to the MODES array —
+        { id:"grammar", name:"Grammar", emoji: <abc/book>,
+          desc:"45 topics, 5 levels" }
+    and a Home card showing level progress + "next topic".
+  - Bottom tab bar stays at 5 items. Grammar opens from Home.
+
+PHASE 2 — Screens (1.0 - 1.5 days)
+  - New file js/modes/grammar.js registering
+        B850.screens.grammar = { render: function (params) {...} }
+    with params.view = "levels" | "topic" | "practice" | "result".
+  - Levels view: 5 collapsible sections; each topic row shows the
+    English title, the Hindi title, keyword chips, a status pill
+    (new / practising / done) and a mastery bar. Show 10/8/9/8/10
+    counts per level so the course structure is visible.
+  - Topic view: summary card, keyword chips (tap a keyword that is
+    also in the 850-word dataset to open its word card), and a
+    "Practice" button.
+  - Practice view: 8-10 mixed exercises, instant feedback with the
+    `note` explanation, XP award, mastery update, and a "heard/
+    reveal" escape hatch so a learner is never stuck.
+  - Result view: score, what to relearn, "next topic" CTA.
+  - Load order: grammar.js after js/modes/common.js and before
+    js/app.js.
+  - CSS: reuse the existing tokens; add only .level-head,
+    .topic-row, .kw-chip, .ex-option / .ex-correct / .ex-wrong.
+  - Keep the new mode's JS small: ~4 KB gzipped is the headroom.
+
+PHASE 3 — Integration and polish (0.5 - 1.0 day)
+  - Stats: add a Grammar block (per-level mastery, weakest level,
+    exercises answered, accuracy).
+  - SRS: optionally push grammar mistakes into Review as cloze
+    cards, so the existing 6-box schedule does the rescheduling.
+  - Level 5 speaking/writing topics: link out to Typing + TTS with
+    the topic keywords as the deck instead of inventing a new
+    exercise type.
+  - Accessibility: keyboard 1-4 for chooser options, focus moves to
+    feedback, aria-live announcements, 44 px targets.
+  - Re-run the payload test and record the new number in QUALITY.
+
+PHASE 4 — Tests and docs (0.5 day)
+  - Grammar data test: 45 topics; ids 1-45; unique slugs; levels
+    exactly 10/8/9/8/10; every topic has >= 3 sentences and >= 8
+    exercises; every Hindi field non-empty and Devanagari.
+  - Exercise test: exactly one correct answer per item; no duplicate
+    options; distractors never equal the answer; no empty strings.
+  - Vocabulary test: every word in every English sentence appears in
+    the 850 list (report exceptions explicitly).
+  - Store migration test: an old save with no `grammar` key loads,
+    plays, and saves back without losing word progress.
+  - Screen smoke test: Home -> Grammar -> level -> topic -> practice
+    -> result -> Home, on 360x640.
+  - Integrity test: data/words.js hash unchanged by the feature.
+  - Update FEATURES.txt counts (9 -> 10 modes, payload figure).
+
+ACCEPTANCE CRITERIA
+  [x] Grammar opens from Home; all 45 topics reachable (45 rows)
+  [x] Level counts 10/8/9/8/10 present and rendered as 5 sections
+  [x] Every topic has 10 exercises (5 examples and 3 rule points);
+      a 10-item session completes end to end
+  [x] Mastery + XP persist; legacy saves migrate to grammar:{}
+  [ ] Works offline after first load - files are precached, but the
+      service worker has not been re-tested in a browser yet
+  [x] Payload measured 193.2 KB gzipped; budget raised to 220 KB
+  [ ] Keyboard + screen-reader usable on a real device - not yet
+      tested (this sandbox blocks launching a browser)
+  [x] data/words.js byte-identical (hash unchanged)
+  [x] Stats shows a Grammar block: five level rows, done counts,
+      grammar accuracy and the weakest level
+  [x] One data file per topic, all 46 listed in index.html and
+      precached by the service worker (cache b850-v4)
+  [x] Every topic has a formula rule block: pattern + 3 labelled
+      forms + exceptions + a Hindi tip, rendered as a Rule card
+  [x] No new dependencies, no build step; app scripts load clean
+
+KNOWN LIMITS
+  - The SRS hand-off (grammar mistakes becoming Review cards) is
+    deferred: Review resolves every queued id through data/words.js,
+    so mixing grammar ids into that queue needs a Review change and
+    its own tests. Nothing else depends on it.
+  - 363 distinct words in the grammar content fall outside the
+    850-word list (park, cricket, finished, were, plays ...) across
+    the examples, exercises and rule sentences. Basic English cannot
+    express every
+    grammar rule, so this is accepted and reported rather than hidden.
+  - Exercise instruction text ("Which sentence is correct?" etc.) is
+    English UI chrome and is excluded from that count.
+
+OPEN QUESTIONS (decide before Phase 0)
+  1. Content: hand-write ~200 sentences, or AI-draft + human review?
+     (AI draft is fast; the Hindi must be checked by a speaker.)
+  2. Should grammar mistakes join the existing SRS deck, or get a
+     separate grammar schedule? (Recommend: join it — one review
+     queue is simpler and already tested.)
+  3. Navigation: keep 5 tabs and put Grammar on Home, or trade the
+     Learn tab for Grammar? (Recommend: Home card.)
+  4. Do speaking/writing topics (36-45) get real exercises in v1, or
+     link out to Typing + TTS? (Recommend: link out in v1.)
 
 ====================================================================
  What this is NOT
@@ -166,3 +410,5 @@ Settings
 - No backend, no accounts, no network. Everything is on-device.
 - The dataset is read-only; no words are invented or edited.
 - No alert()/confirm() in the game loop (in-page sheets only).
+- Grammar is data-only right now: it is not reachable in the UI and
+  nothing loads it until Phase 1 is done.

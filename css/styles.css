@@ -443,3 +443,52 @@ main.content{max-width:480px;margin:0 auto;padding:calc(var(--topbar-h) + 8px) 1
   main.content,.topbar-inner,.tabbar-inner,.sheet,.toast{max-width:480px;}
   body{background:color-mix(in srgb, var(--bg) 70%, var(--card-3));}
 }
+
+/* ---------- Grammar course ---------- */
+.level-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:2px 0 8px}
+.topic-row{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:52px;padding:10px 2px;background:none;border:0;border-top:1px solid var(--card-3);color:inherit;text-align:left;font:inherit;cursor:pointer;border-radius:var(--radius-sm)}
+.topic-row:first-of-type{border-top:0}
+.topic-row:active{background:var(--card-2)}
+.topic-row:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.topic-main{display:flex;flex-direction:column;gap:2px;min-width:0}
+.topic-title{font-weight:600;font-size:16px;line-height:1.25}
+.topic-hi{font-size:14px;color:var(--text-2);line-height:1.3}
+.kw-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.kw-chip{min-height:36px;padding:6px 11px;font:inherit;font-size:14px;border-radius:999px;border:1px solid var(--card-4);background:var(--card-2);color:var(--text);cursor:pointer}
+.kw-chip.linked{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.kw-chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.gr-ex{padding:9px 0;border-top:1px solid var(--card-3)}
+.gr-ex:first-child{border-top:0;padding-top:0}
+.gr-ex-en{font-weight:600;font-size:16px;line-height:1.35}
+.gr-ex-hi{font-size:14px;color:var(--text-2);line-height:1.4;margin-top:2px}
+.gr-ex-note{font-size:13px;color:var(--text-2);margin-top:3px;font-style:italic}
+.gr-sentence{font-size:18px;line-height:1.45;margin:6px 0 0}
+.gr-sentence-2{font-size:16px;color:var(--text-2);margin-top:8px;padding:8px 10px;background:var(--card-2);border-radius:var(--radius-sm)}
+.gr-slots{display:flex;flex-wrap:wrap;align-items:center;gap:6px;min-height:56px;padding:8px;border:2px dashed var(--card-4);border-radius:var(--radius);margin:12px 0}
+.gr-slots-label{font-size:14px;color:var(--text-2);padding-left:4px}
+.gr-tray{display:flex;flex-wrap:wrap;gap:6px}
+.gr-word{min-height:44px;padding:8px 13px;font:inherit;font-size:16px;border-radius:var(--radius-sm);border:1px solid var(--card-4);background:var(--card-2);color:var(--text);cursor:pointer}
+.gr-word.in-slot{background:var(--accent-soft);border-color:var(--accent)}
+.gr-word.used{opacity:.35;pointer-events:none}
+.gr-word:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ---------- Grammar topic detail ---------- */
+.gr-help-hi{margin:6px 0 0;font-size:15px;line-height:1.55;color:var(--text)}
+.gr-points{margin:10px 0 0;padding-left:18px;font-size:14px;color:var(--text-2)}
+.gr-points li{margin:4px 0;line-height:1.45}
+
+/* ---------- Grammar rule block ---------- */
+.gr-formula{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px;line-height:1.45;background:var(--card-2);border:1px solid var(--card-4);border-radius:var(--radius-sm);padding:8px 10px;margin:6px 0 10px;overflow-wrap:anywhere}
+.gr-form{display:flex;gap:8px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--card-3)}
+.gr-form:first-of-type{border-top:0}
+.gr-form-kind{flex:0 0 auto;font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:3px 7px;border-radius:999px;background:var(--card-3);color:var(--text-2)}
+.gr-kind-positive{background:var(--good-soft);color:var(--good-text)}
+.gr-kind-negative{background:var(--bad-soft);color:var(--bad-text)}
+.gr-kind-question{background:var(--accent-soft);color:var(--accent)}
+.gr-form-body{display:flex;flex-direction:column;gap:3px;min-width:0}
+.gr-formula-sm{font-size:14px;background:none;border:0;padding:0;margin:0}
+.gr-form-en{font-size:14px;color:var(--text-2)}
+.gr-rule-note{font-size:13px;color:var(--text-2);margin-top:8px}
+.gr-kind-form{background:var(--accent-soft);color:var(--accent)}
+.gr-kind-example{background:var(--good-soft);color:var(--good-text)}
+.gr-kind-avoid{background:var(--bad-soft);color:var(--bad-text)}
