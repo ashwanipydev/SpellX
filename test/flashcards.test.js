@@ -68,5 +68,6 @@ startButton.click();
 assert.strictEqual(shuffleInputs[0].length, 400, 'selected Things — General deck contains 400 words');
 assert.deepStrictEqual(shuffleInputs[0], S.data.byCategory.things_general);
 assert.strictEqual(env.main.querySelector('.fc-meta .pill').textContent, 'Things — General');
+assert.strictEqual(env.main.querySelector('.q-count').textContent, '1/400');
 
 console.log('Flashcard category selection tests passed.');
