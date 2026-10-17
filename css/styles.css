@@ -477,6 +477,20 @@ main.content{max-width:480px;margin:0 auto;padding:calc(var(--topbar-h) + 8px) 1
 .gr-help-hi{margin:6px 0 0;font-size:15px;line-height:1.55;color:var(--text)}
 .gr-points{margin:10px 0 0;padding-left:18px;font-size:14px;color:var(--text-2)}
 .gr-points li{margin:4px 0;line-height:1.45}
+.gr-reference-list{display:flex;flex-direction:column;gap:10px}
+.gr-reference-item{display:flex;flex-direction:column;gap:3px;padding:9px 0;border-top:1px solid var(--card-3);line-height:1.4}
+.gr-reference-item:first-child{padding-top:0;border-top:0}
+.gr-wrong{color:var(--bad-text);text-decoration:line-through}
+.gr-right{color:var(--good-text)}
+.gr-guide-list{padding-left:34px;line-height:1.5}
+.gr-guide-list li{padding:3px 0}
+.gr-verb-table-wrap{overflow-x:auto}
+.gr-verb-table{width:100%;min-width:600px;border-collapse:collapse;font-size:14px;text-align:left}
+.gr-verb-table caption{padding:4px 0 10px;font-weight:800;text-align:left}
+.gr-verb-table th,.gr-verb-table td{padding:8px;border-top:1px solid var(--card-3);vertical-align:top}
+.gr-verb-table thead th{border-top:0;color:var(--text-2)}
+.gr-verb-table tbody th{font-weight:800}
+.gr-verb-table td:last-child{min-width:230px}
 
 /* ---------- Grammar rule block ---------- */
 .gr-formula{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px;line-height:1.45;background:var(--card-2);border:1px solid var(--card-4);border-radius:var(--radius-sm);padding:8px 10px;margin:6px 0 10px;overflow-wrap:anywhere}

@@ -12,6 +12,8 @@ const grammarTopics = GRAMMAR_REGISTRY
       level: t.level, levelLabel: t.levelLabel, keywords: t.keywords || [],
       summary: t.summary, explanationHindi: t.explanationHindi || "",
       points: t.points || [], rules: t.rules || null,
+      modalGuide: t.modalGuide || null, verbFormGroups: t.verbFormGroups || [],
+      studyGuide: t.studyGuide || null,
       sourceOrder: t.sourceOrder, source: t.source
     };
   });

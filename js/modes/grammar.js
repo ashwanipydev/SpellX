@@ -1,4 +1,4 @@
-/* Grammar course screen - 45 topics in 5 levels.
+/* Grammar course screen - 46 topics in 5 levels.
    Reads data/grammar.js (global grammarTopics) and data/grammar-exercises.js
    (global grammarExercises). Progress lives in state.grammar under the single
    "b850:v1" save key. */
@@ -122,7 +122,7 @@
     root.appendChild(head("Grammar", doneCount() + "/" + list.length, function () { U.back(); }));
     root.appendChild(U.h("p", {
       "class": "screen-sub",
-      text: "45 topics in 5 levels. Open a topic to learn it, then practise it."
+      text: "46 topics in 5 levels. Open a topic to learn it, then practise it."
     }));
 
     if (!list.length) {
@@ -250,6 +250,96 @@
         ]));
       });
       root.appendChild(ex);
+    }
+
+    if (t.modalGuide) {
+      var guide = t.modalGuide;
+      root.appendChild(U.h("h2", { "class": "section-title", text: "Modal verbs at a glance" }));
+      root.appendChild(U.h("div", { "class": "card gr-reference-list" }, guide.modals.map(function (m) {
+        return U.h("div", { "class": "gr-reference-item" }, [
+          U.h("b", { text: m.name }),
+          U.h("span", { text: m.use }),
+          U.h("span", { "class": "gr-ex-hi", text: m.hindi }),
+          U.h("span", { "class": "gr-form-en", text: m.example })
+        ]);
+      })));
+      root.appendChild(U.h("h2", { "class": "section-title", text: "Politeness levels" }));
+      root.appendChild(U.h("ol", { "class": "card gr-guide-list" }, guide.politeness.map(function (line) {
+        return U.h("li", { text: line });
+      })));
+      root.appendChild(U.h("h2", { "class": "section-title", text: "Common mistakes" }));
+      root.appendChild(U.h("div", { "class": "card gr-reference-list" }, guide.mistakes.map(function (m) {
+        return U.h("div", { "class": "gr-reference-item" }, [
+          U.h("span", { "class": "gr-wrong", text: m.wrong }),
+          U.h("b", { "class": "gr-right", text: m.right }),
+          U.h("span", { text: m.why })
+        ]);
+      })));
+      root.appendChild(U.h("h2", { "class": "section-title", text: "Ready-to-use office sentences" }));
+      root.appendChild(U.h("ol", { "class": "card gr-guide-list" }, guide.officeSentences.map(function (line) {
+        return U.h("li", { text: line });
+      })));
+      root.appendChild(U.h("h2", { "class": "section-title", text: "Email phrases" }));
+      root.appendChild(U.h("div", { "class": "card gr-reference-list" }, guide.emailPhrases.map(function (line) {
+        return U.h("div", { "class": "gr-reference-item", text: line });
+      })));
+      root.appendChild(U.h("div", { "class": "card gr-guide-list" }, guide.tips.map(function (line) {
+        return U.h("p", { text: line });
+      })));
+    }
+
+    if (t.verbFormGroups && t.verbFormGroups.length) {
+      root.appendChild(U.h("h2", { "class": "section-title", text: "Verb form reference" }));
+      t.verbFormGroups.forEach(function (group) {
+        var table = U.h("table", { "class": "gr-verb-table" });
+        table.appendChild(U.h("caption", { text: group.title + " — " + group.description }));
+        table.appendChild(U.h("thead", {}, [U.h("tr", {}, [
+          U.h("th", { scope: "col", text: "V1" }),
+          U.h("th", { scope: "col", text: "V2" }),
+          U.h("th", { scope: "col", text: "V3" }),
+          U.h("th", { scope: "col", text: "Meaning & example" })
+        ])]));
+        table.appendChild(U.h("tbody", {}, group.verbs.map(function (verb) {
+          return U.h("tr", {}, [
+            U.h("th", { scope: "row", text: verb.v1 }),
+            U.h("td", { text: verb.v2 }),
+            U.h("td", { text: verb.v3 }),
+            U.h("td", {}, [
+              U.h("span", { "class": "gr-ex-hi", text: verb.hi }),
+              U.h("span", { "class": "gr-form-en", text: verb.example })
+            ])
+          ]);
+        })));
+        root.appendChild(U.h("div", { "class": "card gr-verb-table-wrap" }, [table]));
+      });
+    }
+
+    if (t.studyGuide) {
+      var study = t.studyGuide;
+      root.appendChild(U.h("h2", { "class": "section-title", text: "Common mistakes" }));
+      root.appendChild(U.h("div", { "class": "card gr-reference-list" }, study.mistakes.map(function (m) {
+        return U.h("div", { "class": "gr-reference-item" }, [
+          U.h("span", { "class": "gr-wrong", text: m.wrong }),
+          U.h("b", { "class": "gr-right", text: m.right }),
+          U.h("span", { text: m.why })
+        ]);
+      })));
+      root.appendChild(U.h("h2", { "class": "section-title", text: "Memory tips" }));
+      root.appendChild(U.h("ul", { "class": "card gr-guide-list" }, study.memoryTips.map(function (line) {
+        return U.h("li", { text: line });
+      })));
+      root.appendChild(U.h("h2", { "class": "section-title", text: "Daily practice" }));
+      root.appendChild(U.h("ol", { "class": "card gr-guide-list" }, study.practiceSentences.map(function (line) {
+        return U.h("li", { text: line });
+      })));
+      root.appendChild(U.h("h2", { "class": "section-title", text: "7-day study plan" }));
+      root.appendChild(U.h("div", { "class": "card gr-reference-list" }, study.studyPlan.map(function (day) {
+        return U.h("div", { "class": "gr-reference-item" }, [
+          U.h("b", { text: day.day }),
+          U.h("span", { text: day.focus }),
+          U.h("span", { "class": "gr-ex-hi", text: day.target })
+        ]);
+      })));
     }
 
     var hasEx = !!(c && c.exercises && c.exercises.length);

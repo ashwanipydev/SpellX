@@ -3,24 +3,20 @@
 (window.GRAMMAR_TOPICS = window.GRAMMAR_TOPICS || []).push(
   {
     "id": 18,
-    "topic": "can-could-should-would-must",
-    "title": "Can, Could, Should, Would, Must",
-    "titleHindi": "सहायक क्रियाएँ (can, could, should, would, must)",
+    "topic": "modal-verbs",
+    "title": "Modal Verbs",
+    "titleHindi": "सहायक क्रियाएँ",
     "level": 2,
     "levelLabel": "Level 2 — Making Sentences",
     "keywords": [
-      "can",
-      "could",
-      "should",
-      "would",
-      "must"
+      "can", "could", "will", "would", "should", "must", "may", "might", "need to"
     ],
-    "summary": "Modal helpers for ability, permission, advice, possibility and obligation.",
-    "explanationHindi": "can, could, should, would और must जैसे शब्द क्रिया से पहले आकर उसका भाव बदल देते हैं। can क्षमता और अनुमति के लिए, could भूतकाल की क्षमता या विनम्र निवेदन के लिए, should सलाह के लिए और must मज़बूत कर्तव्य या नियम के लिए प्रयोग होता है। would विनम्रता से कोई इच्छा या माँग बताने में काम आता है। इन सबके बाद क्रिया हमेशा मूल रूप में और बिना to के आती है।",
+    "summary": "Modal and semi-modal helpers for ability, permission, advice, possibility, future and obligation.",
+    "explanationHindi": "can, could, will, would, should, must, may और might जैसे modal सहायक शब्द मुख्य क्रिया से पहले आकर क्षमता, अनुमति, भविष्य, सलाह, संभावना या ज़रूरत का भाव बताते हैं। इनके बाद मुख्य क्रिया का मूल रूप बिना to के आता है। Need to एक semi-modal है और इसके बाद to + मूल क्रिया आती है। विनम्रता के अलग स्तर दिखाने के लिए can, could और would का प्रयोग किया जा सकता है।",
     "points": [
-      "Use can and could for ability, permission and polite requests",
-      "Use should for advice and must for a strong rule or duty",
-      "A modal verb is followed by the base verb without to or -s"
+      "Can/could show ability or requests; will shows future and decisions",
+      "Should gives advice; must shows a strong rule or necessity",
+      "Modal + base verb without to; need to is a semi-modal exception"
     ],
     "examples": [
       {
@@ -199,7 +195,73 @@
         "Modals never take -s or -ed: 'he can', not 'he cans'",
         "After a modal use V1 without to: 'should eat', not 'should to eat'"
       ],
-      "hindiTip": "can, could, should, would और must के बाद क्रिया बिना to के मूल रूप में आती है, और इनके साथ कभी -s नहीं जुड़ता। must not मना करने के लिए और should सलाह के लिए प्रयोग करें।"
+      "hindiTip": "मुख्य modal के बाद V1 बिना to और बिना -s के आता है। Need to अलग है: इसके बाद to + V1 आता है।"
+    },
+    "modalGuide": {
+      "modals": [
+        { "name": "Can", "use": "Ability, informal request or possibility", "hindi": "सकना / अनौपचारिक निवेदन", "example": "I can speak Hindi and English." },
+        { "name": "Could", "use": "Past ability, polite request or suggestion", "hindi": "सकता था / विनम्र निवेदन", "example": "Could you please send me the report?" },
+        { "name": "Will", "use": "Future event, promise or decision", "hindi": "करूँगा / होगा", "example": "I will send you the file today." },
+        { "name": "Would", "use": "Polite request, invitation or conditional idea", "hindi": "विनम्र इच्छा / निवेदन", "example": "Would you be available for a quick call?" },
+        { "name": "Should", "use": "Advice or recommendation", "hindi": "चाहिए", "example": "You should review the budget first." },
+        { "name": "Must", "use": "Strong necessity, rule or obligation", "hindi": "ज़रूर करना है / अनिवार्य", "example": "All changes must be tested before release." },
+        { "name": "May", "use": "Formal permission or possibility", "hindi": "क्या मैं / संभव है", "example": "May I share my screen?" },
+        { "name": "Might", "use": "Less-certain possibility", "hindi": "शायद, कम संभावना", "example": "I might be late to the meeting." },
+        { "name": "Need to", "use": "Semi-modal for everyday necessity; keep to", "hindi": "ज़रूरत है / करना है", "example": "I need to finish this before the deadline." }
+      ],
+      "politeness": [
+        "Direct: Send me the file.",
+        "Friendly: Can you send me the file?",
+        "Polite: Could you please send me the file?",
+        "Very polite: Would you be able to send me the file when you get a chance?"
+      ],
+      "mistakes": [
+        { "wrong": "I can to speak English.", "right": "I can speak English.", "why": "Use the base verb directly after a modal." },
+        { "wrong": "She musts attend the meeting.", "right": "She must attend the meeting.", "why": "Modals do not take -s for he, she or it." },
+        { "wrong": "You should to call him.", "right": "You should call him.", "why": "Do not put to after should." },
+        { "wrong": "Can you please to send the file?", "right": "Can you please send the file?", "why": "Use the base verb directly after can." },
+        { "wrong": "I am willing to can go.", "right": "I can go. / I am willing to go.", "why": "Do not put two modals together." },
+        { "wrong": "You must to register.", "right": "You must register.", "why": "Must is followed by the base verb without to." },
+        { "wrong": "May I to ask a question?", "right": "May I ask a question?", "why": "May is followed by the base verb without to." },
+        { "wrong": "He might to be late.", "right": "He might be late.", "why": "Might is followed by the base verb without to." },
+        { "wrong": "I would like going.", "right": "I would like to go.", "why": "Would like is followed by to + verb." },
+        { "wrong": "We could went yesterday.", "right": "We could have gone yesterday.", "why": "For a past possibility use modal + have + V3." }
+      ],
+      "officeSentences": [
+        "Could you please review this before the meeting?",
+        "I will send the summary email shortly.",
+        "We should align on the deliverables first.",
+        "May I share a few thoughts on this?",
+        "Would you be available for a 15-minute call?",
+        "This document must be approved before publishing.",
+        "Can you take the lead on this task?",
+        "The timeline might shift by a day or two.",
+        "Could we table this for the next meeting?",
+        "You should keep the client informed about the delay.",
+        "I will follow up with the team and share an update.",
+        "I would appreciate it if you could review this today.",
+        "The results may not be available until next week.",
+        "All changes must be tested before going live.",
+        "We need to finalize the agenda before Friday.",
+        "Can everyone confirm their availability for Monday?",
+        "I might need to escalate this issue.",
+        "Could you clarify what you mean by urgent?",
+        "We should document this process for future reference.",
+        "Would it be possible to get this done by Wednesday?"
+      ],
+      "emailPhrases": [
+        "I would like to follow up on my earlier email.",
+        "Could you please share your feedback by Thursday?",
+        "I will send you the updated report by end of day.",
+        "You may find the attached document useful.",
+        "Please let me know if I can help with anything else."
+      ],
+      "tips": [
+        "Politeness often moves from can to could to would; choose the tone that fits the situation.",
+        "Modal verbs do not take -s or -ed. Say he can, not he cans.",
+        "Should gives advice; must expresses a stronger requirement.",
+        "May and might both show possibility; might often sounds less certain."
+      ]
     }
   }
 );
