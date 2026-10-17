@@ -13,7 +13,7 @@ const grammarTopics = GRAMMAR_REGISTRY
       summary: t.summary, explanationHindi: t.explanationHindi || "",
       points: t.points || [], rules: t.rules || null,
       modalGuide: t.modalGuide || null, verbFormGroups: t.verbFormGroups || [],
-      studyGuide: t.studyGuide || null,
+      studyGuide: t.studyGuide || null, pronunciationGuide: t.pronunciationGuide || null,
       sourceOrder: t.sourceOrder, source: t.source
     };
   });

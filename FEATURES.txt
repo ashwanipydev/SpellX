@@ -8,8 +8,8 @@ of Ogden's Basic English to Hindi-speaking learners.
  CORE PURPOSE
 --------------------------------------------------------------------
 - Teaches the 850 words of Ogden's Basic English to Hindi speakers
-- Also ships a playable 46-topic English grammar course (5 levels,
-  460 exercises, 230 example sentences, one data file per topic)
+- Also ships a playable 47-topic English grammar course (5 levels,
+  470 exercises, 235 example sentences, one data file per topic)
 - Mobile-first, zero dependencies (vanilla HTML/CSS/JavaScript)
 - Zero network calls — everything is local
 - Runs by double-clicking index.html from file:// (no server needed)
@@ -99,13 +99,13 @@ Settings
   - Reset
 
 Grammar
-  - 46 topics in 5 levels, English + Hindi titles
+  - 47 topics in 5 levels, English + Hindi titles
   - Level list -> topic (RULE card, summary, Hindi explanation,
     3 rule points, keywords, 5 examples) -> practice
   - Rule card = formula pattern, 3 labelled forms (positive /
     negative / question, or form / example / avoid on the skills
     topics), exceptions, and a Hindi memory tip
-  - 460 exercises (10 per topic): chooser, cloze, word-order,
+  - 470 exercises (10 per topic): chooser, cloze, word-order,
     spot-the-mistake
   - One data file per topic under data/grammar/, so any single topic
     can be edited without touching the others
@@ -117,10 +117,10 @@ Grammar
     saves safely, and never touches the 850-word seen/learned maps
 
 --------------------------------------------------------------------
- GRAMMAR COURSE (46 topics, 5 levels) — LIVE
+ GRAMMAR COURSE (47 topics, 5 levels) — LIVE
 --------------------------------------------------------------------
 - data/grammar/ holds ONE FILE PER TOPIC: t01-alphabet-basic-words.js
-  through t46-v1-v2-v3-verb-forms.js, plus index.js. Each topic
+  through t47-english-pronunciation.js, plus index.js. Each topic
   file is a classic script that pushes its own object onto
   window.GRAMMAR_TOPICS, so load order does not matter and a missing
   file cannot scramble the others. index.js loads last and rebuilds
@@ -132,15 +132,16 @@ Grammar
     keywords[], summary, explanationHindi (2-4 sentences),
     points[3] (key rules), rules {pattern, forms[3], exceptions,
     hindiTip}, examples[5] {en, hi, note}, exercises[10],
-    optional modalGuide / verbFormGroups / studyGuide references,
+    optional modalGuide / verbFormGroups / studyGuide /
+    pronunciationGuide references,
     sourceOrder, source
 - Coverage by level:
-    Level 1 — Basic Grammar        10 topics (alphabet .. am/is/are)
+    Level 1 — Basic Grammar        11 topics (including pronunciation)
     Level 2 — Making Sentences      8 topics (subject/predicate .. modals)
     Level 3 — Tenses               10 topics (including V1/V2/V3 verb forms)
     Level 4 — Important Grammar     8 topics (prepositions .. question words)
     Level 5 — Speaking & Writing   10 topics (everyday sentences .. daily practice)
-  Total 46 topics, including the modal-verb and V1/V2/V3 references.
+  Total 47 topics, including modal verbs, V1/V2/V3 and pronunciation.
 - Planned learning loop per topic:
     * Learn card: summary + keyword chips; every keyword that also
       exists in the 850-word dataset is cross-linked, so tapping
@@ -210,7 +211,7 @@ Grammar
   variants, defensive field guards):
     data/words.js    - 850 words (pronunciation, EN + HI glosses,
                        two example sentences each)
-    data/grammar/    - 46 topic files (t01..t46), each self-registering
+    data/grammar/    - 47 topic files (t01..t47), each self-registering
                        on window.GRAMMAR_TOPICS, plus index.js which
                        derives grammarTopics + grammarExercises
 - Single versioned localStorage key "b850:v1"
@@ -228,9 +229,9 @@ Grammar
 - 0 external requests; 0 console / page errors
 - Test suites green:
     Spelling 26/26, Core 22/22, Payload 14/14
-    test/course.test.js 45/45 (grammar course end to end)
-- Grammar course now includes 46 topics, 230 examples, 460 exercises,
-  the expanded modal guide and 76 V1/V2/V3 verb-form rows.
+    test/course.test.js 49/49 (grammar course end to end)
+- Grammar course now includes 47 topics, 235 examples, 470 exercises,
+  the expanded modal guide, 76 V1/V2/V3 rows and pronunciation practice.
 
 ====================================================================
  IMPLEMENTATION PLAN — GRAMMAR COURSE
@@ -241,21 +242,21 @@ step.
 
 STATUS: Phases 0, 1, 2, 3 and 4 are DONE. The optional Phase 3 SRS
   hand-off is deliberately deferred (see KNOWN LIMITS).
-  - Phase 0: 46 topics x (5 examples + 10 exercises) = 230 sentences
-    and 460 exercises, plus a Hindi explanation and 3 rule points per
+  - Phase 0: 47 topics x (5 examples + 10 exercises) = 235 sentences
+    and 470 exercises, plus a Hindi explanation and 3 rule points per
     topic, authored then validated to 0 problems.
   - Phase 1: script tags, BRAND map, state.grammar + migration, SW
-    precache (cache b850-v7), Home grammar card with progress.
+    precache (cache b850-v8), Home grammar card with progress.
   - Phase 2: js/modes/grammar.js renders levels -> topic -> practice
     -> result; word-order items use tap-to-place tiles.
   - Phase 3: Stats gained a Grammar block (5 level rows with done
     counts and mastery bars, plus topics done, grammar accuracy and
     the weakest level); grammar answers already feed XP, streak and
     the daily goal without touching the 850-word seen/learned maps.
-  - Phase 4: one suite, test/course.test.js (45/45), runs the real app
+  - Phase 4: one suite, test/course.test.js (49/49), runs the real app
     scripts under a DOM shim and loads exactly the files index.html
     lists - so an unlisted or missing topic file fails the build. It
-    covers wiring, all 46 topics, per-topic detail, levels, topic,
+    covers wiring, all 47 topics, per-topic detail, levels, topic,
     practice scoring, stats, the home card and legacy-save migration.
 
 EFFORT SUMMARY
@@ -268,7 +269,7 @@ EFFORT SUMMARY
 
 PHASE 0 — Content (dominant cost, do this first)
   - Add per-topic example sentences to the data (3-5 per topic,
-    ~180-225 sentences), each with:
+    235 sentences), each with:
         { en: "...", hi: "Devanagari translation", note: "why" }
   - Add exercises for the 4 planned types, stored pre-computed (no
     build step, no runtime generation guesswork):
@@ -302,7 +303,7 @@ PHASE 1 — Data plumbing (0.5 day)
     cache version so existing installs refresh.
   - js/modes/home.js: add one entry to the MODES array —
         { id:"grammar", name:"Grammar", emoji: <abc/book>,
-          desc:"46 topics, 5 levels" }
+          desc:"47 topics, 5 levels" }
     and a Home card showing level progress + "next topic".
   - Bottom tab bar stays at 5 items. Grammar opens from Home.
 
@@ -340,7 +341,7 @@ PHASE 3 — Integration and polish (0.5 - 1.0 day)
   - Re-run the payload test and record the new number in QUALITY.
 
 PHASE 4 — Tests and docs (0.5 day)
-  - Grammar data test: 46 topics; ids 1-46; unique slugs; levels
+  - Grammar data test: 47 topics; ids 1-47; unique slugs; levels
     exactly 10/8/9/8/10; every topic has >= 3 sentences and >= 8
     exercises; every Hindi field non-empty and Devanagari.
   - Exercise test: exactly one correct answer per item; no duplicate
@@ -355,7 +356,7 @@ PHASE 4 — Tests and docs (0.5 day)
   - Update FEATURES.txt counts (9 -> 10 modes, payload figure).
 
 ACCEPTANCE CRITERIA
-  [x] Grammar opens from Home; all 46 topics reachable (46 rows)
+  [x] Grammar opens from Home; all 47 topics reachable (47 rows)
   [x] Level counts 10/8/9/8/10 present and rendered as 5 sections
   [x] Every topic has 10 exercises (5 examples and 3 rule points);
       a 10-item session completes end to end
@@ -368,7 +369,7 @@ ACCEPTANCE CRITERIA
   [x] data/words.js byte-identical (hash unchanged)
   [x] Stats shows a Grammar block: five level rows, done counts,
       grammar accuracy and the weakest level
-  [x] One data file per topic, all 46 listed in index.html and
+  [x] One data file per topic, all 47 listed in index.html and
       precached by the service worker (cache b850-v4)
   [x] Every topic has a formula rule block: pattern + 3 labelled
       forms + exceptions + a Hindi tip, rendered as a Rule card

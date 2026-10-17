@@ -1,4 +1,4 @@
-/* Grammar course screen - 46 topics in 5 levels.
+/* Grammar course screen - 47 topics in 5 levels.
    Reads data/grammar.js (global grammarTopics) and data/grammar-exercises.js
    (global grammarExercises). Progress lives in state.grammar under the single
    "b850:v1" save key. */
@@ -122,7 +122,7 @@
     root.appendChild(head("Grammar", doneCount() + "/" + list.length, function () { U.back(); }));
     root.appendChild(U.h("p", {
       "class": "screen-sub",
-      text: "46 topics in 5 levels. Open a topic to learn it, then practise it."
+      text: "47 topics in 5 levels. Open a topic to learn it, then practise it."
     }));
 
     if (!list.length) {
@@ -339,6 +339,42 @@
           U.h("span", { text: day.focus }),
           U.h("span", { "class": "gr-ex-hi", text: day.target })
         ]);
+      })));
+    }
+
+    if (t.pronunciationGuide) {
+      var pronunciation = t.pronunciationGuide;
+      root.appendChild(U.h("h2", { "class": "section-title", text: "Syllable practice" }));
+      root.appendChild(U.h("div", { "class": "card gr-reference-list" }, pronunciation.syllables.map(function (item) {
+        return U.h("div", { "class": "gr-reference-item" }, [
+          U.h("b", { text: item.word + " · " + item.count + (item.count === 1 ? " syllable" : " syllables") }),
+          U.h("span", { "class": "gr-form-en", text: item.parts }),
+          U.h("span", { text: item.note })
+        ]);
+      })));
+      root.appendChild(U.h("h2", { "class": "section-title", text: "Word stress" }));
+      root.appendChild(U.h("div", { "class": "card gr-reference-list" }, pronunciation.stressExamples.map(function (item) {
+        return U.h("div", { "class": "gr-reference-item" }, [
+          U.h("b", { text: item.word + " · " + item.stress }),
+          U.h("span", { "class": "gr-form-en", text: item.parts }),
+          U.h("span", { text: item.note })
+        ]);
+      })));
+      root.appendChild(U.h("h2", { "class": "section-title", text: "Stress and suffix patterns" }));
+      root.appendChild(U.h("div", { "class": "card gr-reference-list" }, pronunciation.suffixPatterns.map(function (item) {
+        return U.h("div", { "class": "gr-reference-item" }, [
+          U.h("b", { text: item.suffix }),
+          U.h("span", { text: item.pattern }),
+          U.h("span", { "class": "gr-form-en", text: item.example })
+        ]);
+      })));
+      root.appendChild(U.h("h2", { "class": "section-title", text: "A method for unfamiliar words" }));
+      root.appendChild(U.h("ol", { "class": "card gr-guide-list" }, pronunciation.steps.map(function (step) {
+        return U.h("li", { text: step });
+      })));
+      root.appendChild(U.h("h2", { "class": "section-title", text: "Revision notes" }));
+      root.appendChild(U.h("ul", { "class": "card gr-guide-list" }, pronunciation.revisionNotes.map(function (note) {
+        return U.h("li", { text: note });
       })));
     }
 
