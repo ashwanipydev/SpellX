@@ -51,23 +51,28 @@ allChip.click();
 assert.strictEqual(allChip.getAttribute('aria-pressed'), 'true');
 assert.strictEqual(picturableChip.getAttribute('aria-pressed'), 'false');
 
-generalChip.click();
 const shuffleInputs = [];
 S.shuffle = function (ids) {
   shuffleInputs.push(ids.slice());
   return ids.slice();
 };
 
-let startButton = null;
-env.main.walk(function (el) {
-  if (el.getAttribute('aria-label') === 'Start flashcards') { startButton = el; }
-});
-assert(startButton, 'Learn renders the start-flashcards button');
-startButton.click();
+generalChip.click();
 
 assert.strictEqual(shuffleInputs[0].length, 400, 'selected Things — General deck contains 400 words');
 assert.deepStrictEqual(shuffleInputs[0], S.data.byCategory.things_general);
 assert.strictEqual(env.main.querySelector('.fc-meta .pill').textContent, 'Things — General');
 assert.strictEqual(env.main.querySelector('.q-count').textContent, '1/400');
+assert.strictEqual(B850.state.lastMode.params.category, 'things_general');
+
+B850.screens.learn.render();
+let startButton = null;
+env.main.walk(function (el) {
+  if (el.getAttribute('aria-label') === 'Start flashcards') { startButton = el; }
+});
+assert(startButton, 'Learn renders the start-flashcards button for all words');
+startButton.click();
+assert.strictEqual(shuffleInputs[2].length, 850, 'Start flashcards still starts the all-words deck');
+assert.strictEqual(env.main.querySelector('.q-count').textContent, '1/850');
 
 console.log('Flashcard category selection tests passed.');
