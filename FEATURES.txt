@@ -1,5 +1,5 @@
 ====================================================================
-  SpellX dudal — Complete Feature List
+  SpellX — Complete Feature List
 ====================================================================
 A mobile-first, dependency-free web game that teaches the 850 words
 of Ogden's Basic English to Hindi-speaking learners.
