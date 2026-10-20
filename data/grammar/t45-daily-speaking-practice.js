@@ -8,7 +8,38 @@
     "titleHindi": "रोज़ की अंग्रेज़ी बोलने की प्रैक्टिस",
     "level": 5,
     "levelLabel": "Level 5 — Speaking & Writing",
-    "keywords": [],
+    "chapter": 5,
+    "chapterTitle": "Speak & Write Like a Pro",
+    "storyScene": [
+            {
+                  "en": "The client says, \"Ravi, your English is very good.\"",
+                  "hi": "client बोलतें हैं: Ravi, your English is very good."
+            },
+            {
+                  "en": "Ravi says, \"Thank you, sir. But I am not perfect yet.\"",
+                  "hi": "रवī बोलतें हैं: Thank you, sir. But I am not perfect yet."
+            },
+            {
+                  "en": "Sam says, \"The biggest mistake learners make is translating word-for-word from Hindi.\"",
+                  "hi": "सैम कहतें हैं: सबसे बड़ी ग़लती learners की यही है कि Hindi से word-for-word translate करना।"
+            },
+            {
+                  "en": "Ravi practices: \"I am fine. How are you? I do not know. Yes, I will come.\"",
+                  "hi": "रवī practice करतें हैं: I am fine. How are you? I do not know. Yes, I will come."
+            },
+            {
+                  "en": "Now Ravi speaks English, not Hindi with English clothes.",
+                  "hi": "अब रवī English बोलतें हैं, English कपड़ों में हिंदी नहो।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned to avoid the most common mistakes — translating word-for-word, mixing tenses, and dropping articles.",
+            "hi": "रवī के सबसे आम ग़लतियाँ समझ आयो — word-for-word translate, tenses mix, व article drop।"
+      },
+    "whyRule": {
+        "en": "The most common mistakes learners make (word-for-word translation, tense mixing, dropping articles) all have the same root: the structure of the first language. English grammar was not designed to match Hindi. The mistake is the distance between two systems — and that distance is what learning is.",
+        "hi": "सीखन वोलो सबसं आम गलती (शब्द-भर- आनुवाद, tense मेलाना, article गिराना) सबसं एकी मूल सें आई होई: मातृभाषा की व्यवस्था सें। अंग्रेजी grammar हिंदी की व्यवस्था क मेलाने क लिये निर्मित ना हो। गलती दो व्यवस्थाओं के बीच की दूरी होई — वौरुही योही दूरीी सीखनी होई।"
+      },    "keywords": [],
     "summary": "A short daily routine for speaking practice.",
     "explanationHindi": "रोज़ दस मिनट ज़ोर से अंग्रेज़ी बोलने से जीभ और कान दोनों को अभ्यास मिलता है। सुबह की दिनचर्या के पाँच सरल वाक्य बोलकर शुरुआत करें। इनमें एक सकारात्मक वाक्य, एक नकारात्मक वाक्य और एक प्रश्न रखें। अपनी आवाज़ रिकॉर्ड करके एक बार सुनें और गलती सुधारें।",
     "points": [

@@ -8,7 +8,38 @@
     "titleHindi": "क्रिया के तीन रूप",
     "level": 3,
     "levelLabel": "Level 3 — Tenses",
-    "keywords": ["go", "come", "eat", "write", "send"],
+    "chapter": 3,
+    "chapterTitle": "The Flow of Time",
+    "storyScene": [
+            {
+                  "en": "The client asks, \"What is the verb form for write in past tense?\"",
+                  "hi": "client पूछतें हैं: What is the verb form for \"write\" in past tense?"
+            },
+            {
+                  "en": "Ravi says, \"Wrote, sir. V1 is write, V2 is wrote, V3 is written.\"",
+                  "hi": "रवī जवबाब दतें हैं: Wrote, sir. V1 is write, V2 is wrote, V3 is written."
+            },
+            {
+                  "en": "Sam says, \"Every verb has three forms. V1 is the base. V2 is the past. V3 is the perfect.\"",
+                  "hi": "सैम कहतें हैं: हर verb के तीन रूप हैं। V1 base हैं। V2 past हैं। V3 perfect हैं।"
+            },
+            {
+                  "en": "Ravi practices: \"Go, went, gone. Eat, ate, eaten. Speak, spoke, spoken.\"",
+                  "hi": "रवī practice करतें हैं: Go, went, gone. Eat, ate, eaten. Speak, spoke, spoken."
+            },
+            {
+                  "en": "Now Ravi can use any verb in any tense, because he knows its three forms.",
+                  "hi": "अब रवī any verb के any tense में use कर सकतें हैं, because वह उसके तीन रूप जानतें हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned the three forms of every verb — V1, V2, V3 — that power every tense.",
+            "hi": "रवī के हर verb के तीन रूप समझ आयो — V1, V2, V3 — यी हर tense के power हैं।"
+      },
+    "whyRule": {
+        "en": "V1, V2, V3 are not three verbs — they are three fossil classes from Old English. V1 is the base. V2 is the strong past (vowel change: sing became sang). V3 is the past participle (sungen became sung). When weak verbs (work became worked) took over, V3 kept the old form for perfect tenses.",
+        "hi": "V1, V2, V3 तीन verb नहिं होई — ये पुराने अंग्रेजी क तीन जीवित श्रेणी होई। V1 मूल होई। V2 strong past होई (vowel change: sing बनई sang)। V3 past participle होई (sungen बनई sung)। जब weak verb (work बनई worked) पार गये, V3 perfect tense क लिये पुरानो रूप राखो।"
+      },    "keywords": ["go", "come", "eat", "write", "send"],
     "summary": "Learn base, past and past-participle forms in useful patterns.",
     "explanationHindi": "V1 क्रिया का मूल रूप है, V2 भूतकाल के पूरे हुए काम के लिए और V3 has, have, had जैसे सहायक शब्दों के बाद या passive वाक्यों में आता है। कुछ क्रियाओं के तीनों रूप समान होते हैं, कुछ में V2 और V3 समान होते हैं, और कुछ में स्वर या पूरा शब्द बदलता है। नियमित क्रियाओं में सामान्यतः -ed जोड़ते हैं।",
     "points": [

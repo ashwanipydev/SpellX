@@ -8,7 +8,38 @@
     "titleHindi": "पूर्वसर्ग",
     "level": 4,
     "levelLabel": "Level 4 — Important Grammar",
-    "keywords": [
+    "chapter": 4,
+    "chapterTitle": "The Word Toolkit",
+    "storyScene": [
+            {
+                  "en": "Ravi is late. The manager asks, \"Where have you been?\"",
+                  "hi": "रवी देर सें आतें हैं। manager पूछतें हैं: Where have you been?"
+            },
+            {
+                  "en": "Ravi says, \"I was in the pharmacy, sir.\"",
+                  "hi": "रवी जवाब देतें हैं: I was in the pharmacy, sir."
+            },
+            {
+                  "en": "Sam says, \"In, on, at, by, near — these are prepositions. They show where or when.\"",
+                  "hi": "सैम कहतें हैं: in, on, at, by, near — यो prepositions हैं। यो बतातें हैं जहोए यो कब।"
+            },
+            {
+                  "en": "Ravi practices: \"The file is on the desk. The meeting is at 4. The client is by the window.\"",
+                  "hi": "रवी practice करतें हैं: The file is on the desk. The meeting is at 4. The client is by the window."
+            },
+            {
+                  "en": "Now Ravi can place every thing and person in time and space.",
+                  "hi": "अब रवी हर चीज़ व हर इंसोan कें time व space में ठिकाना बत सकतें हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned prepositions — in, on, at, by, near — the tiny words that place things in time and space.",
+            "hi": "रवी कें prepositions समझ आयो — in, on, at, by, near — यो time व space में चीज़ें ठिकाने लगोतें हैं।"
+      },
+    "whyRule": {
+        "en": "Most English prepositions came from Latin and French after 1066. \"In\" is Old English. \"Within\" is a later stacking: \"in\" plus \"in\". The duplication is a fossil of the French-influenced period when words were doubled for emphasis.",
+        "hi": "अधिकांश अंग्रेज़ी preposition 1066 क बाल लैटिन व फ्रेंच सें आए। \"In\" पुराने अंग्रेज़ी का है। \"Within\" बाद में बना: \"in\" + \"in\"। यह डुप्लिकेशन फ्रेंच प्रभावित अवधि का जीवाश्म है, जब शब्दों को जोर देने के लिए दोहराया जाता था।"
+      },    "keywords": [
       "in",
       "on",
       "at",

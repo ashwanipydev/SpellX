@@ -8,7 +8,38 @@
     "titleHindi": "विस्मयादिबोधक शब्द",
     "level": 4,
     "levelLabel": "Level 4 — Important Grammar",
-    "keywords": [
+    "chapter": 4,
+    "chapterTitle": "The Word Toolkit",
+    "storyScene": [
+            {
+                  "en": "The client says, \"Your writing is good, but my writing is better.\"",
+                  "hi": "client बोलतें हैं: Your writing is good, but my writing is better."
+            },
+            {
+                  "en": "Ravi smiles and says, \"Your office is the biggest in the city.\"",
+                  "hi": "रवी मुस्कुरा के बोलतें हैं: Your office is the biggest in the city."
+            },
+            {
+                  "en": "Sam says, \"Good, better, best — these are comparisons. They show how one thing is more than another.\"",
+                  "hi": "सैम कहतें हैं: good, better, best — यो comparisons हैं। यो बतातें हैं कौन सा बड़ो होत हैं।"
+            },
+            {
+                  "en": "Ravi practices: \"This file is bigger. That report is the best.\"",
+                  "hi": "रवी practice करतें हैं: This file is bigger. That report is the best."
+            },
+            {
+                  "en": "Ravi can now compare any two things in English, without sounding like a robot.",
+                  "hi": "अब रवी English में किसी भी दो चीज़ें कें तुलना कर सकतें हैं, robot जैसो नहो।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned comparisons — comparative and superlative forms of adjectives.",
+            "hi": "रवी कें comparisons समझ आयो — adjective कें comparative व superlative forms।"
+      },
+    "whyRule": {
+        "en": "\"Good, better, best\" is a fossil of the Old English \"strong\" adjective class, like \"sing/sang/sung\". Most adjectives build their comparisons with -er and -est. The irregular ones (good/better/best, bad/worse/worst) are survivors of the older system.",
+        "hi": "\"Good, better, best\" पुराने अंग्रेज़ी \"strong\" adjective श्रेणी का जीवाश्म है, जैसे \"sing/sang/sung\"। अधिकांश adjective -er व -est से comparison बनाते हैं। अनियमित (good/better/best, bad/worse/worst) पुरानी प्रणाली के बचे हुए हैं।"
+      },    "keywords": [
       "Wow!",
       "Oh!",
       "Hurrah!"

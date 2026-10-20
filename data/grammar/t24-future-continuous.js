@@ -8,7 +8,38 @@
     "titleHindi": "भविष्य सतत काल",
     "level": 3,
     "levelLabel": "Level 3 — Tenses",
-    "keywords": [],
+    "chapter": 3,
+    "chapterTitle": "The Flow of Time",
+    "storyScene": [
+            {
+                  "en": "The client asks, \"Had you prepared the file before I called yesterday?\"",
+                  "hi": "client पूछतें हैं: Had you prepared the file before I called yesterday?"
+            },
+            {
+                  "en": "Ravi answers, \"Yes, I had prepared it before you called.\"",
+                  "hi": "रवी जवाब देतें हैं: Yes, I had prepared it before you called."
+            },
+            {
+                  "en": "Sam says, \"That is the past perfect — something done before another past action.\"",
+                  "hi": "सैम कहतें हैं: यह past perfect है — दूसरी past कृय सें पहिले हो चुकल कृय।"
+            },
+            {
+                  "en": "I had worked there before this office. She had read the report before the meeting.",
+                  "hi": "I had worked there before this office. She had read the report before the meeting."
+            },
+            {
+                  "en": "Ravi can now tell a story where one thing happened before another.",
+                  "hi": "अब रवी कहानी सुन सकतें हैं जहोए एक कृय दूसरी सें पहिले हुई।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned the past perfect — had + V3 for what happened before another past event.",
+            "hi": "रवी कें past perfect समझ आयो — had + V3, जो दूसरी past कृय सें पहिले हुई।"
+      },
+    "whyRule": {
+        "en": "\"Had + V3\" is the past of the present perfect. If \"have finished\" means finished and still relevant, then \"had finished\" means finished before another past moment. Old English used the same V3 fossil in a different tense frame — the logic is 1,000 years old.",
+        "hi": "\"Had + V3\" present perfect क past हें। \"Have finished\" \"पूरा भई व अभी भी मान्यो\" हें, तो \"had finished\" \"दुजे past समय सें पहिले पूरी भई\" हें। पुराने अंग्रेज़ी नो ओही V3 ज़ीवाश्म दुसरा tense frame म प्रयोग कइ — लॉजिक 1,000 साल पुरानो हें।"
+      },    "keywords": [],
     "summary": "Actions in progress at a future moment: I will be going.",
     "explanationHindi": "भविष्य सतत काल उन कामों के लिए आता है जो भविष्य में किसी ख़ास समय पर चल रहे होंगे। इसका ढाँचा है—कर्ता + will be + क्रिया का -ing रूप। इसमें will हर कर्ता के साथ वैसा ही रहता है और be कभी नहीं बदलता। अक्सर समय बताने वाले शब्द जैसे कल दस बजे के साथ इसका प्रयोग होता है।",
     "points": [

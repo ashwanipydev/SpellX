@@ -8,7 +8,38 @@
     "titleHindi": "सर्वनाम",
     "level": 1,
     "levelLabel": "Level 1 — Basic Grammar",
-    "keywords": [
+    "chapter": 1,
+    "chapterTitle": "The First Words",
+    "storyScene": [
+            {
+                  "en": "At lunch, Ravi says, \"I am very tired today.\"",
+                  "hi": "दोपहर के खाने में रवि कहते हैं: आज मैं बहुत थक गया हूँ।"
+            },
+            {
+                  "en": "Sam points out, \"You used I instead of repeating your name.\"",
+                  "hi": "सैम बताते हैं: तुमने अपना नाम दोबारा न बोल कर I बोला।"
+            },
+            {
+                  "en": "I, you, he, she, it, we, they — Sam says these are pronouns.",
+                  "hi": "I, you, he, she, it, we, they — सैम कहते हैं ये pronoun हैं।"
+            },
+            {
+                  "en": "Ravi practices: \"He is my boss. We work in Lucknow.\"",
+                  "hi": "रवि अभ्यास करते हैं: He is my boss. We work in Lucknow."
+            },
+            {
+                  "en": "Now his sentences stop repeating names again and again.",
+                  "hi": "अब रवि के वाक्य में-में नाम का दोहराव बंद हो गया।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned pronouns — I, you, he, she, we, they — that replace names in sentences.",
+            "hi": "रवि को pronoun समझ आया — ये नाम की जगह बैठते हैं।"
+      },
+    "whyRule": {
+        "en": "Latin grammar had three cases and several pronoun forms. English lost the cases, but the pronouns survived — which is why I and me both exist. Old English said ic (I) and me — the same split you use today.",
+        "hi": "लैटिन व्याकरण में तीन case व कई pronoun रूप हई। अंग्रजई नै case गायब कइ, लेकिन pronoun बच के रहई — इसलिये I व me दूनो मौजूद हवैं। पुराने अंग्रजई में ic (I) व me बोलई — जो आज भी आप बिनमाई में जैस हवैं।"
+      },    "keywords": [
       "I",
       "you",
       "he",

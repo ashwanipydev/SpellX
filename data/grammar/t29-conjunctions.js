@@ -8,7 +8,38 @@
     "titleHindi": "संयोजक",
     "level": 4,
     "levelLabel": "Level 4 — Important Grammar",
-    "keywords": [
+    "chapter": 4,
+    "chapterTitle": "The Word Toolkit",
+    "storyScene": [
+            {
+                  "en": "The client asks, \"Can you call me after the meeting?\"",
+                  "hi": "client पूछतें हैं: Can you call me after the meeting?"
+            },
+            {
+                  "en": "Ravi says, \"Yes, and I will send the file too.\"",
+                  "hi": "रवी कहतें हैं: Yes, and I will send the file too."
+            },
+            {
+                  "en": "Sam says, \"And, but, so, because — these are conjunctions. They join ideas.\"",
+                  "hi": "सैम कहतें हैं: and, but, so, because — यो conjunctions हैं। यो ideas जोड़तें हैं।"
+            },
+            {
+                  "en": "Ravi practices: \"I was tired, but I finished. She called because she was worried.\"",
+                  "hi": "रवी practice करतें हैं: I was tired, but I finished. She called because she was worried."
+            },
+            {
+                  "en": "Ravi s sentences now flow like a conversation, not like a list.",
+                  "hi": "अब रवी कें वाक्य बातचीत जैसो बहतें हैं, list जैसा नहो।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned conjunctions — and, but, so, because — that join two ideas into one smooth sentence.",
+            "hi": "रवी कें conjunctions समझ आयो — and, but, so, because — यो दो ideas कें एक smooth sentence में जोड़तें हैं।"
+      },
+    "whyRule": {
+        "en": "\"And\" is the oldest word in English — it was \"and\" in Old English too. \"But\" comes from \"ac\", a word that originally meant \"only\". Conjunctions are the least changed part of English because they are small, frequent, and hard to replace.",
+        "hi": "\"And\" अंग्रेज़ी का सबसे पुराना शब्द है — पुराने अंग्रेज़ी में भी यह \"and\" था। \"But\" \"ac\" से आया, जो मूल रूप से \"केवल\" का मतलब था। Conjunctions अंग्रेज़ी का सबसे कम बदला हिस्सा है क्योंकि ये छोटे, प्रचुर और बदलने में मुश्किल हैं।"
+      },    "keywords": [
       "and",
       "but",
       "because"

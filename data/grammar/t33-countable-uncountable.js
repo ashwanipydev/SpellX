@@ -8,7 +8,38 @@
     "titleHindi": "गणनीय और अगणनीय संज्ञा",
     "level": 4,
     "levelLabel": "Level 4 — Important Grammar",
-    "keywords": [],
+    "chapter": 4,
+    "chapterTitle": "The Word Toolkit",
+    "storyScene": [
+            {
+                  "en": "The client asks, \"How many files do you have?\"",
+                  "hi": "client पूछतें हैं: How many files do you have?"
+            },
+            {
+                  "en": "Ravi says, \"I have ten files, and a lot of papers.\"",
+                  "hi": "रवी जवाब देतें हैं: I have ten files, and a lot of papers."
+            },
+            {
+                  "en": "Sam says, \"Many is for things you can count. Much is for things you cannot.\"",
+                  "hi": "सैम कहतें हैं: many गिने जा सकल चीज़ेन कें हैं। much गिने जा न सकल चीज़ेन कें हैं।"
+            },
+            {
+                  "en": "Ravi practices: \"I have many clients. I have much work.\"",
+                  "hi": "रवी practice करतें हैं: I have many clients. I have much work."
+            },
+            {
+                  "en": "Now Ravi can count things and also talk about what cannot be counted.",
+                  "hi": "अब रवी गिने जा सकल चीज़ेन गिन सकतें हैं, व गिने जा न सकल चीज़ेन के बारे में बत सकतें हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned how much and how many — much for uncountable, many for countable things.",
+            "hi": "रवी कें how much व how many समझ आयो — much uncountable कें, many countable कें।"
+      },
+    "whyRule": {
+        "en": "English does not count like Hindi. Much and many both come from Old English: micel (much) and manig (many). The split between countable and uncountable is not a rule — it is a fossil of how Old English classified things.",
+        "hi": "अंग्रेज़ी हिंदी जैसी गिनी नहो। Much व many दूनो पुराने अंग्रेज़ी सें: micel (much) व manig (many)। गिनल जाल सकल व नहो जाल सकल क अंतर कौनो नियम नहो — यो पुराने अंग्रेज़ी चीजों क वर्गीकरण क ज़ीवित अस्थि हें।"
+      },    "keywords": [],
     "summary": "Nouns you can count, and nouns you cannot.",
     "explanationHindi": "जिन चीज़ों को हम गिन सकते हैं वे गणनीय संज्ञाएँ हैं, और उनके साथ a, an या बहुवचन का s आता है। जिन्हें गिना नहीं जा सकता—जैसे पानी, चीनी और आटा—उनके साथ a या an नहीं लगता और वे बहुवचन में नहीं बदलतीं। इनके लिए much, a little या some जैसे शब्द प्रयोग करते हैं।",
     "points": [

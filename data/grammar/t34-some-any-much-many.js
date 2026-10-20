@@ -8,7 +8,38 @@
     "titleHindi": "कुछ / कोई / बहुत / अनेक (some, any, much, many)",
     "level": 4,
     "levelLabel": "Level 4 — Important Grammar",
-    "keywords": [
+    "chapter": 4,
+    "chapterTitle": "The Word Toolkit",
+    "storyScene": [
+            {
+                  "en": "The client asks, \"Is there a chair in the meeting room?\"",
+                  "hi": "client पूछतें हैं: Is there a chair in the meeting room?"
+            },
+            {
+                  "en": "Ravi says, \"There is a chair, and there are two tables.\"",
+                  "hi": "रवी बोलतें हैं: There is a chair, and there are two tables."
+            },
+            {
+                  "en": "Sam says, \"There is for one. There are for many. It shows something exists.\"",
+                  "hi": "सैम कहतें हैं: one कें there is. many कें there are. यो बतातें हैं क्यो होत हैं।"
+            },
+            {
+                  "en": "Ravi practices: \"There is a lamp. There are three pens. There is water in the glass.\"",
+                  "hi": "रवी practice करतें हैं: There is a lamp. There are three pens. There is water in the glass."
+            },
+            {
+                  "en": "Now Ravi can point to anything and say it exists, with the right verb.",
+                  "hi": "अब रवी कौन भी चीज़ कें दिखोकर बत सकतें हैं क वह है, सही verb सें।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned there is / there are — how to say something exists.",
+            "hi": "रवी कें there is / there are समझ आयो — क्यो होत हैं, कैसो बतानो।"
+      },
+    "whyRule": {
+        "en": "There is comes from the Old English ther. It was a pointing word, like that. When English lost its verb-final word order, there is became the standard way to announce that something exists. There are is just the plural of the same fossil.",
+        "hi": "There is पुराने अंग्रेज़ी ther सें आयो। यो एक इशारा शबद थो, जैसो that। जब अंग्रेज़ी नो verb-final word order छोड़ी दतो, there is वस्तु क उपस्थिति बताने क मानक तरीका बन गयो। There are ओहो ज़ीवित अस्थि क बहुवचन हें।"
+      },    "keywords": [
       "some",
       "any",
       "much",

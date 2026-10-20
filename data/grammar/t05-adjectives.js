@@ -8,7 +8,38 @@
     "titleHindi": "विशेषण",
     "level": 1,
     "levelLabel": "Level 1 — Basic Grammar",
-    "keywords": [
+    "chapter": 1,
+    "chapterTitle": "The First Words",
+    "storyScene": [
+            {
+                  "en": "A new client from London arrives at the Lucknow office.",
+                  "hi": "लंदन से एक नया क्लाइंट लखनऊ कार्यालय आते हैं।"
+            },
+            {
+                  "en": "Ravi says, \"The client is very kind.\" Sam nods.",
+                  "hi": "रवि कहते हैं: क्लाइंट बहुत प्यारा है। सैम सिर हिलाते हैं।"
+            },
+            {
+                  "en": "\"Very kind\" — Sam says, \"that is an adjective — it paints the noun.\"",
+                  "hi": "\"very kind\" — सैम कहते हैं: यही adjective है — जो noun का चित्र बनाती है।"
+            },
+            {
+                  "en": "Ravi adds: \"a tall building, a bright lamp, a cold glass of water.\"",
+                  "hi": "रवि बोले: a tall building, a bright lamp, a cold glass of water."
+            },
+            {
+                  "en": "Ravi s English now has color, not just dry facts.",
+                  "hi": "अब रवि की अंग्रेजी में रंग भी लगा गया, सिर्फ सूखी बातें नहीं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned adjectives — words that describe nouns and add color to speech.",
+            "hi": "रवि को adjective समझ आया — ये noun की सुंदरता बढ़ाते हैं।"
+      },
+    "whyRule": {
+        "en": "The word adjective comes from Latin ad-jacere — to throw to, to attach to. Old English had its own descriptive words, but when French and Latin came after 1066, they brought a whole class of modifiers — and a new label for them.",
+        "hi": "Adjective शबद लैटिन ad-jacere सें आ गय — किसी चीज क साथ जोड़ना। पुराने अंग्रजई क अपने वरन करन वाला शबद हई, लेकिन 1066 क बाद फ्रेंच व लैटिन आई, ओ अपने पूरा श्रेणी क descriptors लिए क आए — व उनका नय नाम।"
+      },    "keywords": [
       "big",
       "small",
       "beautiful"

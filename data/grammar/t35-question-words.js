@@ -8,7 +8,38 @@
     "titleHindi": "प्रश्नवाचक शब्द",
     "level": 4,
     "levelLabel": "Level 4 — Important Grammar",
-    "keywords": [
+    "chapter": 4,
+    "chapterTitle": "The Word Toolkit",
+    "storyScene": [
+            {
+                  "en": "The client asks, \"How long has Ravi worked here?\"",
+                  "hi": "client पूछतें हैं: How long has Ravi worked here?"
+            },
+            {
+                  "en": "Ravi says, \"Ravi has worked here for six months.\"",
+                  "hi": "रवी जवाब देतें हैं: Ravi has worked here for six months."
+            },
+            {
+                  "en": "Sam says, \"That is the present perfect with for — it shows how long an action has been running.\"",
+                  "hi": "सैम कहतें हैं: यह present perfect for सें हैं — कितनो समय कें बततें हैं।"
+            },
+            {
+                  "en": "Ravi practices: \"I have worked here for a year. She has read the report for two hours.\"",
+                  "hi": "रवी practice करतें हैं: I have worked here for a year. She has read the report for two hours."
+            },
+            {
+                  "en": "Now Ravi can say how long anything has been happening.",
+                  "hi": "अब रवी बत सकतें हैं कौन सें कितनो लंबो समय सें चलतें हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned how long — present perfect with \"for\" to show how long an action has been running.",
+            "hi": "रवी कें how long समझ आयो — present perfect for सें कितनो लंबो समय कें बततें हैं।"
+      },
+    "whyRule": {
+        "en": "For is the oldest preposition in English — it was for in Old English too, meaning in front of, toward. Since came later from Latin sic (thus). The difference between for two hours and since 9 am is a 500-year-old split between duration and starting point.",
+        "hi": "For अंग्रेज़ी क सबसं पुरानो preposition हें — पुराने अंग्रेज़ी म भो यो for थो, अर्थ आगं, की ओर। Since बाल लैटिन sic (इस तरह) सें आयो। For two hours व since 9 am क अंतर 500 वर्ष पुरानो duration व starting point क अंतर हें।"
+      },    "keywords": [
       "who",
       "what",
       "where",

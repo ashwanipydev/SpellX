@@ -8,7 +8,38 @@
     "titleHindi": "कहानी सुनाना",
     "level": 5,
     "levelLabel": "Level 5 — Speaking & Writing",
-    "keywords": [],
+    "chapter": 5,
+    "chapterTitle": "Speak & Write Like a Pro",
+    "storyScene": [
+            {
+                  "en": "The client asks, \"When does the office open?\"",
+                  "hi": "client पूछतें हैं: When does the office open?"
+            },
+            {
+                  "en": "Ravi says, \"At 9 am. The client arrives at 10 am. The meeting starts at 11.\"",
+                  "hi": "रवī जवबाब दतें हैं: At 9 am. The client arrives at 10 am. The meeting starts at 11."
+            },
+            {
+                  "en": "Sam says, \"At for a point. On for a day. In for a month or year. These are time prepositions.\"",
+                  "hi": "सैम कहतें हैं: at for a point. on for a day. in for a month या year. यी time prepositions हैं।"
+            },
+            {
+                  "en": "Ravi practices: \"At 5 pm. On Monday. In June. In 2026.\"",
+                  "hi": "रवī practice करतें हैं: At 5 pm. On Monday. In June. In 2026."
+            },
+            {
+                  "en": "Now Ravi can place every event in time, with the right preposition.",
+                  "hi": "अब रवī हर event के time में right preposition से ठिकाने लगा सकतें हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned time prepositions — at, on, in — that place events in time.",
+            "hi": "रवī के time prepositions समझ आयो — at, on, in — यी events के time में ठिकाने लगोने।"
+      },
+    "whyRule": {
+        "en": "At, on, in — the time prepositions — are all Old English. At marks a point, on a surface or day, in a period. The split is 1,000 years old and has never been unified. English keeps all three because each one marks a different slice of time.",
+        "hi": "At, on, in — समय क prepositions — सब पुराने अंग्रेज़ी क हें। At बिन्दु, on सतह यो दिन, in अवधि दर्शावतें हें। यो अंतर 1,000 वर्ष पुरानो होय व कभी एकलोक ना होई। अंग्रेज़ी दूनो तिनो रखतें होय क्योंको प्रत्येक समय क अलग टुकड़ा दर्शावतें हें।"
+      },    "keywords": [],
     "summary": "Connecting events in order with time words.",
     "explanationHindi": "कहानी सुनाते समय घटनाओं को एक के बाद एक क्रम में रखना चाहिए। जो काम पूरा हो चुका है, उसके लिए भूतकाल की क्रिया का प्रयोग करें और क्रम स्पष्ट करने के लिए पहले, फिर, उसके बाद तथा अंत में जैसे शब्द जोड़ें। जहाँ दृश्य या माहौल बताना हो, वहाँ चल रही क्रिया वाला रूप रखें।",
     "points": [

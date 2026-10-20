@@ -8,7 +8,38 @@
     "titleHindi": "होना (am, is, are)",
     "level": 1,
     "levelLabel": "Level 1 — Basic Grammar",
-    "keywords": [
+    "chapter": 1,
+    "chapterTitle": "The First Words",
+    "storyScene": [
+            {
+                  "en": "Ravi introduces himself at the office party.",
+                  "hi": "office party में रवि अपना पुरत introduction देते हैं।"
+            },
+            {
+                  "en": "\"I am Ravi. I am from Lucknow.\" He is happy to use the right am.",
+                  "hi": "I am Ravi. I am from Lucknow. सही am बोल कर वह खुश हैं।"
+            },
+            {
+                  "en": "Sam says, \"For he, she, it — use is. For we, you, they — use are.\"",
+                  "hi": "सैम कहते हैं: he, she, it के लिए is — we, you, they के लिए are।"
+            },
+            {
+                  "en": "Ravi practices: \"She is happy. They are friends. It is raining outside.\"",
+                  "hi": "रवि practice करते हैं: She is happy. They are friends. It is raining outside."
+            },
+            {
+                  "en": "That night Ravi tells his family, \"We are proud of your work, Ravi.\"",
+                  "hi": "उस रात रवि को परिवार बोलते हैं: We are proud of your work, Ravi."
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned am, is and are — the three small forms of the verb to be.",
+            "hi": "रवि को am, is, are समझ आया — to be के तीन छोटे रूप।"
+      },
+    "whyRule": {
+        "en": "Am, is, are all come from the Old English verb beon (to be), which had six or more forms: eom, eart, is, ead, are, ead. English kept only three. The verb to be is the most irregular verb in the language because it is the oldest — it predates most of the grammar we use.",
+        "hi": "am, is, are सब पुराने अंग्रजई verb beon (होन) सें आ गय, जे का एक रूप हई: eom, eart, is, ead, are, ead। अंग्रजई नै सिर्फ तीन रखाई। To be भाषा में सबसे irregular verb हें क्योकि ओ सबसे पुराना हें — ओ उन व्याकरण से पहिले हइ जो हम अधिकांश प्रयोग करत हें।"
+      },    "keywords": [
       "am",
       "is",
       "are"

@@ -8,7 +8,38 @@
     "titleHindi": "प्रश्नवाचक वाक्य",
     "level": 2,
     "levelLabel": "Level 2 — Making Sentences",
-    "keywords": [],
+    "chapter": 2,
+    "chapterTitle": "Building Sentences",
+    "storyScene": [
+            {
+                  "en": "The client asks, \"The file is on your desk, no?\" Ravi must answer clearly.",
+                  "hi": "client पूछते हैं: The file is on your desk, no? रवि को साफ़ जवाब देना पड़ता है।"
+            },
+            {
+                  "en": "Ravi asks back, \"Do you need the file now?\" — that is a question.",
+                  "hi": "रवि पूछते हैं: Do you need the file now? — यही question है।"
+            },
+            {
+                  "en": "Sam says, \"Start with a question word — who, what, where — or flip with do/does.\"",
+                  "hi": "सैम कहते हैं: question word से शुरू करो — who, what, where — या do/does से flip करो।"
+            },
+            {
+                  "en": "Ravi practices: \"Where is the file? What time is the meeting? Who is the manager?\"",
+                  "hi": "रवि practice करते हैं: Where is the file? What time is the meeting? Who is the manager?"
+            },
+            {
+                  "en": "Now Ravi can ask questions with a straight face, not a nervous one.",
+                  "hi": "अब रवि सीधा मुँह से, घबराहट बिना, question पूछ सकते हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned question sentences — how to turn statements into questions with question words or do/does.",
+            "hi": "रवि को question sentence समझ आया — question words या do/does से statement को question कैसे बनाएँ।"
+      },
+    "whyRule": {
+        "en": "Old English questions were made by flipping the verb: Comest thu (Come you?). The do in Do you come appeared in the 1600s as a placeholder. Before that, English said Comest thou — which still survives in poetry and the Bible.",
+        "hi": "पुराने अंग्रजई में question verb क उलट कर बनाई: Comest thu (आवत हो?)। Do you come में do 1600 क दशक में placeholder क रूप में आ गय। पहिले अंग्रजई बोलई Comest thou — जो आज भी कवित्त व बाइबल में बचई हें।"
+      },    "keywords": [],
     "summary": "Sentences that ask something, and how their word order changes.",
     "explanationHindi": "प्रश्नवाचक वाक्य में हम कुछ पूछते हैं, इसलिए शब्दों का क्रम बदल जाता है। सहायक क्रिया कर्ता से पहले आती है, जैसे is, are, do या does। जब what, where या why जैसा प्रश्नवाचक शब्द हो तो वह सबसे पहले आता है। ऐसे वाक्य के अंत में प्रश्नवाचक चिह्न लगाया जाता है।",
     "points": [

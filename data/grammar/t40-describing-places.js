@@ -8,7 +8,38 @@
     "titleHindi": "स्थानों का वर्णन करना",
     "level": 5,
     "levelLabel": "Level 5 — Speaking & Writing",
-    "keywords": [],
+    "chapter": 5,
+    "chapterTitle": "Speak & Write Like a Pro",
+    "storyScene": [
+            {
+                  "en": "The client asks, \"Is the meeting room on the ground floor or the first floor?\"",
+                  "hi": "client पूछतें हैं: Is the meeting room on the ground floor or the first floor?"
+            },
+            {
+                  "en": "Ravi says, \"It is on the first floor.\"",
+                  "hi": "रवī जवबाब दतें हैं: It is on the first floor."
+            },
+            {
+                  "en": "Sam says, \"First, second, third — these are ordinal numbers. They show position, not count.\"",
+                  "hi": "सैम कहतें हैं: first, second, third — यी ordinal numbers हैं। यी position बतावतें हैं, count नहो।"
+            },
+            {
+                  "en": "Ravi practices: \"First floor. Second desk. Third client.\"",
+                  "hi": "रवī practice करतें हैं: First floor. Second desk. Third client."
+            },
+            {
+                  "en": "Now Ravi can say where things are in order, not just how many.",
+                  "hi": "अब रवī position order में बत सकतें हैं, sirf kitne नहो।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned ordinal numbers — first, second, third — that show position in a sequence.",
+            "hi": "रवī के ordinal numbers समझ आयो — first, second, third — यी order में position बतावतें हैं।"
+      },
+    "whyRule": {
+        "en": "First, second, third — the ordinal numbers — come from Latin primus, secundus, tertius. Old English had its own ordinals (first, second, thridde), but the Latin forms won in formal writing. The -th ending on fourth, fifth, etc. is the Old English suffix that survived.",
+        "hi": "First, second, third — ordinal numbers — लैटिन primus, secundus, tertius सें आये। पुराने अंग्रेज़ी क अपन ordinal (first, second, thridde) थो, लैकिन formal writing म Latin रूपोंं विजयी भये। Fourth, fifth आदि म -th ending पुराने अंग्रेज़ी suffix होय जेनो बच गयो।"
+      },    "keywords": [],
     "summary": "Talking about places, directions and surroundings.",
     "explanationHindi": "किसी जगह का वर्णन करते समय पहले बताइए कि वहाँ क्या-क्या मौजूद है और वह कैसी दिखती है। एक चीज़ के लिए एकवचन और अनेक चीज़ों के लिए बहुवचन वाला रूप प्रयोग करें, फिर स्थान बताने वाले शब्दों से यह भी स्पष्ट करें कि वस्तु कहाँ है। जगह की विशेषता बताने के लिए बड़ा, साफ़ या शांत जैसे विशेषण संज्ञा से पहले रखें।",
     "points": [

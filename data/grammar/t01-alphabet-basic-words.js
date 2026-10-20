@@ -8,7 +8,38 @@
     "titleHindi": "वर्णमाला और बुनियादी शब्द",
     "level": 1,
     "levelLabel": "Level 1 — Basic Grammar",
-    "keywords": [],
+    "chapter": 1,
+    "chapterTitle": "The First Words",
+    "storyScene": [
+            {
+                  "en": "Ravi opens the office notice board on his first morning.",
+                  "hi": "रविको पहिले दिन नोटिस बोर्ड खुलता है।"
+            },
+            {
+                  "en": "He sees a list of the twenty-six English letters, from A to Z.",
+                  "hi": "उसको A से Z तक के चबीस अक्षर दिखाई देते हैं।"
+            },
+            {
+                  "en": "His friend Sam says, \"First, you must know your letters.\"",
+                  "hi": "सैम कहते हैं: पहले अपने अक्षर जानो।"
+            },
+            {
+                  "en": "Ravi practices writing his name, R-A-V-I, with a capital R.",
+                  "hi": "रवि R-A-V-I, बड़े अक्षर R से, अपने नाम की अभ्यास करते हैं।"
+            },
+            {
+                  "en": "By evening, the alphabet feels like his old friends.",
+                  "hi": "शाम तक वर्णमाला रवि को पुराने मित्र जैसी लगती है।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Before any rule, Ravi met the twenty-six letters and learned that every sentence starts with a capital letter.",
+            "hi": "नियम से पहले रवि को चबीस अक्षर मिले, और हर वाक्य बड़े अक्षर से शुरू होता है।"
+      },
+    "whyRule": {
+        "en": "The letter names you hear come from the Latin alphabet that Rome copied from Greece. In the Middle Ages, printers fixed the spelling of words even as pronunciation drifted — that is why some letters look busy in a word. Capital letters began as a way for monks to mark the start of a line and a proper name.",
+        "hi": "अक़सर क नाम लैटिन वर्रमाला सें आ गय, जो रॉमन लै ग्रीक सें लिए हई। मध्ययुग म प्रिंटर्स नै अंकलिपि ठिक कर दइ, लेकिन बोलचाल बदलत रहई — इसलिये कुछ अक़सर शबद में व्यथित लगते हवैं। बड़ए अक़सर क शुरुआत हुई जब मुनखों नै पंकत क शुरुआत व नापत नामों क चिह्न बनाई।"
+      },    "keywords": [],
     "summary": "The 26 English letters and the first everyday words to read and say.",
     "explanationHindi": "अंग्रेज़ी में कुल छब्बीस अक्षर होते हैं, जो A से Z तक एक तय क्रम में चलते हैं। इन्हीं अक्षरों से मिलकर शब्द बनते हैं और शब्दों से वाक्य बनते हैं। हर वाक्य का पहला अक्षर हमेशा बड़ा लिखा जाता है, और लोगों तथा भाषाओं के नाम भी बड़े अक्षर से शुरू होते हैं।",
     "points": [

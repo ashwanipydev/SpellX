@@ -8,7 +8,38 @@
     "titleHindi": "पूर्ण भूतकाल",
     "level": 3,
     "levelLabel": "Level 3 — Tenses",
-    "keywords": [],
+    "chapter": 3,
+    "chapterTitle": "The Flow of Time",
+    "storyScene": [
+            {
+                  "en": "The client asks, \"What were you doing at 4 pm yesterday?\"",
+                  "hi": "client पूछतें हैं: What were you doing at 4 pm yesterday?"
+            },
+            {
+                  "en": "Ravi answers, \"I was writing the report then.\"",
+                  "hi": "रवी जवाब देतें हैं: I was writing the report then."
+            },
+            {
+                  "en": "Sam says, \"You are mixing past continuous and past perfect. Both are for the past, but different moments.\"",
+                  "hi": "सैम कहतें हैं: तुम past continuous व past perfect मेल कर रहे हो। दोनों past कें हैं, लकिन अलग moment कें।"
+            },
+            {
+                  "en": "Ravi practices: \"I was reading when she called. I had read before she called.\"",
+                  "hi": "रवी practice करतें हैं: I was reading when she called. I had read before she called."
+            },
+            {
+                  "en": "Now Ravi can place any past action at the exact moment it belonged to.",
+                  "hi": "अब रवी past की किसी भी कृय कें exact moment तें बत सकतें हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned how past tenses fit together — continuous, perfect, and simple, each for a different moment.",
+            "hi": "रवी कें समझ आयो past tense कैंसो साथ मिलतें हैं — हर एक कें अपनो moment हैं।"
+      },
+    "whyRule": {
+        "en": "The difference between \"I was reading\" and \"I had read\" is a 1,000-year-old one. Old English had both the -ing form and the V3 form, each with its own tense. Modern English keeps both because each one marks a different moment in time.",
+        "hi": "\"I was reading\" व \"I had read\" क अंतर 1,000 साल पुरानो हें। पुराने अंग्रेज़ी म -ing रूप व V3 रूप दुनो हई, प्रत्येक क अपनो tense। आधुनिक अंग्रेज़ी दुनो रखई क्योंकि प्रत्येक समय म अलग-अलग क्षण चिह्नित करत हें।"
+      },    "keywords": [],
     "summary": "An action finished before another past action: I had gone.",
     "explanationHindi": "पूर्ण भूतकाल का प्रयोग तब होता है जब भूतकाल में दो काम हुए हों और यह बताना हो कि उनमें से कौन-सा काम पहले पूरा हुआ। इसका ढाँचा है—कर्ता + had + क्रिया का तीसरा रूप, और had हर कर्ता के साथ एक जैसा रहता है। before, after, already और by the time जैसे शब्दों के साथ यह काल अर्थ को बिलकुल साफ़ कर देता है।",
     "points": [

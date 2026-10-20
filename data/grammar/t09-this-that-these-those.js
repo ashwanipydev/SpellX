@@ -8,7 +8,38 @@
     "titleHindi": "यह / वह / ये / वे",
     "level": 1,
     "levelLabel": "Level 1 — Basic Grammar",
-    "keywords": [
+    "chapter": 1,
+    "chapterTitle": "The First Words",
+    "storyScene": [
+            {
+                  "en": "A client sits close to Ravi and asks for the chair.",
+                  "hi": "एक client रवि के पास आकर बैठते हैं और kursi माँगते हैं।"
+            },
+            {
+                  "en": "Ravi points at it: \"That is your chair.\" The client is far away, so that, not this.",
+                  "hi": "रवि उँगली दिखाते हैं: That is your chair. दूर है, इसलिए that, this नहीं।"
+            },
+            {
+                  "en": "And when it is close to you — \"this is my pen\" — these and those are for many.",
+                  "hi": "और जब पास हो — this is my pen — कई चीज़ों के लिए these और those।"
+            },
+            {
+                  "en": "Ravi practices with Sam all afternoon, passing pens and papers back and forth.",
+                  "hi": "पूरा दोपहर रवि सैम से के pens और papers पास के practice करते हैं।"
+            },
+            {
+                  "en": "The client says, \"You speak very clearly!\" Ravi feels the word this and that finally click.",
+                  "hi": "client कहते हैं: You speak very clearly! अब रवि को this व that ठीक से समझ आया।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned this, that, these and those — words that show distance, near or far.",
+            "hi": "रवि को this, that, these, those समझ आया — ये distance बताते हैं।"
+      },
+    "whyRule": {
+        "en": "This, that, these, those descend from the Old English demonstratives this, that, these, those. The system was simpler: two distances (near, far) times two numbers (one, many). Nothing has changed — only the sounds did.",
+        "hi": "this, that, these, those पुराने अंग्रजई demonstrative this, that, these, those सें आ गय। प्रणाली सरलई: दो दूरी (पास, दूर) दो संख्या (एक, कई)। कुछ बदल नई — सिर्फ आवजा बदली।"
+      },    "keywords": [
       "this",
       "that",
       "these",

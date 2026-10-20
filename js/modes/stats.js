@@ -8,16 +8,16 @@ topics.forEach(function(t){var r=g[t.id];if(r){r.done&&(done+=1);ok+=r.correct||
 var acc=tried?Math.round(ok/tried*100):0,
 card=U.h("div",{class:"card"}),
 weak=null;
-[1,2,3,4,5].forEach(function(n){
-var items=topics.filter(function(t){return t.level===n;});
+[0,1,2,3,4,5].forEach(function(n){
+var items=topics.filter(function(t){return t.chapter===n;});
 if(!items.length){return;}
 var d=0,c=0,a=0;
 items.forEach(function(t){var r=g[t.id];if(r){r.done&&(d+=1);c+=r.correct||0;a+=(r.correct||0)+(r.wrong||0);}});
 var pct=a?Math.round(c/a*100):0;
-a&&(weak===null||pct<weak.pct)&&(weak={label:items[0].levelLabel,pct:pct});
+a&&(weak===null||pct<weak.pct)&&(weak={label:"Ch "+n+" — "+(items[0].chapterTitle||""),pct:pct});
 card.appendChild(U.h("div",{class:"cat-row"},[
 U.h("div",{},[
-U.h("div",{class:"cat-name",text:items[0].levelLabel}),
+U.h("div",{class:"cat-name",text:"Ch "+n+" — "+(items[0].chapterTitle||items[0].levelLabel)}),
 U.h("div",{class:"cat-count",text:d+"/"+items.length+" done"+(a?" - "+c+"/"+a+" correct":"")})
 ]),
 U.h("div",{class:"row",style:"align-items:center;gap:8px"},[

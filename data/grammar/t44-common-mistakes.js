@@ -8,7 +8,38 @@
     "titleHindi": "आम गलतियाँ",
     "level": 5,
     "levelLabel": "Level 5 — Speaking & Writing",
-    "keywords": [],
+    "chapter": 5,
+    "chapterTitle": "Speak & Write Like a Pro",
+    "storyScene": [
+            {
+                  "en": "The client says, \"I do not want tea, I do not want coffee, and I do not want water.\"",
+                  "hi": "client बोलतें हैं: I do not want tea, I do not want coffee, and I do not want water."
+            },
+            {
+                  "en": "Sam says, \"That is a heavy no. In English we use neither or nor to make it light.\"",
+                  "hi": "सैम कहतें हैं: यह भारी \"no\" है। English में हम \"neither\" या \"nor\" से हल्का बनाते हैं।"
+            },
+            {
+                  "en": "I like neither tea nor coffee. Neither Ravi nor Sam is coming.",
+                  "hi": "I like neither tea nor coffee. Neither Ravi nor Sam is coming."
+            },
+            {
+                  "en": "Ravi practices: \"I do not like rain nor wind. Neither my desk nor my chair is big.\"",
+                  "hi": "रवī practice करतें हैं: I do not like rain nor wind. Neither my desk nor my chair is big."
+            },
+            {
+                  "en": "Now Ravi can say neither...nor and sound like a pro.",
+                  "hi": "अब रवī \"neither...nor\" बोलके pro जैसे लगतें हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned neither...nor — how to say \"not this and not that\" in one clean sentence.",
+            "hi": "रवī के neither...nor समझ आयो — \"neither...nor\" के clean sentence में कैसे बोलें।"
+      },
+    "whyRule": {
+        "en": "Neither... nor is a double negative that survived from Old English. Neither was naether (not one), nor was naec (not any). Modern logic says double negatives cancel, but English kept the pair because the two words reinforce each other. It is a 1,000-year-old idiom.",
+        "hi": "Neither... nor दूनो नकारात्मक होय जे पुराने अंग्रेज़ी सें बच गयो। Neither naether (न एकको), nor naec (न कोइ) थो। आधुनिक logic कहतें होय दूनो नकारात्मक रद्द होतें होय, लैकिन अंग्रेज़ी जोड़ी रखई क्योंको दूनो शब्द एकदुसरो क सुदृढ करतें होय। यो 1,000 वर्ष पुरानो idiom होय।"
+      },    "keywords": [],
     "summary": "The errors Hindi speakers make most, and how to fix them.",
     "explanationHindi": "हिंदी बोलने वाले अक्सर वर्तमान काल की क्रिया में s जोड़ना भूल जाते हैं। जब कर्ता वह, यह या कोई एक व्यक्ति हो, तो क्रिया के अंत में s लगाएँ। किसी चीज़ के अपने पास होने को बताने के लिए सहायक क्रिया जोड़कर गलती न करें। समय के लिए शुरुआत और अवधि बताने वाले अलग शब्द याद रखें।",
     "points": [

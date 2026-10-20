@@ -114,7 +114,10 @@
     });
   }
 
-  /* ---------------- levels ---------------- */
+  /* ---------------- book (chapters) ---------------- */
+  function chapters() {
+    return (typeof GRAMMAR_CHAPTERS !== "undefined" && Array.isArray(GRAMMAR_CHAPTERS)) ? GRAMMAR_CHAPTERS : [];
+  }
   function levelsView() {
     U.clearKey();
     var list = topics();
@@ -122,34 +125,40 @@
     root.appendChild(head("Grammar", doneCount() + "/" + list.length, function () { U.back(); }));
     root.appendChild(U.h("p", {
       "class": "screen-sub",
-      text: "47 topics in 5 levels. Open a topic to learn it, then practise it."
+      text: "47 topics in 6 chapters. A story of Ravi, a young office worker in Lucknow learning English."
     }));
 
     if (!list.length) {
       root.appendChild(U.h("div", { "class": "card" }, [
         U.h("b", { text: "Grammar data not found." }),
-        U.h("p", { "class": "screen-sub", text: "data/grammar.js must sit next to index.html." })
+        U.h("p", { "class": "screen-sub", text: "data/grammar/ must sit next to index.html." })
       ]));
       U.render(root);
       return;
     }
 
-    LEVELS.forEach(function (n) {
-      var items = list.filter(function (t) { return t && t.level === n; });
+    var chs = chapters();
+    chs.forEach(function (ch) {
+      var items = list.filter(function (t) { return t && t.chapter === ch.chapter; });
       if (!items.length) { return; }
       var done = items.filter(function (t) { return rec(t.id).done; }).length;
-      var box = U.h("div", { "class": "card" });
+      var box = U.h("div", { "class": "card book-chapter" });
       box.appendChild(U.h("div", { "class": "level-head" }, [
-        U.h("b", { text: items[0].levelLabel }),
+        U.h("b", { text: "Chapter " + ch.chapter + " — " + ch.title }),
         U.h("span", { "class": "pill", text: done + "/" + items.length })
       ]));
-      items.forEach(function (t) {
+      box.appendChild(U.h("div", { "class": "book-ch-hi", text: ch.titleHindi }));
+      box.appendChild(U.h("p", { "class": "book-ch-intro", text: ch.intro }));
+      box.appendChild(U.h("p", { "class": "book-ch-intro-hi", text: ch.introHindi }));
+      items.forEach(function (t, idx) {
         var r = rec(t.id), pct = Math.round(mastery(t.id) * 100);
         var label = r.done ? "done" : (r.seen ? pct + "%" : "new");
+        var num = (ch.chapter + 1) + "." + (idx + 1);
         var row = U.h("button", {
           "class": "topic-row", type: "button",
-          "aria-label": t.title + ", " + t.titleHindi + ". " + label
+          "aria-label": num + " " + t.title + ", " + t.titleHindi + ". " + label
         }, [
+          U.h("span", { "class": "topic-num", text: num }),
           U.h("span", { "class": "topic-main" }, [
             U.h("span", { "class": "topic-title", text: t.title }),
             U.h("span", { "class": "topic-hi", text: t.titleHindi })
@@ -178,7 +187,28 @@
       U.render(root);
       return;
     }
-    root.appendChild(head(t.title, t.titleHindi));
+    var chNum = typeof t.chapter === "number" ? "Ch " + t.chapter : "";
+    root.appendChild(head(t.title, t.titleHindi + (chNum ? " · " + chNum : "")));
+
+    /* story card — Ravi's scene for this topic */
+    if (t.storyScene && t.storyScene.length) {
+      var story = U.h("div", { "class": "card gr-story" });
+      story.appendChild(U.h("div", { "class": "prompt-sub", text: "Ravi's story" }));
+      t.storyScene.forEach(function (line) {
+        story.appendChild(U.h("div", { "class": "gr-story-line" }, [
+          U.h("div", { "class": "gr-story-en", text: line.en }),
+          line.hi ? U.h("div", { "class": "gr-story-hi", text: line.hi }) : null
+        ]));
+      });
+      if (t.storyRecap) {
+        story.appendChild(U.h("div", { "class": "gr-story-recap" }, [
+          U.h("div", { "class": "prompt-sub", text: "What Ravi learned" }),
+          U.h("div", { "class": "gr-story-en", text: t.storyRecap.en }),
+          t.storyRecap.hi ? U.h("div", { "class": "gr-story-hi", text: t.storyRecap.hi }) : null
+        ]));
+      }
+      root.appendChild(story);
+    }
 
     if (t.rules && t.rules.pattern) {
       var ruleCard = U.h("div", { "class": "card gr-rule" });
@@ -200,6 +230,17 @@
         ruleCard.appendChild(U.h("p", { "class": "gr-help-hi", text: t.rules.hindiTip }));
       }
       root.appendChild(ruleCard);
+    }
+
+    /* why this rule — the history behind the rule */
+    if (t.whyRule) {
+      var why = U.h("div", { "class": "card gr-why" });
+      why.appendChild(U.h("div", { "class": "prompt-sub", text: "Why this rule?" }));
+      why.appendChild(U.h("p", { "class": "gr-why-en", text: t.whyRule.en }));
+      if (t.whyRule.hi) {
+        why.appendChild(U.h("p", { "class": "gr-why-hi", text: t.whyRule.hi }));
+      }
+      root.appendChild(why);
     }
 
     var card = U.h("div", { "class": "card" }, [

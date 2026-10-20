@@ -14,6 +14,9 @@ const grammarTopics = GRAMMAR_REGISTRY
       points: t.points || [], rules: t.rules || null,
       modalGuide: t.modalGuide || null, verbFormGroups: t.verbFormGroups || [],
       studyGuide: t.studyGuide || null, pronunciationGuide: t.pronunciationGuide || null,
+      chapter: t.chapter, chapterTitle: t.chapterTitle,
+      storyScene: t.storyScene || [], storyRecap: t.storyRecap || null,
+      whyRule: t.whyRule || null,
       sourceOrder: t.sourceOrder, source: t.source
     };
   });

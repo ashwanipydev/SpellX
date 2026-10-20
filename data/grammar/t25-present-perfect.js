@@ -8,7 +8,38 @@
     "titleHindi": "पूर्ण वर्तमान काल",
     "level": 3,
     "levelLabel": "Level 3 — Tenses",
-    "keywords": [],
+    "chapter": 3,
+    "chapterTitle": "The Flow of Time",
+    "storyScene": [
+            {
+                  "en": "At the office party, Ravi says, \"I have been working here for six months.\"",
+                  "hi": "Office party में रवी बोलतें हैं: I have been working here for six months."
+            },
+            {
+                  "en": "Sam says, \"That is the present perfect continuous — action started in the past and still going.\"",
+                  "hi": "सैम कहतें हैं: यह present perfect continuous है — past सें चल अब तक चल रही कृय।"
+            },
+            {
+                  "en": "I have been reading since morning. She has been waiting for two hours.",
+                  "hi": "I have been reading since morning. She has been waiting for two hours."
+            },
+            {
+                  "en": "Ravi tells the client, \"I have been studying English every day for a year.\"",
+                  "hi": "रवी client कें बोलतें हैं: I have been studying English every day for a year."
+            },
+            {
+                  "en": "Now Ravi can show how long an action has been running.",
+                  "hi": "अब रवी बत सकतें हैं कौन से कृय कितने लंबो समय सें चल रही रहीं हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned the present perfect continuous — have been + verb-ing for actions still running.",
+            "hi": "रवी कें present perfect continuous समझ आयो — have been + verb-ing, जो अभी भी चल रही हैं।"
+      },
+    "whyRule": {
+        "en": "Have been plus -ing shows an action that started in the past and is still running. \"Been\" is the V2 of \"be\". This tense was not needed as a fixed form in Old English — it grew when English lost its case system and needed more ways to mark time.",
+        "hi": "Have been + -ing वो क्रिया दर्शावत हें जो past सें शुरू भई व अभी चलि रहई। \"Been\" \"be\" क V2 हें। पुराने अंग्रेज़ी म ओह tense क fixed रूप क ज़रूरत नईई — जब अंग्रेज़ी नो case प्रणाली गायब भई, उनो क ज़ायदा तरीके पड़े time चिह्न करन क"
+      },    "keywords": [],
     "summary": "Past actions with a link to now: I have gone.",
     "explanationHindi": "पूर्ण वर्तमान काल उस काम के लिए आता है जो भूतकाल में हो चुका है, पर उसका असर या नतीजा अभी भी मौजूद है। इसका ढाँचा है—कर्ता + have या has + क्रिया का तीसरा रूप (जैसे खाया, गया, लिखा)। He, she और it के साथ has लगता है, बाकी सब के साथ have। just, already, yet, ever, never, since और for जैसे शब्द इसी काल के साथ आते हैं।",
     "points": [

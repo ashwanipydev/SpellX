@@ -8,7 +8,38 @@
     "titleHindi": "नकारात्मक वाक्य",
     "level": 2,
     "levelLabel": "Level 2 — Making Sentences",
-    "keywords": [],
+    "chapter": 2,
+    "chapterTitle": "Building Sentences",
+    "storyScene": [
+            {
+                  "en": "The client wants a different report format. Ravi must say he cannot do the old way.",
+                  "hi": "client नया report format माँगते हैं। रवि को बताना पड़ता है कि वह पुराने तरीके से नहीं कर सकते।"
+            },
+            {
+                  "en": "Ravi writes, \"I do not like the old format, sir.\" Sam says, \"Good — that is a negative.\"",
+                  "hi": "रवि लिखते हैं: I do not like the old format, sir. सैम कहते हैं: अच्छा — यही negative है।"
+            },
+            {
+                  "en": "To make a verb negative, we add \"do not\" or \"does not\" before it.",
+                  "hi": "verb को negative बाने के लिए हम उसके आगे do not या does not जोड़ते हैं।"
+            },
+            {
+                  "en": "Ravi practices: \"I do not forget. She does not agree. We do not delay.\"",
+                  "hi": "रवि practice करते हैं: I do not forget. She does not agree. We do not delay."
+            },
+            {
+                  "en": "The client is happy with the new report. Ravi s no is now polite and clear.",
+                  "hi": "नया report से client खुश हैं। रवि का no अब polite व साफ़ लगता है।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned negative sentences — do not / does not flip the meaning of a verb.",
+            "hi": "रवि को negative sentence समझ आया — do not / does not verb का meaning बदल देते हैं।"
+      },
+    "whyRule": {
+        "en": "Negation in Old English was a single word: ne. I ne go — no do needed. When ne weakened, English borrowed not from French and needed do to hold the sentence together. I do not go is a 400-year-old patch.",
+        "hi": "पुराने अंग्रजई में negation एक एक शबदई: ne। I ne go — do क जरूरत नई। जब ne कमजोर भई, अंग्रजई ने फ्रेंच से not उधार लई व do क जरूरत पड़ी वाक्य क सज्झ के रखन क। I do not go 400 साल पुराना पट्टी हें।"
+      },    "keywords": [],
     "summary": "Sentences that say something is not true, using not.",
     "explanationHindi": "नकारात्मक वाक्य में हम बताते हैं कि कोई बात सच नहीं है और इसके लिए not का प्रयोग करते हैं। am, is, are या was के बाद सीधे not आता है। पर सामान्य क्रिया के साथ पहले do not या does not लगाते हैं और क्रिया अपने मूल रूप में रहती है। बोलचाल में don't, doesn't और isn't जैसे छोटे रूप बहुत आम हैं।",
     "points": [

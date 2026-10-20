@@ -8,7 +8,38 @@
     "titleHindi": "भूत सतत काल",
     "level": 3,
     "levelLabel": "Level 3 — Tenses",
-    "keywords": [],
+    "chapter": 3,
+    "chapterTitle": "The Flow of Time",
+    "storyScene": [
+            {
+                  "en": "The manager asks, \"What will you be doing at 3 pm tomorrow?\"",
+                  "hi": "manager पूछतें हैं: What will you be doing at 3 pm tomorrow?"
+            },
+            {
+                  "en": "Ravi answers, \"I will be meeting the client then.\"",
+                  "hi": "रवी जवाब देतें हैं: I will be meeting the client then."
+            },
+            {
+                  "en": "Sam says, \"That is the future continuous — an action that will be in progress at a future time.\"",
+                  "hi": "सैम कहतें हैं: यह future continuous है — future में किसी समय चल रही कृय।"
+            },
+            {
+                  "en": "I will be working tomorrow. She will be waiting. We will be travelling at that time.",
+                  "hi": "I will be working tomorrow. She will be waiting. We will be travelling at that time."
+            },
+            {
+                  "en": "Ravi can now schedule his whole week and explain what he will be doing at any hour.",
+                  "hi": "अब रवी पूरा हफ़्तो plan करकें बत सकतें हैं कौन से समय क्यो करतें रहेंगे।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned the future continuous — will be + verb-ing for what will be in progress.",
+            "hi": "रवी कें future continuous समझ आयो — will be + verb-ing, जो future में चल रही रहेंगे।"
+      },
+    "whyRule": {
+        "en": "Will be plus -ing is a double marker: \"will\" says future, \"-ing\" says in progress. Neither piece is new — \"will\" is a 600-year-old modal, \"-ing\" is the oldest verb form in English. Stacking them is what English does when it needs precision.",
+        "hi": "Will be + -ing दुनो marker हें: \"will\" future बोलत हें, \"-ing\" चलत-चलत बोलत हें। कौन हिस्सा नया नई — \"will\" 600 साल पुराना modal हें, \"-ing\" अंग्रेज़ी म सबसं पुराना verb रूप हें। ज़रूरत म उनो सँज करन — यो ही अंग्रेज़ी क काम हें।"
+      },    "keywords": [],
     "summary": "Actions in progress at a past moment: I was going.",
     "explanationHindi": "भूत सतत काल उन कामों के लिए आता है जो बीते समय में किसी क्षण पर चल रहे थे। इसका ढाँचा है—कर्ता + was/were + क्रिया का -ing रूप। एकवचन कर्ता के साथ was और बहुवचन कर्ता के साथ were लगता है। यह काल अक्सर किसी दूसरी घटना के साथ जोड़कर बताया जाता है।",
     "points": [

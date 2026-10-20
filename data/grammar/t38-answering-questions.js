@@ -8,7 +8,38 @@
     "titleHindi": "प्रश्नों के उत्तर देना",
     "level": 5,
     "levelLabel": "Level 5 — Speaking & Writing",
-    "keywords": [],
+    "chapter": 5,
+    "chapterTitle": "Speak & Write Like a Pro",
+    "storyScene": [
+            {
+                  "en": "The client asks, \"Tell me about your first day at this office.\"",
+                  "hi": "client पूछतें हैं: Tell me about your first day at this office."
+            },
+            {
+                  "en": "Ravi says, \"I walked in. The room was bright. A man smiled at me.\"",
+                  "hi": "रवी बोलतें हैं: I walked in. The room was bright. A man smiled at me."
+            },
+            {
+                  "en": "Sam says, \"That is telling a story — you put events in order, one after another.\"",
+                  "hi": "सैम कहतें हैं: यह कहानी सुनानो हें — events एक दूसरे के बाद, order में।"
+            },
+            {
+                  "en": "Ravi practices: \"First I arrived. Then I sat down. After that, the meeting began.\"",
+                  "hi": "रवी practice करतें हैं: First I arrived. Then I sat down. After that, the meeting began."
+            },
+            {
+                  "en": "Now Ravi can tell any story in English, with the right order.",
+                  "hi": "अब रवी English में कौन भो कहानी सुन सकतें हैं, सही order में।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned to tell a story — putting events in order, one after another.",
+            "hi": "रवी कें कहानी सुनानो समझ आयो — events order में, एक के बाद एक।"
+      },
+    "whyRule": {
+        "en": "Telling a story in order (first, then, after that) mirrors how Old English marked time — with adverbs, not verb forms. The sequence words are the skeleton of English narrative. First is from forst, then is from tha — both 1,000 years old.",
+        "hi": "कहानी क्रम म कहन (पहिलें, फिर, उनको बाद) पुराने अंग्रेज़ी क समय चिह्नित करन क प्रतिबिंब होय — adverbs सें, verb form नहिं। क्रम शब्द अंग्रेज़ी कहानी क ढांचा हें। First forst सें, then tha सें — दूनो 1,000 वर्ष पुराने हें।"
+      },    "keywords": [],
     "summary": "Answering short and long, politely and clearly.",
     "explanationHindi": "प्रश्न का उत्तर छोटा या पूरा, दोनों तरह से दिया जा सकता है। हाँ या नहीं में उत्तर वाले प्रश्न के छोटे उत्तर में Yes या No के बाद वही सहायक क्रिया दोहराइए जो प्रश्न में थी, जैसे I do या she is। wh-प्रश्न का उत्तर हमेशा पूरे वाक्य में दीजिए। यदि उत्तर नहीं आता तो विनम्रता से क्षमा माँगिए और साफ़ कहिए कि आप नहीं जानते।",
     "points": [

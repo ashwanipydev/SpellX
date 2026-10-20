@@ -8,7 +8,38 @@
     "titleHindi": "कर्ता और विधेय",
     "level": 2,
     "levelLabel": "Level 2 — Making Sentences",
-    "keywords": [],
+    "chapter": 2,
+    "chapterTitle": "Building Sentences",
+    "storyScene": [
+            {
+                  "en": "The boss asks Ravi to write a one-line sentence in the daily report.",
+                  "hi": "बॉस रवि को daily report में एक line का वाक्य लिखने को कहते हैं।"
+            },
+            {
+                  "en": "Ravi writes, \"The coffee machine.\" The boss says, \"That is not a sentence yet.\"",
+                  "hi": "रवि लिखते हैं: The coffee machine. बॉस कहते हैं: यह अभी वाक्य नहीं।"
+            },
+            {
+                  "en": "A sentence needs a subject — who does — and a predicate — what happens.",
+                  "hi": "वाक्य के लिए subject चाहिए — जो करता है — और predicate — क्या होता है।"
+            },
+            {
+                  "en": "Ravi fixes it: \"The coffee machine makes hot coffee.\" Now it is a sentence.",
+                  "hi": "रवि ठीक करते हैं: The coffee machine makes hot coffee. अब यह वाक्य हो गया।"
+            },
+            {
+                  "en": "Ravi writes ten such lines before leaving the office.",
+                  "hi": "कार्यालय चलने से पहले रवि को दस ऐसे वाक्य लिख लेते हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned that every sentence has two parts — subject and predicate.",
+            "hi": "रवि को समझ आया हर वाक्य के दो भाग हैं — subject और predicate।"
+      },
+    "whyRule": {
+        "en": "The subject-predicate split comes from Aristotle, who defined a sentence as a noun plus a verb. English followed Latin, which followed Greek. The pattern is so old that children learn it before they learn any rule.",
+        "hi": "Subject-predicate विभाजन अरस्तू से आ गय, जे नै वाक्य क एक noun + verb क परिभाषा दई। अंग्रजई नै लैटिन क पालन कइ, जो नै ग्रीक क पालन कइ। प्रणाली इतना पुराना हें कि बच्चे कोई नियम सीखने से पहिले ओ सीख लत हें।"
+      },    "keywords": [],
     "summary": "The two parts of every sentence: who does it, and what is said about them.",
     "explanationHindi": "हर अंग्रेज़ी वाक्य दो भागों में बँटा होता है — कर्ता (subject) और विधेय (predicate)। कर्ता बताता है कि वाक्य किसके बारे में है, और विधेय बताता है कि उस कर्ता के बारे में क्या कहा जा रहा है। कर्ता सामान्यतः वाक्य के शुरू में आता है और उसके बाद क्रिया वाला विधेय आता है, जैसे 'The cat sleeps' में 'The cat' कर्ता है और 'sleeps' विधेय।",
     "points": [

@@ -8,7 +8,38 @@
     "titleHindi": "रखना (have, has, had)",
     "level": 2,
     "levelLabel": "Level 2 — Making Sentences",
-    "keywords": [
+    "chapter": 2,
+    "chapterTitle": "Building Sentences",
+    "storyScene": [
+            {
+                  "en": "Ravi is at the office when the boss asks, \"What are you doing?\"",
+                  "hi": "बॉस रवि कें पूछतें हैं: What are you doing?"
+            },
+            {
+                  "en": "Ravi answers, \"I am making the file for the client.\"",
+                  "hi": "रवी जवाब देतें हैं: I am making the file for the client."
+            },
+            {
+                  "en": "Sam says, \"That is the present continuous — action happening right now.\"",
+                  "hi": "सैम कहतें हैं: यह present continuous है — अभी चल रहीं कृय।"
+            },
+            {
+                  "en": "I am reading. She is writing. They are talking. — Ravi practices all morning.",
+                  "hi": "I am reading. She is writing. They are talking. — रवी पूरा सुभा practice करतें हैं।"
+            },
+            {
+                  "en": "Now when the client asks what is happening, Ravi can answer in real time.",
+                  "hi": "अब जब client पूछतें हैं क्यो होत हैं, रवी real time में जवाब दे सकतें हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned the present continuous — am/is/are + verb-ing for what is happening now.",
+            "hi": "रवी कें present continuous समझ आयो — am/is/are + verb-ing, जो अभी होत हैं।"
+      },
+    "whyRule": {
+        "en": "The -ing form is the oldest part of English verbs. Old English used \"ic eom reading\" — the same shape as today. The verb \"read\" and the sound \"reading\" are cousins. When the rest of the verb system collapsed, -ing stayed.",
+        "hi": "-ing रूप अंग्रेज़ी verb क सबसे पुराना हिस्सा हें। पुराने अंग्रेज़ी म \"ic eom reading\" बोलई — आज जैस रूप। Verb \"read\" व आवाज़ \"reading\" बहन-भतीज हें। जब verb प्रणाली क बारीक हिस्सा गिरई, -ing बचई।"
+      },    "keywords": [
       "have",
       "has",
       "had"

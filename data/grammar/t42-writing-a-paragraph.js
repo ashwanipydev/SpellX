@@ -8,7 +8,38 @@
     "titleHindi": "अनुच्छेद लिखना",
     "level": 5,
     "levelLabel": "Level 5 — Speaking & Writing",
-    "keywords": [],
+    "chapter": 5,
+    "chapterTitle": "Speak & Write Like a Pro",
+    "storyScene": [
+            {
+                  "en": "The client says, \"I speak English, I speak French, and I speak a little German.\"",
+                  "hi": "client बोलतें हैं: I speak English, I speak French, and I speak a little German."
+            },
+            {
+                  "en": "Sam says, \"You can also say, I speak English, French, and a little German — no repetition.\"",
+                  "hi": "सैम कहतें हैं: तुम यह भी बोल सकतें हो, I speak English, French, and a little German — बिना repeat।"
+            },
+            {
+                  "en": "Ravi practices: \"I like tea, coffee, and water. I have a pen, a book, and a phone.\"",
+                  "hi": "रवī practice करतें हैं: I like tea, coffee, and water. I have a pen, a book, and a phone."
+            },
+            {
+                  "en": "Use a comma before and. Do not repeat the verb.",
+                  "hi": "and से पहले comma लगाओ। verb repeat न करो।"
+            },
+            {
+                  "en": "Now Ravi lists things in English without sounding like a machine.",
+                  "hi": "अब रवī English में चीज़ेन list कर सकतें हैं, machine जैसे बिना।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned to list things with commas and and — no repeating the verb.",
+            "hi": "रवī के list बनानो समझ आयो — commas व and से, verb repeat के बिना।"
+      },
+    "whyRule": {
+        "en": "The comma before and in a list (the Oxford comma) was a 19th-century editorial decision, not a grammar rule. Before then, lists were written without it. The comma exists to prevent ambiguity.",
+        "hi": "List म and सें पहिले comma (Oxford comma) 19व शताब्दी क editorial निर्णय थो, grammar नियम नहिं। पहिले list बिना ओकरा लिखल जात थो। Comma अस्पष्टता रोकने क होतें होय।"
+      },    "keywords": [],
     "summary": "Writing a short, clear paragraph with one main idea.",
     "explanationHindi": "अनुच्छेद लिखते समय एक ही मुख्य विचार चुनें और उसे पहले वाक्य में साफ़-साफ़ लिख दें। इसके बाद दो या तीन ऐसे वाक्य जोड़ें जो उस विचार को समझाएँ या उदाहरण दें। वाक्यों को जोड़ने के लिए साथ ही, क्योंकि और इसलिए जैसे शब्दों का प्रयोग करें तथा हर वाक्य छोटा और स्पष्ट रखें।",
     "points": [

@@ -8,7 +8,38 @@
     "titleHindi": "वाक्य की संरचना",
     "level": 2,
     "levelLabel": "Level 2 — Making Sentences",
-    "keywords": [],
+    "chapter": 2,
+    "chapterTitle": "Building Sentences",
+    "storyScene": [
+            {
+                  "en": "Ravi writes, \"Happy is the manager today.\" The manager reads it and frowns.",
+                  "hi": "रवि लिखते हैं: Happy is the manager today. Manager पढ़ कर मुँह बनाते हैं।"
+            },
+            {
+                  "en": "Sam says, \"In English, we usually say: The manager is happy today.\"",
+                  "hi": "सैम कहते हैं: अंग्रेज़ी में हम बोलते हैं: The manager is happy today."
+            },
+            {
+                  "en": "Subject first, then verb, then the rest. S-V-O is the order.",
+                  "hi": "पहले subject, फिर verb, फिर बाक़ी। S-V-O ही order है।"
+            },
+            {
+                  "en": "Ravi rewrites: \"The manager reviews the file carefully.\" It looks right.",
+                  "hi": "रवि फिर से लिखते हैं: The manager reviews the file carefully. अब सही लगता है।"
+            },
+            {
+                  "en": "Ravi s email finally sounds like English, not like translated Hindi.",
+                  "hi": "अब रवि की ईमेल अंग्रेज़ी जैसी लगती है, हिंदी के translation जैसी नहीं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned the word order in English — Subject, Verb, Object.",
+            "hi": "रवि को अंग्रेज़ी का word order समझ आया — Subject, Verb, Object।"
+      },
+    "whyRule": {
+        "en": "Old English word order was flexible — the case endings told you who was doing what. When the endings disappeared, word order became the only clue. S-V-O fixed in place between 1100 and 1500, and has not moved since.",
+        "hi": "पुराने अंग्रजई word order लचीलाई — case-ending बताई कि कौन क्या करत हें। जब ending गायब भई, word order एक संकेत बनाई। S-V-O 1100-1500 क बीच में स्थिर भई, व अब तक नही चले।"
+      },    "keywords": [],
     "summary": "The word order that makes a clear English sentence.",
     "explanationHindi": "अंग्रेज़ी वाक्य में शब्दों का क्रम सरल और स्थिर होता है — पहले कर्ता (subject), फिर क्रिया (verb), और उसके बाद कर्म या बाकी जानकारी। हिंदी में क्रिया वाक्य के अंत में आती है, पर अंग्रेज़ी में क्रिया कर्ता के तुरंत बाद आती है। इसलिए 'मैं चावल खाता हूँ' का अंग्रेज़ी रूप 'I eat rice' होता है, 'I rice eat' नहीं।",
     "points": [

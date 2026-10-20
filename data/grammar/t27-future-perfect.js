@@ -8,7 +8,38 @@
     "titleHindi": "पूर्ण भविष्यत् काल",
     "level": 3,
     "levelLabel": "Level 3 — Tenses",
-    "keywords": [],
+    "chapter": 3,
+    "chapterTitle": "The Flow of Time",
+    "storyScene": [
+            {
+                  "en": "The manager asks, \"Will you have finished the file by Friday?\"",
+                  "hi": "manager पूछतें हैं: Will you have finished the file by Friday?"
+            },
+            {
+                  "en": "Ravi answers, \"Yes, I will have finished it by Friday.\"",
+                  "hi": "रवी जवाब देतें हैं: Yes, I will have finished it by Friday."
+            },
+            {
+                  "en": "Sam says, \"That is the future perfect — something done before a future time.\"",
+                  "hi": "सैम कहतें हैं: यह future perfect है — future कें किसी समय सें पहिले पूरी होत कृय।"
+            },
+            {
+                  "en": "Ravi reviews all nine tenses and picks the right one for each question.",
+                  "hi": "रवी नौ नौ tense सरा पढ़ कर हर question कें लिये sahi चूँनतें हैं।"
+            },
+            {
+                  "en": "Now every tense has its place, like a room in Ravi s head.",
+                  "hi": "अब हर tense कें अपनो ठेगाना हैं, जैसो रवी कें सिर में कमरो।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned all nine tenses and when to use each one.",
+            "hi": "रवी कें नौ नौ tense समझ आयो व कब कौन सा चलतें हैं।"
+      },
+    "whyRule": {
+        "en": "The nine-tense system is a modern invention. Old English had about six verb forms; the rest were built from combinations. When English lost its case endings, it compensated by multiplying verb forms. Nine tenses is what you get when a language trades endings for helpers.",
+        "hi": "नौ tense क प्रणाली आधुनिक आविष्कार हें। पुराने अंग्रेज़ी म करीब छ verb रूप हई; बाकी संयोजन सें बनए। जब अंग्रेज़ी नो case-ending गायब भई, उनो ने verb रूप बढ़ा के संतुलन दइ। नौ tense ओही हें जे तब मिलत हें जब भाषा endings क बदल म helpers पिकत हें।"
+      },    "keywords": [],
     "summary": "An action finished before a future point: I will have gone.",
     "explanationHindi": "पूर्ण भविष्यत् काल तब आता है जब कोई काम भविष्य के किसी समय से पहले पूरा हो चुका होगा। इसका ढाँचा है—कर्ता + will have + क्रिया का तीसरा रूप, और will have हर कर्ता के साथ वैसा ही रहता है। by या by the time के बाद जो समय आता है, उससे पहले काम ख़त्म हो जाएगा, इसीलिए इस काल में समय बताना ज़रूरी होता है।",
     "points": [

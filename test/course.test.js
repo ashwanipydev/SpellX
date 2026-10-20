@@ -31,7 +31,7 @@ let m;
 while ((m = re.exec(html))) { listed.push(m[1].replace('data/grammar/', '')); }
 
 const onDisk = fs.readdirSync(path.join(ws, 'data', 'grammar')).filter(function (f) { return /\.js$/.test(f); }).sort();
-chk(listed.length === 48, 'index.html lists 47 topic files + index.js', listed.length);
+chk(listed.length === 49, 'index.html lists 47 topic files + chapters.js + index.js', listed.length);
 chk(listed[listed.length - 1] === 'index.js', 'index.js is loaded last', listed[listed.length - 1]);
 chk(listed.length - 1 === onDisk.length - 1, 'every file on disk is listed', onDisk.length);
 const missing = onDisk.filter(function (f) { return listed.indexOf(f) === -1; });
@@ -79,12 +79,26 @@ let rulesOk = 0;
 grammarTopics.forEach(function (t) { if (t.rules && t.rules.pattern && (t.rules.forms || []).length === 3) { rulesOk += 1; } });
 chk(rulesOk === 47, 'every topic has a rule block with 3 forms', rulesOk);
 
+// ---- 3b. story + why fields
+let storyOk = 0, chOk = 0, whyOk = 0;
+grammarTopics.forEach(function (t) {
+  if (Array.isArray(t.storyScene) && t.storyScene.length >= 4 && t.storyScene.every(function (l) { return l.en && l.hi; })) { storyOk += 1; }
+  if (typeof t.chapter === 'number' && typeof t.chapterTitle === 'string') { chOk += 1; }
+  if (t.whyRule && t.whyRule.en && t.whyRule.hi) { whyOk += 1; }
+});
+chk(storyOk === 47, 'every topic has a story scene with >= 4 lines', storyOk);
+chk(chOk === 47, 'every topic has chapter + chapterTitle', chOk);
+chk(whyOk === 47, 'every topic has a whyRule (EN + HI)', whyOk);
+
 // ---- 4. levels view
 let err = null;
 try { B850.screens.grammar.render({}); } catch (e) { err = e; }
 chk(!err, 'levels view renders', err && err.message);
 chk(env.main.querySelectorAll('.topic-row').length === 47, '47 topic rows', env.main.querySelectorAll('.topic-row').length);
-chk(env.main.querySelectorAll('.level-head').length === 5, '5 level sections', env.main.querySelectorAll('.level-head').length);
+chk(env.main.querySelectorAll('.level-head').length === 6, '6 chapter sections', env.main.querySelectorAll('.level-head').length);
+chk(env.main.querySelectorAll('.book-ch-intro').length === 6, '6 chapter intros rendered', env.main.querySelectorAll('.book-ch-intro').length);
+chk(env.main.querySelectorAll('.book-ch-intro-hi').length === 6, '6 chapter Hindi intros rendered', env.main.querySelectorAll('.book-ch-intro-hi').length);
+chk(env.main.querySelectorAll('.topic-num').length === 47, '47 numbered topic rows', env.main.querySelectorAll('.topic-num').length);
 
 // ---- 5. topic view with the new detail
 err = null;
@@ -97,6 +111,12 @@ chk(!!env.main.querySelector('.gr-help'), 'Hindi explanation card rendered');
 chk(env.main.querySelectorAll('.gr-points li').length === 3, '3 rule points rendered', env.main.querySelectorAll('.gr-points li').length);
 chk(!!env.main.querySelector('.gr-rule'), 'rule card rendered');
 chk(env.main.querySelectorAll('.gr-form').length === 3, '3 rule forms rendered', env.main.querySelectorAll('.gr-form').length);
+chk(!!env.main.querySelector('.gr-story'), 'story card rendered for topic 19');
+chk(env.main.querySelectorAll('.gr-story-line').length >= 4, 'story scene has >= 4 lines', env.main.querySelectorAll('.gr-story-line').length);
+chk(!!env.main.querySelector('.gr-story-recap'), 'story recap rendered');
+chk(!!env.main.querySelector('.gr-why'), 'why card rendered for topic 19');
+chk(!!env.main.querySelector('.gr-why-en') && env.main.querySelector('.gr-why-en').textContent.length > 30, 'why card has EN text');
+chk(!!env.main.querySelector('.gr-why-hi'), 'why card has HI text');
 
 B850.screens.grammar.render({ view: 'topic', id: 28 });
 chk(env.main.querySelectorAll('.kw-chip.linked').length >= 3, 'keywords still cross-link to the word deck', env.main.querySelectorAll('.kw-chip.linked').length);
@@ -149,7 +169,7 @@ err = null;
 try { B850.screens.stats.render(); } catch (e) { err = e; }
 chk(!err, 'stats renders', err && err.message);
 const names = env.main.querySelectorAll('.cat-name').map(function (n) { return n.textContent; });
-chk(names.filter(function (n) { return n.indexOf('Level ') === 0; }).length === 5, 'stats shows 5 grammar level rows');
+chk(names.filter(function (n) { return n.indexOf('Ch ') === 0; }).length === 6, 'stats shows 6 grammar chapter rows');
 chk(names.filter(function (n) { return /Operations|Things|Qualities/.test(n); }).length === 5, 'stats still shows 5 word categories');
 const summary = env.main.querySelectorAll('.screen-sub').map(function (n) { return n.textContent; })
   .filter(function (t) { return t.indexOf('Topics done') === 0; })[0] || '';

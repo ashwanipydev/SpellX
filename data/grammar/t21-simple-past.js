@@ -8,7 +8,38 @@
     "titleHindi": "सामान्य भूतकाल",
     "level": 3,
     "levelLabel": "Level 3 — Tenses",
-    "keywords": [],
+    "chapter": 3,
+    "chapterTitle": "The Flow of Time",
+    "storyScene": [
+            {
+                  "en": "At lunch, Ravi tells Sam, \"I was in the meeting when you called.\"",
+                  "hi": "दोपहर कें खाने में रवी सैम कें बोलतें हैं: I was in the meeting when you called."
+            },
+            {
+                  "en": "Sam says, \"That is the past continuous — action going on at a time in the past.\"",
+                  "hi": "सैम कहतें हैं: यह past continuous है — past में किसी समय चल रही कृय।"
+            },
+            {
+                  "en": "I was reading. She was cooking. They were talking when we arrived.",
+                  "hi": "I was reading. She was cooking. They were talking when we arrived."
+            },
+            {
+                  "en": "Ravi practices describing the whole day: what was happening at 10, at 12, at 4.",
+                  "hi": "रवी पूरा दिन describe करतें हैं: 10 बजे, 12 बजे, 4 बजे क्यो होत रहीं।"
+            },
+            {
+                  "en": "Now Ravi can paint the past like a moving picture.",
+                  "hi": "अब रवी past कें चित्र खिंच सकतें हैं, moving picture जैसा।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned the past continuous — was/were + verb-ing for what was going on in the past.",
+            "hi": "रवी कें past continuous समझ आयो — was/were + verb-ing, जो past में चल रही रहीं।"
+      },
+    "whyRule": {
+        "en": "Past continuous is was/were plus -ing. The -ing part is Old English. The was/were part comes from \"wesan\" (to be), which had seven forms in Old English. When six of them died, \"was\" and \"were\" were left to carry the past.",
+        "hi": "Past continuous = was/were + -ing। -ing हिस्सा पुराने अंग्रेज़ी क हें। \"was/were\" हिस्सा \"wesan\" (होन) सें आ गय, जे पुराने अंग्रेज़ी म सात रूप हई। जब छ रूप मरई, \"was\" व \"were\" बचई past ढोन क"
+      },    "keywords": [],
     "summary": "Finished actions with a time in the past: I went.",
     "explanationHindi": "सामान्य भूतकाल उन कामों के लिए प्रयोग होता है जो बीत चुके हैं और पूरे हो गए हैं। नियमित क्रियाओं के अंत में -ed जोड़ा जाता है, जैसे play से played, और अनियमित क्रियाओं का दूसरा रूप याद रखना पड़ता है, जैसे go से went और eat से ate। इस काल के साथ yesterday, last week और two days ago जैसे भूतकाल के समय वाले शब्द आते हैं। नकारात्मक वाक्यों में did not के बाद और प्रश्नों में did के बाद क्रिया का मूल रूप आता है, जैसे I did not go और did she go।",
     "points": [

@@ -8,7 +8,38 @@
     "titleHindi": "सामान्य वर्तमान काल",
     "level": 3,
     "levelLabel": "Level 3 — Tenses",
-    "keywords": [],
+    "chapter": 3,
+    "chapterTitle": "The Flow of Time",
+    "storyScene": [
+            {
+                  "en": "Ravi s manager asks, \"When will you finish the report?\"",
+                  "hi": "manager रवी कें पूछतें हैं: When will you finish the report?"
+            },
+            {
+                  "en": "Ravi answers, \"I will finish it by Monday.\"",
+                  "hi": "रवी जवाब देतें हैं: I will finish it by Monday."
+            },
+            {
+                  "en": "Sam says, \"That is the future — will + verb for what has not happened yet.\"",
+                  "hi": "सैम कहतें हैं: यह future है — will + verb, जो अभी नहो हुई।"
+            },
+            {
+                  "en": "I will call you. She will come tomorrow. We will start next week.",
+                  "hi": "I will call you. She will come tomorrow. We will start next week."
+            },
+            {
+                  "en": "Ravi s plan for the promotion now sounds like a promise, not a hope.",
+                  "hi": "अब रवी कियो promotion क plan promise जैसा लगत हैं, आशा नहो।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned the simple future — will + verb for what will happen.",
+            "hi": "रवी कें simple future समझ आयो — will + verb, जो होत हैं।"
+      },
+    "whyRule": {
+        "en": "English has no future tense in the way other languages do. \"Shall\" and \"will\" are old modal verbs — \"shall\" means should, \"will\" means wish. The future was built by borrowing two old words and turning them into markers. It is a 600-year-old hack, not a rule.",
+        "hi": "अंग्रेज़ी म future tense दुसरा भाषा जैस नई। \"Shall\" व \"will\" पुराना modal verb हें — \"shall\" क मतलब चाहिए, \"will\" क मतलब चाहत। Future बनई जब दूनो पुराना शबद उधार लइ के marker बनई। यो 600 साल पुराना चाल हें, नियम नहो।"
+      },    "keywords": [],
     "summary": "Habits and facts: I go, he goes.",
     "explanationHindi": "सामान्य वर्तमान काल का प्रयोग रोज़ की आदतों, नियमित कामों और सदा सच रहने वाली बातों के लिए होता है। इसका सबसे सरल रूप यह है कि क्रिया को उसी रूप में प्रयोग करें, जैसे I go, we play और they read। लेकिन he, she और it के साथ क्रिया के अंत में -s या -es जोड़ना पड़ता है, जैसे he goes और she reads। इस काल के साथ every day, always और usually जैसे शब्द प्रायः आते हैं।",
     "points": [

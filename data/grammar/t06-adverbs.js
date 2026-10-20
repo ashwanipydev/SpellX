@@ -8,7 +8,38 @@
     "titleHindi": "क्रिया-विशेषण",
     "level": 1,
     "levelLabel": "Level 1 — Basic Grammar",
-    "keywords": [
+    "chapter": 1,
+    "chapterTitle": "The First Words",
+    "storyScene": [
+            {
+                  "en": "Ravi is late for the morning meeting. The boss is unhappy.",
+                  "hi": "रवि सुबह की मीटिंग में देर करते हैं। बॉस नाखुश हैं।"
+            },
+            {
+                  "en": "Ravi apologizes: \"I am very sorry, sir. I will come on time from now.\"",
+                  "hi": "रवि माफ़ी माँगते हैं: बहुत sorry हूँ sir, अब मैं on time आऊँगा।"
+            },
+            {
+                  "en": "Sam says, \"Slowly, carefully, quietly — these are adverbs. They describe how you do things.\"",
+                  "hi": "सैम कहते हैं: slowly, carefully, quietly — ये adverb हैं। ये बताते हैं कि हम क्या करते हैं, कैसे करते हैं।"
+            },
+            {
+                  "en": "Ravi practices: \"Ravi works quickly. The phone rings loudly. The cat sleeps peacefully.\"",
+                  "hi": "रवि अभ्यास करते हैं: Ravi works quickly. The phone rings loudly. The cat sleeps peacefully."
+            },
+            {
+                  "en": "Now Ravi s sentences are not just correct — they are alive.",
+                  "hi": "अब रवि के वाक्य सिर्फ सही नहीं, जीवित भी लगते हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned adverbs — words that show how, when or where an action happens.",
+            "hi": "रवि को adverb समझ आया — ये बताते हैं कि कृया किस तरह, कब, कहाँ हुई।"
+      },
+    "whyRule": {
+        "en": "Old English used case endings to show how something was done. When those endings fell away, the -ly suffix took over. Most -ly words come from Old English adjectives: quick (quickly), soft (softly), swift (swiftly).",
+        "hi": "पुराने अंग्रजई case-ending से कैस बताई। जब ओ ending गायब भई, -ly suffix उनका काम करन लगाई। अधिकांश -ly शबद पुराने अंग्रजई adjective से बने: quick (quickly), soft (softly), swift (swiftly)."
+      },    "keywords": [
       "slowly",
       "quickly"
     ],

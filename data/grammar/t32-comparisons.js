@@ -8,7 +8,38 @@
     "titleHindi": "तुलना (डिग्री)",
     "level": 4,
     "levelLabel": "Level 4 — Important Grammar",
-    "keywords": [
+    "chapter": 4,
+    "chapterTitle": "The Word Toolkit",
+    "storyScene": [
+            {
+                  "en": "The client asks, \"Who is the new manager?\"",
+                  "hi": "client पूछतें हैं: Who is the new manager?"
+            },
+            {
+                  "en": "Ravi says, \"I do not know. What is his name?\"",
+                  "hi": "रवी बोलतें हैं: I do not know. What is his name?"
+            },
+            {
+                  "en": "Sam says, \"Who, what, where, when, why, how — these are question words. They open a question.\"",
+                  "hi": "सैम कहतें हैं: who, what, where, when, why, how — यो question words हैं। यो question खोलतें हैं।"
+            },
+            {
+                  "en": "Ravi practices: \"Why are you late? How is the meeting? Where is the file?\"",
+                  "hi": "रवी practice करतें हैं: Why are you late? How is the meeting? Where is the file?"
+            },
+            {
+                  "en": "Now Ravi can ask any question with a clear, sharp face.",
+                  "hi": "अब रवी clear, sharp मूँह सें कौन भी question पूछ सकतें हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned question words — who, what, where, when, why, how — that open questions.",
+            "hi": "रवी कें question words समझ आयो — who, what, where, when, why, how — यो question खोलतें हैं।"
+      },
+    "whyRule": {
+        "en": "Who, what, where, when, why, how are all Old English interrogatives: hwa, hwat, hwar, hwaner, hu. The sounds changed, but the words never changed. They are among the oldest words you use every day.",
+        "hi": "Who, what, where, when, why, how — सभी पुराने अंग्रेज़ी प्रश्नवाचक हैं: hwa, hwat, hwar, hwaner, hu। आवाजें बदल गईं, लेकिन शब्द कभी नहीं बदले। ये वही सबसे पुराने शब्द हैं जो आप रोज़ प्रयोग करते हैं।"
+      },    "keywords": [
       "big",
       "bigger",
       "biggest"

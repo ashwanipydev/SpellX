@@ -8,7 +8,38 @@
     "titleHindi": "बातचीत का अभ्यास",
     "level": 5,
     "levelLabel": "Level 5 — Speaking & Writing",
-    "keywords": [],
+    "chapter": 5,
+    "chapterTitle": "Speak & Write Like a Pro",
+    "storyScene": [
+            {
+                  "en": "The client says, \"I do not like coffee, and I do not like tea either.\"",
+                  "hi": "client बोलतें हैं: I do not like coffee, and I do not like tea either."
+            },
+            {
+                  "en": "Sam says, \"You can also say, I do not like coffee or tea — one not covers both.\"",
+                  "hi": "सैम कहतें हैं: तुम यह भी बोल सकतें हो, I do not like coffee or tea — एक \"not\" दोनों के लिए।"
+            },
+            {
+                  "en": "Ravi practices: \"I do not like rain or wind. She does not speak English or French.\"",
+                  "hi": "रवī practice करतें हैं: I do not like rain or wind. She does not speak English or French."
+            },
+            {
+                  "en": "Use or, not and, in negative lists.",
+                  "hi": "negative lists में or लगाओ, and न लगाओ।"
+            },
+            {
+                  "en": "Now Ravi says no to a whole list with just one word.",
+                  "hi": "अब रवī पूरी list को sirf एक शब्द से no बोल सकतें हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned negative lists — use or, not and, in negative sentences.",
+            "hi": "रवī के negative lists समझ आयो — negative sentences में or लगाओ, and न लगाओ।"
+      },
+    "whyRule": {
+        "en": "In negative sentences, English uses or instead of and because and implies both are present. I do not like tea or coffee means neither. This rule is as old as Latin: non, aut. It is logic, not grammar.",
+        "hi": "Negative sentence म अंग्रेज़ी and क बदले or प्रयोग करतें होय क्योंको and दूनो उपस्थिति दर्शावतें होय। I do not like tea or coffee क मतलब नहिं होय। यो नियम लैटिन जैस पुरानो होय। यो logic होय, grammar नहिं।"
+      },    "keywords": [],
     "summary": "Turn-taking dialogues for common situations.",
     "explanationHindi": "बातचीत में सबसे ज़रूरी है बारी-बारी से बोलना — पहले दूसरे की बात पूरी सुनें, फिर छोटा जवाब दें। जवाब देने के बाद एक छोटा सवाल पूछें ताकि बात आगे बढ़ती रहे। अभिवादन, धन्यवाद और विदा के लिए कुछ तैयार वाक्य याद रखें। रोज़ दो मिनट ज़ोर से बोलकर इन वाक्यों का अभ्यास करें।",
     "points": [

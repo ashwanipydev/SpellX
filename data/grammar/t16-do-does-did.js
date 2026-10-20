@@ -8,7 +8,38 @@
     "titleHindi": "करना (do, does, did)",
     "level": 2,
     "levelLabel": "Level 2 — Making Sentences",
-    "keywords": [
+    "chapter": 2,
+    "chapterTitle": "Building Sentences",
+    "storyScene": [
+            {
+                  "en": "Ravi asks the manager, \"Is the meeting today?\" The manager nods.",
+                  "hi": "रवि manager से पूछते हैं: Is the meeting today? manager सिर हिलाते हैं।"
+            },
+            {
+                  "en": "Sam says, \"When you ask or negate in the present tense, you use do, does or did.\"",
+                  "hi": "सैम कहते हैं: present tense में पूछन या negation के लिए do, does, did चलते हैं।"
+            },
+            {
+                  "en": "\"I do work. She does work. He did work. You did not come.\" — Ravi repeats all four.",
+                  "hi": "I do work. She does work. He did work. You did not come. — रवि चारों बोलते हैं।"
+            },
+            {
+                  "en": "Ravi practices: \"Do you like tea? Does she like coffee? Did you come yesterday?\"",
+                  "hi": "रवि practice करते हैं: Do you like tea? Does she like coffee? Did you come yesterday?"
+            },
+            {
+                  "en": "Now Ravi s questions and negatives are sharp, clean and correct.",
+                  "hi": "अब रवि के question व negative तीखे, साफ़ व सही हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned do, does and did — the helpers that carry questions and negatives.",
+            "hi": "रवि को do, does, did समझ आया — ये question व negative के हाथ हैं।"
+      },
+    "whyRule": {
+        "en": "Do is one of the strangest words in English. It has no real meaning on its own — it just means to perform an action. It crept into questions and negatives in the 1600s because the old verb-flip system was dying. Today it is so normal that Go you sounds like a foreign phrase.",
+        "hi": "Do अंग्रजई में सबसे अछे शबदों में से एक हें। खोद का कोई मतलब नई — सिर्फ किसी काम क करन बोलत हें। 1600 क दशक में question व negative में घुस आई क्योकि पुराना verb-flip प्रणाली मरतीई। आज इतना आम हें कि Go you एक विदेशी वाक्य जैस लगत हें।"
+      },    "keywords": [
       "do",
       "does",
       "did"

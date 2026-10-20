@@ -8,7 +8,38 @@
     "titleHindi": "सहायक क्रियाएँ",
     "level": 2,
     "levelLabel": "Level 2 — Making Sentences",
-    "keywords": [
+    "chapter": 2,
+    "chapterTitle": "Building Sentences",
+    "storyScene": [
+            {
+                  "en": "At the end of the week, the manager asks Ravi for a summary of what he did.",
+                  "hi": "हफ़्तो के अंत में manager रवी कें पूछतें हैं किकों हफ़्तो कें क्यो कियो।"
+            },
+            {
+                  "en": "Ravi says, \"I finished the report yesterday.\"",
+                  "hi": "रवी कहतें हैं: I finished the report yesterday."
+            },
+            {
+                  "en": "Sam says, \"That is the simple past — verb in the V2 form.\"",
+                  "hi": "सैम कहतें हैं: यह simple past है — verb V2 form में।"
+            },
+            {
+                  "en": "I worked. She studied. They travelled. — Ravi practices with all the verbs he used this week.",
+                  "hi": "I worked. She studied. They travelled. — रवी हफ़्तो कें सब verb सें practice करतें हैं।"
+            },
+            {
+                  "en": "Ravi s weekly report is now in perfect past tense.",
+                  "hi": "अब रवी कियो weekly report perfect past tense में हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned the simple past — what happened before, using the V2 verb form.",
+            "hi": "रवी कें simple past समझ आयो — पहिलो क्यो कृय, V2 verb form सें।"
+      },
+    "whyRule": {
+        "en": "V2 (the past form) comes from the Old English \"weak\" verb class, where a small ending like -d or -t was added: \"workod\" became \"worked\". A smaller \"strong\" class kept a vowel change instead: \"singan\" became \"sang\". V2 is the fossil of both systems.",
+        "hi": "V2 (past रूप) पुराने अंग्रेज़ी \"weak\" verb श्रृंखला सें आ गय, जहोए -d यो -t जैसा छोट ending जुडतई: \"workod\" बनई \"worked\"। एक \"strong\" श्रृंखला vowel change पालन करई: \"singan\" बनई \"sang\"। V2 दूनो प्रणाली क ज़ीवाश्म हें।"
+      },    "keywords": [
       "can", "could", "will", "would", "should", "must", "may", "might", "need to"
     ],
     "summary": "Modal and semi-modal helpers for ability, permission, advice, possibility, future and obligation.",

@@ -8,7 +8,38 @@
     "titleHindi": "प्रश्न पूछना",
     "level": 5,
     "levelLabel": "Level 5 — Speaking & Writing",
-    "keywords": [],
+    "chapter": 5,
+    "chapterTitle": "Speak & Write Like a Pro",
+    "storyScene": [
+            {
+                  "en": "The client asks, \"Tell me about your office.\"",
+                  "hi": "client पूछतें हैं: Tell me about your office."
+            },
+            {
+                  "en": "Ravi says, \"Our office is on the second floor. It is bright and quiet. The windows face the street.\"",
+                  "hi": "रवी बोलतें हैं: Our office is on the second floor. It is bright and quiet. The windows face the street."
+            },
+            {
+                  "en": "Sam says, \"That is description — you use adjectives and prepositions to paint a picture.\"",
+                  "hi": "सैम कहतें हैं: यह description हें — adjectives व prepositions सें चित्र बनानो।"
+            },
+            {
+                  "en": "Ravi practices describing the city: \"Lucknow is big and old. The streets are busy. The food is famous.\"",
+                  "hi": "रवी शहर describe करतें हैं: Lucknow is big and old. The streets are busy. The food is famous."
+            },
+            {
+                  "en": "Now Ravi can describe any place, and the listener can see it in their mind.",
+                  "hi": "अब रवी कौन भी ठिकाना describe कर सकतें हैं, व सुननो वालो उसे मन में देख सकतें हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned description — using adjectives and prepositions to paint a picture in words.",
+            "hi": "रवी कें description समझ आयो — adjectives व prepositions सें शब्दों में चित्र बनानो।"
+      },
+    "whyRule": {
+        "en": "Description in English uses adjectives plus prepositions because Old English had a rich case system that is now gone. What the cases used to do (show size, position, quality), adjectives and prepositions now do. A tall building is a case ending that lost its ending.",
+        "hi": "अंग्रेज़ी description adjective + preposition प्रयोग करतें क्योंको पुराने अंग्रेज़ी क rich case system अब गायब होय। जो cases करतौ हई (आकार, स्थिति, गुण दर्शाना), अब adjective व preposition करतें हें। A tall building वह case ending हें जेनो ending खोई दितो होय।"
+      },    "keywords": [],
     "summary": "Forming natural questions for real conversations.",
     "explanationHindi": "अंग्रेज़ी में प्रश्न बनाने के लिए सहायक क्रिया is, are, do, does या can को कर्ता से पहले रखा जाता है। यदि प्रश्न में what, where, when, why, who या how हो, तो पहले वही शब्द आता है और उसके बाद सहायक क्रिया। do और does के बाद मुख्य क्रिया का मूल रूप आता है, और विनम्र अनुरोध के लिए can या could का प्रयोग करें।",
     "points": [

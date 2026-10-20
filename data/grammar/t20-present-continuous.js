@@ -8,7 +8,38 @@
     "titleHindi": "वर्तमान सतत काल",
     "level": 3,
     "levelLabel": "Level 3 — Tenses",
-    "keywords": [],
+    "chapter": 3,
+    "chapterTitle": "The Flow of Time",
+    "storyScene": [
+            {
+                  "en": "The client asks Ravi, \"Have you prepared the file?\"",
+                  "hi": "client रवी कें पूछतें हैं: Have you prepared the file?"
+            },
+            {
+                  "en": "Ravi answers, \"Yes, I have prepared it already.\"",
+                  "hi": "रवी जवाब देतें हैं: Yes, I have prepared it already."
+            },
+            {
+                  "en": "Sam says, \"That is the present perfect — something finished that still matters now.\"",
+                  "hi": "सैम कहतें हैं: यह present perfect है — कछ हो चुकल जो अभी भी मायने रखत हैं।"
+            },
+            {
+                  "en": "I have worked here for two years. She has read the report. They have left.",
+                  "hi": "I have worked here for two years. She has read the report. They have left."
+            },
+            {
+                  "en": "Ravi can now tell the client what is done and what is still waiting.",
+                  "hi": "अब रवी client कें बत सकतें हैं क्यो हो चुकल हैं व क्यो बाक़ी हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned the present perfect — have/has + V3 for completed actions that matter now.",
+            "hi": "रवी कें present perfect समझ आयो — have/has + V3, जो हो चुकल हैं।"
+      },
+    "whyRule": {
+        "en": "\"Have\" is the V3 of \"habban\" (to have) in Old English. When you say \"I have finished\", you are using the old past participle as a helper. The perfect tenses were built from the same fossil: V3 of the main verb plus a form of \"have\".",
+        "hi": "\"Have\" पुराने अंग्रेज़ी म \"habban\" (पाखन) क V3 हें। जब आप बोलत हें \"I have finished\", आप पुराना past participle क helper क रूप म प्रयोग करत हें। Perfect tense ओही ज़ीवाश्म सें बनए: मुख्य verb क V3 + \"have\" क रूप।"
+      },    "keywords": [],
     "summary": "Actions happening right now: I am going.",
     "explanationHindi": "वर्तमान सतत काल उन कामों के लिए प्रयोग होता है जो इसी समय चल रहे हैं और अभी पूरे नहीं हुए। इसका ढाँचा है am, is या are के बाद क्रिया में -ing जोड़ना, जैसे I am reading, she is cooking और they are playing। जब वाक्य में now, right now या at the moment जैसे शब्द हों, तब यह काल सबसे उपयुक्त रहता है। ध्यान रखें कि -ing वाली क्रिया से पहले सहायक क्रिया am, is या are आना ज़रूरी है।",
     "points": [

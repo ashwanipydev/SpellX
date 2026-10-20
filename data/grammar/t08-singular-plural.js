@@ -8,7 +8,38 @@
     "titleHindi": "एकवचन और बहुवचन",
     "level": 1,
     "levelLabel": "Level 1 — Basic Grammar",
-    "keywords": [
+    "chapter": 1,
+    "chapterTitle": "The First Words",
+    "storyScene": [
+            {
+                  "en": "Ravi needs files for the whole team, not just for himself.",
+                  "hi": "रवि को सिर्फ अपना नहीं, पूरे team की फ़ाइल चाहिए।"
+            },
+            {
+                  "en": "He writes, \"One file\" — Sam says, \"Add -s: one file, two files.\"",
+                  "hi": "वह लिखते हैं One file — सैम कहते हैं: -s जोड़ो: one file, two files."
+            },
+            {
+                  "en": "Some words change shape: \"a child, two children. A man, two men.\"",
+                  "hi": "कुछ शब्द बदल जाते हैं: a child, two children. A man, two men."
+            },
+            {
+                  "en": "Ravi sorts his desk: pens, books, papers — all plural now.",
+                  "hi": "रवि अपना डेस्क सफ़ाई करते हैं: pens, books, papers — सब बहुवचन में।"
+            },
+            {
+                  "en": "When the manager asks for the reports, Ravi says, \"The reports are ready, sir.\"",
+                  "hi": "जब manager reports माँगते हैं, रवि कहते हैं: The reports are ready, sir."
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned plurals — how one thing becomes many with -s or special forms.",
+            "hi": "रवि को plural समझ आया — एक चीज़ -s या बहुत से रूपों से कई हो जाती है।"
+      },
+    "whyRule": {
+        "en": "The -s plural comes from an Old English word es — a marker of belonging. Children survived from the Old Germanic mutation system (like man/men, goose/geese) that -s later replaced. Most words follow -s now, but the old forms cling on.",
+        "hi": "-s plural पुराने अंग्रजई शबद es — समरपण क चिह्न — सें आ गय। Children पुराने जर्मनिक mutation प्रणाली (जैस man/men, goose/geese) से बचई, जो बाद में -s ले आ। अब अधिकांश शबद -s पालन करत हें, लेकिन पुराना रूप चिपक के रहई।"
+      },    "keywords": [
       "book",
       "books"
     ],

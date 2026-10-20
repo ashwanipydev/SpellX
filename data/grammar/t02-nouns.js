@@ -8,7 +8,38 @@
     "titleHindi": "संज्ञा",
     "level": 1,
     "levelLabel": "Level 1 — Basic Grammar",
-    "keywords": [
+    "chapter": 1,
+    "chapterTitle": "The First Words",
+    "storyScene": [
+            {
+                  "en": "The office gives Ravi a box of files to keep his desk neat.",
+                  "hi": "कार्यालय रवि को फ़ाइल रखने के लिए एक डिब्बा देते हैं।"
+            },
+            {
+                  "en": "He asks Sam, \"What is this word? Desk, file, chair, window.\"",
+                  "hi": "रवि सैम से पूछते हैं: डेस्क, फ़ाइल, चेयर, विंडो — ये क्या हैं?"
+            },
+            {
+                  "en": "Sam says, \"Those are nouns — words that name people, places and things.\"",
+                  "hi": "सैम कहते हैं: ये noun हैं — जो लोग, जगह व चीज़ का नाम देते हैं।"
+            },
+            {
+                  "en": "Ravi writes them on a small card and keeps it on his desk.",
+                  "hi": "रवि इन्हें एक छोटी कागज़ पर लिख कर डेस्क पर रख लेते हैं।"
+            },
+            {
+                  "en": "Every new thing at the office, he now names like a word in a book.",
+                  "hi": "अब कार्यालय की हर नई चीज़ रवि किताब के शब्द जैसा नाम देते हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned that nouns are naming words — person, place, animal or thing.",
+            "hi": "रवि को समझ आया: noun वह शब्द हैं जो किसी का नाम रखते हैं।"
+      },
+    "whyRule": {
+        "en": "The word noun itself comes from the Latin nomen — a name. Old English had no word for it; the category only appeared when scholars began to translate Latin grammar into English after 1066.",
+        "hi": "Noun शबद खोद लैटिन nomen — अरथात नाम — सें आ गय। पुराने अंग्रजई म इसका कोई शबद नई; यो श्रेणी तब मिला जब 1066 क बाद विद्वानों नै लैटिन व्याकरण क अंग्रजई म अनुवाद शुरू कइ।"
+      },    "keywords": [
       "boy",
       "school",
       "book"

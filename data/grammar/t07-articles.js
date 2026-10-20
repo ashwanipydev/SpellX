@@ -8,7 +8,38 @@
     "titleHindi": "आर्टिकल (a, an, the)",
     "level": 1,
     "levelLabel": "Level 1 — Basic Grammar",
-    "keywords": [
+    "chapter": 1,
+    "chapterTitle": "The First Words",
+    "storyScene": [
+            {
+                  "en": "Ravi is nervous about tomorrow s client meeting.",
+                  "hi": "रवि को कल की client meeting से घमा-घम है।"
+            },
+            {
+                  "en": "He writes in his notebook: \"The a meeting will be difficult.\"",
+                  "hi": "अपने नोटबुक में लिखते हैं: The a meeting will be difficult."
+            },
+            {
+                  "en": "Sam crosses out a: \"Use a before a consonant sound: a meeting, a file.\"",
+                  "hi": "सैम a पर क्रॉस करते हैं: consonant sound से पहले a लगता है: a meeting, a file."
+            },
+            {
+                  "en": "And \"an\" before a vowel sound: \"an email, an office.\"",
+                  "hi": "और vowel sound से पहले an लगता है: an email, an office."
+            },
+            {
+                  "en": "Ravi s email to the client finally reads clean.",
+                  "hi": "रवि की क्लाइंट के लिए ईमेल अंत में साफ़ लिखी जाती है।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned articles — a, an and the — the tiny words that make English correct.",
+            "hi": "रवि को article समझ आया — a, an, the — ये छोटे शब्द अंग्रेज़ी को सही बनाते हैं।"
+      },
+    "whyRule": {
+        "en": "A and an are the old word one — an apple originally meant one apple. The comes from the Old English words se, sa, that — which just meant that. Articles had no place in Old English; they crept in from the demonstratives.",
+        "hi": "A व an पुराना शबद one हें — an apple मूल में एक सेब क मतलब दई। The पुराने अंग्रजई शबद se, sa, that सें आ गय — जो सिर्फ वो क मतलब दई। पुराने अंग्रजई में article का कोई ठिकाना नई; ओ demonstrative से चोरी क आई।"
+      },    "keywords": [
       "a",
       "an",
       "the"

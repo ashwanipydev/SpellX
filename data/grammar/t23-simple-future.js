@@ -8,7 +8,38 @@
     "titleHindi": "सामान्य भविष्यत् काल",
     "level": 3,
     "levelLabel": "Level 3 — Tenses",
-    "keywords": [],
+    "chapter": 3,
+    "chapterTitle": "The Flow of Time",
+    "storyScene": [
+            {
+                  "en": "The client asks, \"By the time you arrive, will you have finished the file?\"",
+                  "hi": "client पूछतें हैं: By the time you arrive, will you have finished the file?"
+            },
+            {
+                  "en": "Ravi answers, \"Yes, I will have finished it by then.\"",
+                  "hi": "रवी जवाब देतें हैं: Yes, I will have finished it by then."
+            },
+            {
+                  "en": "Sam says, \"That is the future perfect — something that will be done before a future moment.\"",
+                  "hi": "सैम कहतें हैं: यह future perfect है — future कें किसी समय सें पहिले पूरा होत कृय।"
+            },
+            {
+                  "en": "I will have worked here for three years by next month. She will have left by Friday.",
+                  "hi": "I will have worked here for three years by next month. She will have left by Friday."
+            },
+            {
+                  "en": "Ravi can now promise exactly when a job will be done.",
+                  "hi": "अब रवी exact time तें बत सकतें हैं कौन से कृय कब तक पूरी होत हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned the future perfect — will have + V3 for what will be done before a future point.",
+            "hi": "रवी कें future perfect समझ आयो — will have + V3, जो future में पूरी होत हैं।"
+      },
+    "whyRule": {
+        "en": "\"Will have + V3\" is the most modern tense in English. It did not exist as a fixed form before the 1700s. Writers needed a way to say \"this will be done before that\", and they built it from pieces they already had. It is grammar as engineering.",
+        "hi": "\"Will have + V3\" अंग्रेज़ी म सबसं आधुनिक tense हें। 1700 सें पहिले ओ fixed रूप म नई। लेखकों क ज़रूरतई \"यो उसे सें पहिले पूरी हबें\" बोलन क, व उनो ओही टुकड़ा सें बनई जे उनो मजुदई। यो व्याकरण क इंजीनियरिंग हें।"
+      },    "keywords": [],
     "summary": "Plans and predictions: I will go.",
     "explanationHindi": "सामान्य भविष्यत् काल उन कामों के लिए आता है जो आगे चलकर होंगे। इसका ढाँचा है—कर्ता + will + क्रिया का मूल रूप। यह will हर कर्ता के साथ एक जैसा ही रहता है। योजना, वादा या अनुमान बताने के लिए यह काल बहुत काम आता है।",
     "points": [

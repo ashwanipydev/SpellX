@@ -8,7 +8,38 @@
     "titleHindi": "सकारात्मक वाक्य",
     "level": 2,
     "levelLabel": "Level 2 — Making Sentences",
-    "keywords": [],
+    "chapter": 2,
+    "chapterTitle": "Building Sentences",
+    "storyScene": [
+            {
+                  "en": "The manager says to Ravi, \"Write a short email: I like the new desk.\"",
+                  "hi": "manager रवि को कहते हैं: एक छोटी ईमेल लिखो: I like the new desk."
+            },
+            {
+                  "en": "That is a positive sentence — the verb shows the real meaning directly.",
+                  "hi": "यह positive sentence है — verb सच directly बताता है।"
+            },
+            {
+                  "en": "Ravi practices: \"Ravi works in Lucknow. The client speaks English. The cat sleeps on the sofa.\"",
+                  "hi": "रवि practice करते हैं: Ravi works in Lucknow. The client speaks English. The cat sleeps on the sofa."
+            },
+            {
+                  "en": "Sam says, \"Positive sentences are the base. We will add negatives soon.\"",
+                  "hi": "सैम कहते हैं: positive sentence नींव है। हम अंत में negative जोड़ेंगे।"
+            },
+            {
+                  "en": "Ravi s sentences now stand straight, like a person at attention.",
+                  "hi": "रवि के वाक्य अब सीधे खड़े लगते हैं, जैसे सैनिक खड़े हों।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned positive sentences — plain statements where the verb carries the meaning.",
+            "hi": "रवि को positive sentence समझ आया — ये सिधा बातें हैं जहाँ verb meaning देता है।"
+      },
+    "whyRule": {
+        "en": "A positive sentence is the default. Every language has one. English needed no special marker for this is happening — the verb itself carried the meaning. Negation and questions borrowed helpers from elsewhere.",
+        "hi": "Positive sentence डिफ़ॉल्ट हें। हर भाषा में एको हें। अंग्रजई का this is happening क लिए कोई special marker जरूरत नई — verb खोद मतलब ढोई। Negation व question ने दूसर जगह से helper उधार लई।"
+      },    "keywords": [],
     "summary": "Statements that say something is true.",
     "explanationHindi": "सकारात्मक वाक्य वे होते हैं जिनमें हम किसी बात को सच बताते हैं। इनमें कर्ता पहले आता है और उसके बाद क्रिया। ऐसे वाक्य में not नहीं होता और न ही कोई प्रश्न पूछा जाता। हमारी रोज़ की बातचीत के ज़्यादातर वाक्य इसी तरह के होते हैं।",
     "points": [

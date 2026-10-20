@@ -8,7 +8,38 @@
     "titleHindi": "अधिकारसूचक शब्द",
     "level": 4,
     "levelLabel": "Level 4 — Important Grammar",
-    "keywords": [
+    "chapter": 4,
+    "chapterTitle": "The Word Toolkit",
+    "storyScene": [
+            {
+                  "en": "The client s car breaks down. Ravi says, \"Is this your car?\"",
+                  "hi": "client का गाड़ी खराब होई। रवी बोलतें हैं: Is this your car?"
+            },
+            {
+                  "en": "Sam says, \"Your is a possessive pronoun. And car belongs to the client, so it is his car.\"",
+                  "hi": "सैम कहतें हैं: your possessive pronoun होतें हैं। व car client कें हैं, so his car."
+            },
+            {
+                  "en": "My, your, his, her, its, our, their — these are possessive adjectives.",
+                  "hi": "my, your, his, her, its, our, their — यो possessive adjectives हैं।"
+            },
+            {
+                  "en": "Ravi practices: \"My desk. Your file. His car. Her phone. Our office. Their meeting.\"",
+                  "hi": "रवी practice करतें हैं: My desk. Your file. His car. Her phone. Our office. Their meeting."
+            },
+            {
+                  "en": "Now Ravi can say who owns what, clearly.",
+                  "hi": "अब रवी clearly बत सकतें हैं कौन के कौन से हैं।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned possessive adjectives — my, your, his, her, its, our, their — that show ownership.",
+            "hi": "रवी कें possessive adjectives समझ आयो — my, your, his, her, its, our, their — यो ownership बतातें हैं।"
+      },
+    "whyRule": {
+        "en": "My comes from the Old English min, and your comes from thyn. These are not new words — they are the possessive forms of the pronouns that Old English already had. The apostrophe form (Ravi s) is a 300-year-old shortcut for of Ravi.",
+        "hi": "My पुराने अंग्रेज़ी min से, व your thyn से आया। ये नए शब्द नहीं हैं — ये वही possessive रूप हैं जो पुराने अंग्रेज़ी में पहले से थे। Apostrophe रूप (Ravi s) 300 साल पुराना of Ravi का शॉर्टकट है।"
+      },    "keywords": [
       "my",
       "your",
       "his",

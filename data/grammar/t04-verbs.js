@@ -8,7 +8,38 @@
     "titleHindi": "क्रिया",
     "level": 1,
     "levelLabel": "Level 1 — Basic Grammar",
-    "keywords": [
+    "chapter": 1,
+    "chapterTitle": "The First Words",
+    "storyScene": [
+            {
+                  "en": "The boss asks Ravi to type a short report for the manager.",
+                  "hi": "बॉस रवि को मैनजर के लिए छोटा रिपोर्ट लिखने को कहते हैं।"
+            },
+            {
+                  "en": "Ravi writes, \"The manager is happy.\" Sam smiles.",
+                  "hi": "रवि लिखते हैं: The manager is happy. सैम मुस्कुराते हैं।"
+            },
+            {
+                  "en": "Good! The word \"is\" is the action — here it shows a state.",
+                  "hi": "बढ़िया! \"is\" यही कृया है — यहां अवस्था बताती है।"
+            },
+            {
+                  "en": "Ravi works. The coffee boils. The printer prints. — Ravi practices all day.",
+                  "hi": "Ravi works. The coffee boils. The printer prints. — रवि पूरा दिन अभ्यास करते हैं।"
+            },
+            {
+                  "en": "By night, Ravi feels the verb is the engine of every sentence.",
+                  "hi": "रात तक रवि के मन में लगता है verb हर वाक्य का इंजन है।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned that a verb is the doing word — the engine of every sentence.",
+            "hi": "रवि को समझ आया verb वह शब्द है जो कृया बताता है।"
+      },
+    "whyRule": {
+        "en": "In Old English the verb changed its form for person and number: ic eom, thu eart, he is. English dropped most of those endings, leaving only is versus are. The verb became the one part of a sentence that could still show who is doing what.",
+        "hi": "पुराने अंग्रजई में verb क रूप person व number क बदलई: ic eom, thu eart, he is। अंग्रजई नै अधिकांश ending गायब कइ, सिर्फ is व are बचई। Verb अब वह एक हिसा बनाई जो हो बिकी रहई कि कौन क्या करत हें।"
+      },    "keywords": [
       "eat",
       "play",
       "go"

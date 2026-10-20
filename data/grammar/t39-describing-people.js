@@ -8,7 +8,38 @@
     "titleHindi": "लोगों का वर्णन करना",
     "level": 5,
     "levelLabel": "Level 5 — Speaking & Writing",
-    "keywords": [],
+    "chapter": 5,
+    "chapterTitle": "Speak & Write Like a Pro",
+    "storyScene": [
+            {
+                  "en": "The manager asks Ravi to write a paragraph for the company website.",
+                  "hi": "manager रवী कें बोलतें हैं: company website के लिए paragraph लिखो।"
+            },
+            {
+                  "en": "Ravi writes three sentences. Sam says, \"A paragraph is more than three lines.\"",
+                  "hi": "रवী तीन sentence लिखतें हैं। सैम कहतें हैं: paragraph तीन lines से ज़्यादा हैं।"
+            },
+            {
+                  "en": "Start with a topic sentence. Add support. End with a close.",
+                  "hi": "topic sentence से शुरुआत करो। support जोड़ो। अंत में close लिखो।"
+            },
+            {
+                  "en": "Ravi rewrites it: one topic, three supporting lines, one closing line.",
+                  "hi": "रवī फिर से लिखतें हैं: एक topic, तीन supporting lines, एक closing line।"
+            },
+            {
+                  "en": "The manager reads it and says, \"This is good, Ravi. You can write now.\"",
+                  "hi": "manager पढ़ के कहतें हैं: यह अच्छा है, रवी। अब तुम लिख सकतें हो।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi learned to write a paragraph — topic, support, and close.",
+            "hi": "रवī के paragraph लिखनो समझ आयो — topic, support, व close।"
+      },
+    "whyRule": {
+        "en": "The paragraph as a unit of writing is a 15th-century invention, born with the printing press. Before that, text ran in blocks. The topic sentence, support, close structure was formalized by rhetoricians in the 1700s. It is a convention, not a law of language.",
+        "hi": "Paragraph लेखन क इकता unit 15व शताब्दी क आविष्कार होय, print press क साथ जनमल होय। पहिले text ब्लॉक म चलत थो। Topic sentence, support, close संरचना 1700 म rhetoricians द्वरत होई। यो convention होय, भाषा क नियम नहिं।"
+      },    "keywords": [],
     "summary": "Talking about how people look, feel and behave.",
     "explanationHindi": "किसी व्यक्ति के बारे में बताने के लिए is, am या are के साथ विशेषण का प्रयोग करें। शरीर, बाल, आँखें और चश्मा बताने के लिए has या have का प्रयोग करें। स्वभाव और आदतों के लिए सामान्य वर्तमान काल का प्रयोग करें। अभी पहने हुए कपड़ों के लिए is wearing या are wearing कहिए।",
     "points": [

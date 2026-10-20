@@ -8,7 +8,38 @@
     "titleHindi": "अंग्रेज़ी उच्चारण",
     "level": 1,
     "levelLabel": "Level 1 — Basic Grammar",
-    "keywords": ["book", "table", "teacher"],
+    "chapter": 0,
+    "chapterTitle": "Say It Right",
+    "storyScene": [
+            {
+                  "en": "The client calls from London. Ravi answers, \"Hello, Ravi speaking.\"",
+                  "hi": "client London से call करतें हैं। रवī बोलतें हैं: Hello, Ravi speaking."
+            },
+            {
+                  "en": "The client says, \"You speak very well, Ravi. How did you do it?\"",
+                  "hi": "client बोलतें हैं: You speak very well, Ravi. How did you do it?"
+            },
+            {
+                  "en": "Ravi says, \"I learned the sounds. I learned the words. I learned the sentences. And I never stopped.\"",
+                  "hi": "रवī बोलतें हैं: I learned the sounds. I learned the words. I learned the sentences. And I never stopped."
+            },
+            {
+                  "en": "Sam, in the background, says, \"That is how you do it — one sound, one word, one sentence at a time.\"",
+                  "hi": "Sam, पीछे से, बोलतें हैं: This is how you do it — one sound, one word, one sentence at a time."
+            },
+            {
+                  "en": "The client says, \"We want to work with you, Ravi.\" Ravi smiles. He has arrived.",
+                  "hi": "client बोलतें हैं: We want to work with you, Ravi. रवī मुसकराता है। वह पहुँच गया है।"
+            }
+      ],
+    "storyRecap": {
+            "en": "Ravi reached the end of the book. He can now speak and write English — because he learned it one sound, one word, and one sentence at a time.",
+            "hi": "रवī बुक के अंत पर पहुँच गया है। अब वह English बोल व लिख सकता है — because वह एक sound, एक word, एक sentence के बाद सीखा है।"
+      },
+    "whyRule": {
+        "en": "English pronunciation is irregular because spelling froze in the 1500s while sounds kept changing — the Great Vowel Shift. Knight was once pronounced with a hard k. The silent k, the silent gh, the ough in cough, through, tough — all are fossils of sounds that died 500 years ago.",
+        "hi": "अंग्रेजी uccaran aniyamit hoī kyoñko 1500 kē dasak m lipi thik rahī vaurī āvājen badalte rahī — the Great Vowel Shift. Knight ekdā hard k sē bolā jāī thī. Nīm k, nīm gh, cough through tough k ough — sab 500 varsha pūrāne āvājon k jīvāshm hē jō mar gaī।"
+      },    "keywords": ["book", "table", "teacher"],
     "summary": "Count spoken syllables and find the strongest beat in a word.",
     "explanationHindi": "Syllable यानी शब्द बोलते समय सुनाई देने वाली ध्वनि की इकाई, जिसके केन्द्र में सामान्यतः एक vowel sound होता है। Word stress में किसी एक syllable को बाकी से अधिक स्पष्ट और ज़ोर देकर बोला जाता है। लिखे हुए vowel letters गिनने के बजाय बोले गए vowel sounds सुनें। सही stress सीखने के लिए शब्द को धीरे बोलें, dictionary audio सुनें और फिर अभ्यास करें।",
     "points": [
