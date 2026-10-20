@@ -549,6 +549,14 @@
       return "Put the words in order";
     }
 
+    function storyContext(it) {
+      if (!it.storyContext) { return null; }
+      return U.h("div", { "class": "gr-practice-story" }, [
+        U.h("div", { "class": "prompt-sub", text: "From Ravi’s story · apply the same rule" }),
+        U.h("p", { "class": "gr-practice-story-text", text: it.storyContext })
+      ]);
+    }
+
     function drawProduction(it) {
       var input = U.h("textarea", {
         "class": "gr-production-input", rows: 3, placeholder: "Write your sentence here…",
@@ -579,6 +587,8 @@
           "class": "btn btn-secondary", type: "button", text: "I need more practice"
         })
       ]);
+      var context = storyContext(it);
+      if (context) { body.appendChild(context); }
       body.appendChild(prompt);
       body.appendChild(input);
       body.appendChild(reveal);
@@ -610,6 +620,8 @@
         U.h("div", { "class": "gr-sentence", text: it.prompt }),
         (it.type === "spot" && it.sentence) ? U.h("div", { "class": "gr-sentence gr-sentence-2", text: it.sentence }) : null
       ]);
+      var context = storyContext(it);
+      if (context) { body.appendChild(context); }
       var shell = U.questionShell({ prompt: promptCard, options: opts, countText: "" });
       body.appendChild(shell);
       var answered = false;
@@ -644,6 +656,8 @@
         U.h("div", { "class": "prompt-sub", text: typeLabel(it) }),
         U.h("div", { "class": "gr-sentence", text: it.prompt || "Put the words in the right order." })
       ]);
+      var context = storyContext(it);
+      if (context) { body.appendChild(context); }
       body.appendChild(promptCard);
       body.appendChild(slotRow);
       body.appendChild(tray);

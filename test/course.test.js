@@ -78,6 +78,13 @@ chk(q10 === 53, 'every topic has 10 exercises', q10);
 chk(idsOk === 53, 'topic ids 1..53 present', idsOk);
 const totalQ = grammarExercises.reduce(function (a, c) { return a + c.exercises.length; }, 0);
 chk(totalQ === 530, '530 exercises in total', totalQ);
+const storyLinkedExercises = grammarExercises.reduce(function (count, c) {
+  const story = GRAMMAR_STORY_SCENES[c.topicId];
+  return count + (story && Array.isArray(story.scene) && c.exercises.every(function (exercise) {
+    return story.scene.some(function (line) { return line.en === exercise.storyContext; });
+  }) ? c.exercises.length : 0);
+}, 0);
+chk(storyLinkedExercises === 530, 'every grammar exercise links to a line from its topic story', storyLinkedExercises);
 let rulesOk = 0;
 grammarTopics.forEach(function (t) { if (t.rules && t.rules.pattern && (t.rules.forms || []).length === 3) { rulesOk += 1; } });
 chk(rulesOk === 53, 'every topic has a rule block with 3 forms', rulesOk);
@@ -194,6 +201,10 @@ try {
 } catch (e) { err = e; }
 chk(!err, 'practice view renders', err && err.message);
 chk(!!clickable, 'practice offers an answer control');
+const practiceStory = env.main.querySelector('.gr-practice-story');
+chk(!!practiceStory, 'practice question shows its Ravi story context');
+chk(!!practiceStory && practiceStory.textContent.indexOf('From Ravi’s story') !== -1,
+  'practice story context explains its connection to the rule');
 if (clickable) {
   const before = B850.state.answers.total;
   const opt = env.main.querySelector('.option');
@@ -214,6 +225,7 @@ if (clickable) {
 B850.screens.grammar.render({ view: 'practice', id: 10 });
 const productionInput = env.main.querySelector('.gr-production-input');
 chk(!!productionInput, 'early grammar practice includes a sentence-production task');
+chk(!!env.main.querySelector('.gr-practice-story'), 'sentence-production task includes its Ravi story context');
 const productionButtons = env.main.querySelectorAll('.btn');
 const showExample = productionButtons.filter(function (b) { return b.textContent === 'Show an example'; })[0];
 const canDoIt = productionButtons.filter(function (b) { return b.textContent === 'I can do this'; })[0];

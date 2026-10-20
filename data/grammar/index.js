@@ -28,9 +28,19 @@ const grammarTopics = GRAMMAR_REGISTRY
   });
 
 const grammarExercises = GRAMMAR_REGISTRY.map(function (t) {
+  const story = GRAMMAR_STORIES[t.id];
+  const scene = story && Array.isArray(story.scene) ? story.scene : [];
   return {
     topicId: t.id, hindiReviewed: t.hindiReviewed === true,
-    examples: t.examples || [], exercises: t.exercises || []
+    examples: t.examples || [],
+    exercises: (t.exercises || []).map(function (exercise, index) {
+      const copy = {};
+      Object.keys(exercise).forEach(function (key) { copy[key] = exercise[key]; });
+      if (scene.length) {
+        copy.storyContext = scene[index % scene.length].en;
+      }
+      return copy;
+    })
   };
 });
 

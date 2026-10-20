@@ -108,6 +108,8 @@ Grammar
     topics), exceptions, and an optional reviewed Hindi memory tip
   - 530 practice activities (10 per topic): chooser, cloze, word-order,
     spot-the-mistake, and self-assessed sentence production
+  - Every practice item includes a matching line from its lesson's Ravi story
+    as a clue for applying the same grammar rule
   - Hindi help is hidden by default and only shown when enabled and
     explicitly marked reviewed; lesson stories are withheld until their
     English scenes are checked against the lesson topic
