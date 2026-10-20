@@ -8,7 +8,7 @@ topics.forEach(function(t){var r=g[t.id];if(r){r.done&&(done+=1);ok+=r.correct||
 var acc=tried?Math.round(ok/tried*100):0,
 card=U.h("div",{class:"card"}),
 weak=null;
-[0,1,2,3,4,5].forEach(function(n){
+[0,1,2,3,4,5,6].forEach(function(n){
 var items=topics.filter(function(t){return t.chapter===n;});
 if(!items.length){return;}
 var d=0,c=0,a=0;

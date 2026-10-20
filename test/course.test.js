@@ -31,7 +31,7 @@ let m;
 while ((m = re.exec(html))) { listed.push(m[1].replace('data/grammar/', '')); }
 
 const onDisk = fs.readdirSync(path.join(ws, 'data', 'grammar')).filter(function (f) { return /\.js$/.test(f); }).sort();
-chk(listed.length === 49, 'index.html lists 47 topic files + chapters.js + index.js', listed.length);
+chk(listed.length === 56, 'index.html lists 53 topic files + chapters.js + ch6.js + index.js', listed.length);
 chk(listed[listed.length - 1] === 'index.js', 'index.js is loaded last', listed[listed.length - 1]);
 chk(listed.length - 1 === onDisk.length - 1, 'every file on disk is listed', onDisk.length);
 const missing = onDisk.filter(function (f) { return listed.indexOf(f) === -1; });
@@ -51,16 +51,16 @@ B850.state = S.load();
 B850.ui.init();
 B850.ui.navigate = function (name, params) { B850.screens[name].render(params); };
 
-chk(typeof GRAMMAR_TOPICS !== 'undefined' && GRAMMAR_TOPICS.length === 47, 'registry holds 47 topics', typeof GRAMMAR_TOPICS !== 'undefined' ? GRAMMAR_TOPICS.length : 'missing');
-chk(grammarTopics.length === 47, 'grammarTopics rebuilt with 47 entries', grammarTopics.length);
-chk(grammarExercises.length === 47, 'grammarExercises rebuilt with 47 entries', grammarExercises.length);
+chk(typeof GRAMMAR_TOPICS !== 'undefined' && GRAMMAR_TOPICS.length === 53, 'registry holds 53 topics', typeof GRAMMAR_TOPICS !== 'undefined' ? GRAMMAR_TOPICS.length : 'missing');
+chk(grammarTopics.length === 53, 'grammarTopics rebuilt with 53 entries', grammarTopics.length);
+chk(grammarExercises.length === 53, 'grammarExercises rebuilt with 53 entries', grammarExercises.length);
 chk(B850.data.total === 850, 'word dataset still 850', B850.data.total);
 
 // ---- 3. per-topic detail
 const dev = /[\u0900-\u097F]/;
 let ex5 = 0, q10 = 0, pts3 = 0, hi = 0, idsOk = 0;
 grammarTopics.forEach(function (t) {
-  if (t.id >= 1 && t.id <= 47) { idsOk += 1; }
+  if (t.id >= 1 && t.id <= 53) { idsOk += 1; }
   if (dev.test(t.explanationHindi || '')) { hi += 1; }
   if ((t.points || []).length === 3) { pts3 += 1; }
 });
@@ -68,16 +68,16 @@ grammarExercises.forEach(function (c) {
   if ((c.examples || []).length === 5) { ex5 += 1; }
   if ((c.exercises || []).length === 10) { q10 += 1; }
 });
-chk(hi === 47, 'every topic has a Hindi explanation', hi);
-chk(pts3 === 47, 'every topic has 3 key points', pts3);
-chk(ex5 === 47, 'every topic has 5 examples', ex5);
-chk(q10 === 47, 'every topic has 10 exercises', q10);
-chk(idsOk === 47, 'topic ids 1..47 present', idsOk);
+chk(hi === 53, 'every topic has a Hindi explanation', hi);
+chk(pts3 === 53, 'every topic has 3 key points', pts3);
+chk(ex5 === 53, 'every topic has 5 examples', ex5);
+chk(q10 === 53, 'every topic has 10 exercises', q10);
+chk(idsOk === 53, 'topic ids 1..53 present', idsOk);
 const totalQ = grammarExercises.reduce(function (a, c) { return a + c.exercises.length; }, 0);
-chk(totalQ === 470, '470 exercises in total', totalQ);
+chk(totalQ === 530, '530 exercises in total', totalQ);
 let rulesOk = 0;
 grammarTopics.forEach(function (t) { if (t.rules && t.rules.pattern && (t.rules.forms || []).length === 3) { rulesOk += 1; } });
-chk(rulesOk === 47, 'every topic has a rule block with 3 forms', rulesOk);
+chk(rulesOk === 53, 'every topic has a rule block with 3 forms', rulesOk);
 
 // ---- 3b. story + why fields
 let storyOk = 0, chOk = 0, whyOk = 0;
@@ -86,19 +86,19 @@ grammarTopics.forEach(function (t) {
   if (typeof t.chapter === 'number' && typeof t.chapterTitle === 'string') { chOk += 1; }
   if (t.whyRule && t.whyRule.en && t.whyRule.hi) { whyOk += 1; }
 });
-chk(storyOk === 47, 'every topic has a story scene with >= 4 lines', storyOk);
-chk(chOk === 47, 'every topic has chapter + chapterTitle', chOk);
-chk(whyOk === 47, 'every topic has a whyRule (EN + HI)', whyOk);
+chk(storyOk === 53, 'every topic has a story scene with >= 4 lines', storyOk);
+chk(chOk === 53, 'every topic has chapter + chapterTitle', chOk);
+chk(whyOk === 53, 'every topic has a whyRule (EN + HI)', whyOk);
 
 // ---- 4. levels view
 let err = null;
 try { B850.screens.grammar.render({}); } catch (e) { err = e; }
 chk(!err, 'levels view renders', err && err.message);
-chk(env.main.querySelectorAll('.topic-row').length === 47, '47 topic rows', env.main.querySelectorAll('.topic-row').length);
-chk(env.main.querySelectorAll('.level-head').length === 6, '6 chapter sections', env.main.querySelectorAll('.level-head').length);
-chk(env.main.querySelectorAll('.book-ch-intro').length === 6, '6 chapter intros rendered', env.main.querySelectorAll('.book-ch-intro').length);
-chk(env.main.querySelectorAll('.book-ch-intro-hi').length === 6, '6 chapter Hindi intros rendered', env.main.querySelectorAll('.book-ch-intro-hi').length);
-chk(env.main.querySelectorAll('.topic-num').length === 47, '47 numbered topic rows', env.main.querySelectorAll('.topic-num').length);
+chk(env.main.querySelectorAll('.topic-row').length === 53, '53 topic rows', env.main.querySelectorAll('.topic-row').length);
+chk(env.main.querySelectorAll('.level-head').length === 7, '7 chapter sections', env.main.querySelectorAll('.level-head').length);
+chk(env.main.querySelectorAll('.book-ch-intro').length === 7, '7 chapter intros rendered', env.main.querySelectorAll('.book-ch-intro').length);
+chk(env.main.querySelectorAll('.book-ch-intro-hi').length === 7, '7 chapter Hindi intros rendered', env.main.querySelectorAll('.book-ch-intro-hi').length);
+chk(env.main.querySelectorAll('.topic-num').length === 53, '53 numbered topic rows', env.main.querySelectorAll('.topic-num').length);
 
 // ---- 5. topic view with the new detail
 err = null;
@@ -169,11 +169,11 @@ err = null;
 try { B850.screens.stats.render(); } catch (e) { err = e; }
 chk(!err, 'stats renders', err && err.message);
 const names = env.main.querySelectorAll('.cat-name').map(function (n) { return n.textContent; });
-chk(names.filter(function (n) { return n.indexOf('Ch ') === 0; }).length === 6, 'stats shows 6 grammar chapter rows');
+chk(names.filter(function (n) { return n.indexOf('Ch ') === 0; }).length === 7, 'stats shows 7 grammar chapter rows');
 chk(names.filter(function (n) { return /Operations|Things|Qualities/.test(n); }).length === 5, 'stats still shows 5 word categories');
 const summary = env.main.querySelectorAll('.screen-sub').map(function (n) { return n.textContent; })
   .filter(function (t) { return t.indexOf('Topics done') === 0; })[0] || '';
-chk(summary.indexOf('Topics done 1/47') !== -1, 'stats summary reports topics done', summary);
+chk(summary.indexOf('Topics done 1/53') !== -1, 'stats summary reports topics done', summary);
 
 // ---- 8. home card
 err = null;
@@ -185,7 +185,7 @@ const grammarCard = env.main.querySelectorAll('.mode-card').filter(function (c) 
 chk(!!grammarCard, 'home shows the Grammar card');
 if (grammarCard) {
   const texts = grammarCard.querySelectorAll('.mode-desc').map(function (d) { return d.textContent; });
-  chk(texts.join(' ').indexOf('47 topics') !== -1, 'card describes the course', texts.join(' | '));
+  chk(texts.join(' ').indexOf('53 topics') !== -1, 'card describes the course', texts.join(' | '));
 }
 
 // ---- 9. legacy save migration
