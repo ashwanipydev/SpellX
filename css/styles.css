@@ -540,6 +540,8 @@ main.content{max-width:480px;margin:0 auto;padding:calc(var(--topbar-h) + 20px) 
 .gr-help-hi{margin:6px 0 0;font-size:15px;line-height:1.55;color:var(--text)}
 .gr-points{margin:10px 0 0;padding-left:18px;font-size:14px;color:var(--text-2)}
 .gr-points li{margin:4px 0;line-height:1.45}
+.gr-production-input{display:block;width:100%;min-height:96px;margin:10px 0;padding:12px;border:1px solid var(--line-2);border-radius:var(--radius-sm);background:var(--card);color:var(--text);font:inherit;resize:vertical}
+.gr-production-input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .gr-reference-list{display:flex;flex-direction:column;gap:10px}
 .gr-reference-item{display:flex;flex-direction:column;gap:3px;padding:9px 0;border-top:1px solid var(--card-3);line-height:1.4}
 .gr-reference-item:first-child{padding-top:0;border-top:0}

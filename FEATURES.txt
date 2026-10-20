@@ -8,8 +8,8 @@ of Ogden's Basic English to Hindi-speaking learners.
  CORE PURPOSE
 --------------------------------------------------------------------
 - Teaches the 850 words of Ogden's Basic English to Hindi speakers
-- Also ships a playable 47-topic English grammar course (5 levels,
-  470 exercises, 235 example sentences, one data file per topic)
+- Also ships a playable 53-topic English grammar course (5 levels,
+  530 practice activities, 265 example sentences, one data file per topic)
 - Mobile-first, zero dependencies (vanilla HTML/CSS/JavaScript)
 - Zero network calls — everything is local
 - Runs by double-clicking index.html from file:// (no server needed)
@@ -93,20 +93,24 @@ Stats
 
 Settings
   - Hindi-first vs English-first prompts
+  - Reviewed Hindi grammar help (off by default; unreviewed translations stay hidden)
   - TTS voice + rate
   - Sound on/off
   - Daily goal size (10 / 20 / 30 / 50)
   - Reset
 
 Grammar
-  - 47 topics in 5 levels, English + Hindi titles
-  - Level list -> topic (RULE card, summary, Hindi explanation,
+  - 53 topics in 5 levels across 7 sections (chapter data numbered 0–6)
+  - Level list -> topic (RULE card, English summary,
     3 rule points, keywords, 5 examples) -> practice
   - Rule card = formula pattern, 3 labelled forms (positive /
     negative / question, or form / example / avoid on the skills
-    topics), exceptions, and a Hindi memory tip
-  - 470 exercises (10 per topic): chooser, cloze, word-order,
-    spot-the-mistake
+    topics), exceptions, and an optional reviewed Hindi memory tip
+  - 530 practice activities (10 per topic): chooser, cloze, word-order,
+    spot-the-mistake, and self-assessed sentence production
+  - Hindi help is hidden by default and only shown when enabled and
+    explicitly marked reviewed; lesson stories are withheld until their
+    English scenes are checked against the lesson topic
   - One data file per topic under data/grammar/, so any single topic
     can be edited without touching the others
   - Session = 10 items mixed across the level, instant feedback
@@ -117,10 +121,10 @@ Grammar
     saves safely, and never touches the 850-word seen/learned maps
 
 --------------------------------------------------------------------
- GRAMMAR COURSE (47 topics, 5 levels) — LIVE
+ GRAMMAR COURSE (53 topics, 5 levels, 7 sections) — LIVE
 --------------------------------------------------------------------
-- data/grammar/ holds ONE FILE PER TOPIC: t01-alphabet-basic-words.js
-  through t47-english-pronunciation.js, plus index.js. Each topic
+- data/grammar/ holds one file per topic, plus chapters.js, the
+  supplementary chapter-six data, and index.js. Each topic
   file is a classic script that pushes its own object onto
   window.GRAMMAR_TOPICS, so load order does not matter and a missing
   file cannot scramble the others. index.js loads last and rebuilds
@@ -129,9 +133,9 @@ Grammar
   change for the split.
 - Topic fields (inside each t*.js file):
     id, topic (slug), title, titleHindi, level (1-5), levelLabel,
-    keywords[], summary, explanationHindi (2-4 sentences),
-    points[3] (key rules), rules {pattern, forms[3], exceptions,
-    hindiTip}, examples[5] {en, hi, note}, exercises[10],
+    keywords[], summary, optional explanationHindi, points[3],
+    rules {pattern, forms[3], exceptions, optional hindiTip},
+    examples[5] {en, optional hi, note}, exercises[10],
     optional modalGuide / verbFormGroups / studyGuide /
     pronunciationGuide references,
     sourceOrder, source
@@ -140,14 +144,16 @@ Grammar
     Level 2 — Making Sentences      8 topics (subject/predicate .. modals)
     Level 3 — Tenses               10 topics (including V1/V2/V3 verb forms)
     Level 4 — Important Grammar     8 topics (prepositions .. question words)
-    Level 5 — Speaking & Writing   10 topics (everyday sentences .. daily practice)
-  Total 47 topics, including modal verbs, V1/V2/V3 and pronunciation.
+    Level 5 — Speaking, writing and spelling 16 topics
+  Total 53 topics, including modal verbs, V1/V2/V3, pronunciation
+  and six spelling/writing topics in the seventh section.
 - Planned learning loop per topic:
     * Learn card: summary + keyword chips; every keyword that also
       exists in the 850-word dataset is cross-linked, so tapping
       "under" opens its pronunciation, Hindi meaning and example
-    * Practice: 4 exercise types (chooser, cloze, word order, spot)
-    * Topic screen also shows the Hindi explanation and the 3 rules
+    * Practice: choice, cloze, word order, error-spotting and
+      self-assessed writing tasks that require learner-produced text
+    * Hindi help is optional; unreviewed translations are not displayed
     * Mastery: seen / correct / wrong per topic, same XP curve as
       the word modes (10 + 5 x difficulty), same streak and goal
     * Level progress bar + "next topic" CTA on Home
@@ -229,22 +235,24 @@ Grammar
 - 0 external requests; 0 console / page errors
 - Test suites green:
     Spelling 26/26, Core 22/22, Payload 14/14
-    test/course.test.js 49/49 (grammar course end to end)
-- Grammar course now includes 47 topics, 235 examples, 470 exercises,
+    test/course.test.js (grammar course end to end)
+- Grammar course includes 53 topics, 265 examples, 530 practice items,
   the expanded modal guide, 76 V1/V2/V3 rows and pronunciation practice.
+- Reviewed Hindi grammar help is opt-in and hidden by default; unreviewed
+  translations are omitted. Story scenes are displayed only after their
+  English lesson alignment has been checked.
 
 ====================================================================
  IMPLEMENTATION PLAN — GRAMMAR COURSE
 ====================================================================
-Goal: turn data/grammar.js into a playable grammar course without
+Goal: turn the split data/grammar/ files into a playable grammar course without
 touching the word dataset and without adding dependencies or a build
 step.
 
 STATUS: Phases 0, 1, 2, 3 and 4 are DONE. The optional Phase 3 SRS
   hand-off is deliberately deferred (see KNOWN LIMITS).
-  - Phase 0: 47 topics x (5 examples + 10 exercises) = 235 sentences
-    and 470 exercises, plus a Hindi explanation and 3 rule points per
-    topic, authored then validated to 0 problems.
+  - Phase 0: 53 topics x (5 examples + 10 exercises) = 265 example
+    sentences and 530 exercises, with 3 rule points per topic.
   - Phase 1: script tags, BRAND map, state.grammar + migration, SW
     precache (cache b850-v8), Home grammar card with progress.
   - Phase 2: js/modes/grammar.js renders levels -> topic -> practice
@@ -256,7 +264,7 @@ STATUS: Phases 0, 1, 2, 3 and 4 are DONE. The optional Phase 3 SRS
   - Phase 4: one suite, test/course.test.js (49/49), runs the real app
     scripts under a DOM shim and loads exactly the files index.html
     lists - so an unlisted or missing topic file fails the build. It
-    covers wiring, all 47 topics, per-topic detail, levels, topic,
+    covers wiring, all 53 topics, per-topic detail, sections, topic,
     practice scoring, stats, the home card and legacy-save migration.
 
 EFFORT SUMMARY
@@ -303,7 +311,7 @@ PHASE 1 — Data plumbing (0.5 day)
     cache version so existing installs refresh.
   - js/modes/home.js: add one entry to the MODES array —
         { id:"grammar", name:"Grammar", emoji: <abc/book>,
-          desc:"47 topics, 5 levels" }
+          desc:"53 topics, 5 levels" }
     and a Home card showing level progress + "next topic".
   - Bottom tab bar stays at 5 items. Grammar opens from Home.
 
@@ -311,9 +319,9 @@ PHASE 2 — Screens (1.0 - 1.5 days)
   - New file js/modes/grammar.js registering
         B850.screens.grammar = { render: function (params) {...} }
     with params.view = "levels" | "topic" | "practice" | "result".
-  - Levels view: 5 collapsible sections; each topic row shows the
-    English title, the Hindi title, keyword chips, a status pill
-    (new / practising / done) and a mastery bar. Show 10/8/9/8/10
+  - Levels view: 7 sections; each topic row shows the English title,
+    an optional reviewed Hindi title, keyword chips, a status pill
+    (new / practising / done) and a mastery bar. Show 11/8/10/8/16
     counts per level so the course structure is visible.
   - Topic view: summary card, keyword chips (tap a keyword that is
     also in the 850-word dataset to open its word card), and a
@@ -341,9 +349,9 @@ PHASE 3 — Integration and polish (0.5 - 1.0 day)
   - Re-run the payload test and record the new number in QUALITY.
 
 PHASE 4 — Tests and docs (0.5 day)
-  - Grammar data test: 47 topics; ids 1-47; unique slugs; levels
-    exactly 10/8/9/8/10; every topic has >= 3 sentences and >= 8
-    exercises; every Hindi field non-empty and Devanagari.
+  - Grammar data test: 53 topics; ids 1-53; unique slugs; levels
+    11/8/10/8/16; every topic has five examples and ten exercises;
+    Hindi is shown only when reviewed and enabled by the learner.
   - Exercise test: exactly one correct answer per item; no duplicate
     options; distractors never equal the answer; no empty strings.
   - Vocabulary test: every word in every English sentence appears in
@@ -356,8 +364,8 @@ PHASE 4 — Tests and docs (0.5 day)
   - Update FEATURES.txt counts (9 -> 10 modes, payload figure).
 
 ACCEPTANCE CRITERIA
-  [x] Grammar opens from Home; all 47 topics reachable (47 rows)
-  [x] Level counts 10/8/9/8/10 present and rendered as 5 sections
+  [x] Grammar opens from Home; all 53 topics reachable (53 rows)
+  [x] Level counts 11/8/10/8/16 present across 5 levels and 7 sections
   [x] Every topic has 10 exercises (5 examples and 3 rule points);
       a 10-item session completes end to end
   [x] Mastery + XP persist; legacy saves migrate to grammar:{}
@@ -369,7 +377,7 @@ ACCEPTANCE CRITERIA
   [x] data/words.js byte-identical (hash unchanged)
   [x] Stats shows a Grammar block: five level rows, done counts,
       grammar accuracy and the weakest level
-  [x] One data file per topic, all 47 listed in index.html and
+  [x] One data file per topic, all 53 listed in index.html and
       precached by the service worker (cache b850-v4)
   [x] Every topic has a formula rule block: pattern + 3 labelled
       forms + exceptions + a Hindi tip, rendered as a Rule card

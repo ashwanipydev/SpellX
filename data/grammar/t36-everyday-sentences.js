@@ -189,16 +189,11 @@
         "note": "Keep the polite request short and direct"
       },
       {
-        "type": "cloze",
-        "prompt": "We ___ breakfast at seven every day.",
-        "options": [
-          "has",
-          "have",
-          "having",
-          "is have"
-        ],
-        "answer": 1,
-        "note": "Plural we take the plain verb have"
+        "type": "produce",
+        "prompt": "Write a short request you might use in a shop or at work.",
+        "instruction": "Write one polite, complete sentence. Read it aloud as if speaking to someone.",
+        "sample": "Could you help me find this file, please?",
+        "note": "Use a clear subject and verb, and keep everyday sentences concise."
       }
     ],
     "sourceOrder": 36,

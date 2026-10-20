@@ -186,16 +186,11 @@
         "note": "In questions the helper 'can' comes before the subject 'I'."
       },
       {
-        "type": "spot",
-        "prompt": "Find the mistake.",
-        "sentence": "He do not understand my question.",
-        "options": [
-          "He",
-          "do not",
-          "understand my question."
-        ],
-        "answer": 1,
-        "note": "With 'he', use 'does not', never 'do not'."
+        "type": "produce",
+        "prompt": "Continue this conversation: “Good morning. How are you?”",
+        "instruction": "Write a friendly reply and ask one small question back. Read the exchange aloud.",
+        "sample": "I am well, thank you. How are you?",
+        "note": "Take turns: answer the speaker, then ask one question to keep the conversation going."
       }
     ],
     "sourceOrder": 43,

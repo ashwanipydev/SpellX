@@ -188,15 +188,11 @@
         "note": "The subject they takes do in a question."
       },
       {
-        "type": "chooser",
-        "prompt": "Which question asks about a place?",
-        "options": [
-          "When does your uncle work?",
-          "Where does your uncle work?",
-          "Why does your uncle work?"
-        ],
-        "answer": 1,
-        "note": "Where is the question word for a place."
+        "type": "produce",
+        "prompt": "Ask a new colleague two questions about their work.",
+        "instruction": "Write one yes/no question and one question with where or when. Read them aloud.",
+        "sample": "Do you work in this office? Where do you have lunch?",
+        "note": "Put the helping verb before the subject in a yes/no question."
       }
     ],
     "sourceOrder": 15,

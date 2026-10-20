@@ -1,4 +1,4 @@
-/* Grammar course screen - 47 topics in 5 levels.
+/* Grammar course screen - 53 topics in 5 levels.
    Reads data/grammar.js (global grammarTopics) and data/grammar-exercises.js
    (global grammarExercises). Progress lives in state.grammar under the single
    "b850:v1" save key. */
@@ -118,6 +118,12 @@
   function chapters() {
     return (typeof GRAMMAR_CHAPTERS !== "undefined" && Array.isArray(GRAMMAR_CHAPTERS)) ? GRAMMAR_CHAPTERS : [];
   }
+  function showHindi(data) {
+    return !!(S.state.settings && S.state.settings.showGrammarHindi && data && data.hindiReviewed === true);
+  }
+  function chapterHeading(ch) {
+    return "Chapter " + ch.chapter + " — " + ch.title;
+  }
   function levelsView() {
     U.clearKey();
     var list = topics();
@@ -125,7 +131,7 @@
     root.appendChild(head("Grammar", doneCount() + "/" + list.length, function () { U.back(); }));
     root.appendChild(U.h("p", {
       "class": "screen-sub",
-      text: "47 topics in 6 chapters. A story of Ravi, a young office worker in Lucknow learning English."
+      text: list.length + " topics across " + chapters().length + " sections. A connected story follows Ravi as he learns English."
     }));
 
     if (!list.length) {
@@ -144,24 +150,29 @@
       var done = items.filter(function (t) { return rec(t.id).done; }).length;
       var box = U.h("div", { "class": "card book-chapter" });
       box.appendChild(U.h("div", { "class": "level-head" }, [
-        U.h("b", { text: "Chapter " + ch.chapter + " — " + ch.title }),
+        U.h("b", { text: chapterHeading(ch) }),
         U.h("span", { "class": "pill", text: done + "/" + items.length })
       ]));
-      box.appendChild(U.h("div", { "class": "book-ch-hi", text: ch.titleHindi }));
+      if (showHindi(ch) && ch.titleHindi) {
+        box.appendChild(U.h("div", { "class": "book-ch-hi", text: ch.titleHindi }));
+      }
       box.appendChild(U.h("p", { "class": "book-ch-intro", text: ch.intro }));
-      box.appendChild(U.h("p", { "class": "book-ch-intro-hi", text: ch.introHindi }));
+      if (showHindi(ch) && ch.introHindi) {
+        box.appendChild(U.h("p", { "class": "book-ch-intro-hi", text: ch.introHindi }));
+      }
       items.forEach(function (t, idx) {
         var r = rec(t.id), pct = Math.round(mastery(t.id) * 100);
         var label = r.done ? "done" : (r.seen ? pct + "%" : "new");
-        var num = (ch.chapter + 1) + "." + (idx + 1);
+        var num = ch.chapter + "." + (idx + 1);
+        var titleHi = showHindi(t) && t.titleHindi ? ", " + t.titleHindi : "";
         var row = U.h("button", {
           "class": "topic-row", type: "button",
-          "aria-label": num + " " + t.title + ", " + t.titleHindi + ". " + label
+          "aria-label": num + " " + t.title + titleHi + ". " + label
         }, [
           U.h("span", { "class": "topic-num", text: num }),
           U.h("span", { "class": "topic-main" }, [
             U.h("span", { "class": "topic-title", text: t.title }),
-            U.h("span", { "class": "topic-hi", text: t.titleHindi })
+            showHindi(t) && t.titleHindi ? U.h("span", { "class": "topic-hi", text: t.titleHindi }) : null
           ]),
           U.h("span", { "class": "pill" + (r.done ? " pill-good" : ""), text: label })
         ]);
@@ -188,23 +199,24 @@
       return;
     }
     var chNum = typeof t.chapter === "number" ? "Ch " + t.chapter : "";
-    root.appendChild(head(t.title, t.titleHindi + (chNum ? " · " + chNum : "")));
+    var topicSub = (showHindi(t) && t.titleHindi ? t.titleHindi + " · " : "") + chNum;
+    root.appendChild(head(t.title, topicSub));
 
-    /* story card — Ravi's scene for this topic */
-    if (t.storyScene && t.storyScene.length) {
+    /* Show only story scenes that have been checked against their lesson topic. */
+    if (t.storyReviewed && t.storyScene && t.storyScene.length) {
       var story = U.h("div", { "class": "card gr-story" });
       story.appendChild(U.h("div", { "class": "prompt-sub", text: "Ravi's story" }));
       t.storyScene.forEach(function (line) {
         story.appendChild(U.h("div", { "class": "gr-story-line" }, [
           U.h("div", { "class": "gr-story-en", text: line.en }),
-          line.hi ? U.h("div", { "class": "gr-story-hi", text: line.hi }) : null
+          showHindi(t) && line.hi ? U.h("div", { "class": "gr-story-hi", text: line.hi }) : null
         ]));
       });
       if (t.storyRecap) {
         story.appendChild(U.h("div", { "class": "gr-story-recap" }, [
           U.h("div", { "class": "prompt-sub", text: "What Ravi learned" }),
           U.h("div", { "class": "gr-story-en", text: t.storyRecap.en }),
-          t.storyRecap.hi ? U.h("div", { "class": "gr-story-hi", text: t.storyRecap.hi }) : null
+          showHindi(t) && t.storyRecap.hi ? U.h("div", { "class": "gr-story-hi", text: t.storyRecap.hi }) : null
         ]));
       }
       root.appendChild(story);
@@ -226,18 +238,18 @@
       if (t.rules.exceptions && t.rules.exceptions.length) {
         ruleCard.appendChild(U.h("div", { "class": "gr-rule-note", text: "Watch out: " + t.rules.exceptions.join("; ") }));
       }
-      if (t.rules.hindiTip) {
+      if (showHindi(t) && t.rules.hindiTip) {
         ruleCard.appendChild(U.h("p", { "class": "gr-help-hi", text: t.rules.hindiTip }));
       }
       root.appendChild(ruleCard);
     }
 
     /* why this rule — the history behind the rule */
-    if (t.whyRule) {
+    if (t.whyRule && t.whyReviewed) {
       var why = U.h("div", { "class": "card gr-why" });
       why.appendChild(U.h("div", { "class": "prompt-sub", text: "Why this rule?" }));
       why.appendChild(U.h("p", { "class": "gr-why-en", text: t.whyRule.en }));
-      if (t.whyRule.hi) {
+      if (showHindi(t) && t.whyRule.hi) {
         why.appendChild(U.h("p", { "class": "gr-why-hi", text: t.whyRule.hi }));
       }
       root.appendChild(why);
@@ -265,9 +277,9 @@
     }
     root.appendChild(card);
 
-    if (t.explanationHindi || (t.points && t.points.length)) {
+    if ((showHindi(t) && t.explanationHindi) || (t.points && t.points.length)) {
       var help = U.h("div", { "class": "card gr-help" });
-      if (t.explanationHindi) {
+      if (showHindi(t) && t.explanationHindi) {
         help.appendChild(U.h("div", { "class": "prompt-sub", text: "Hindi explanation" }));
         help.appendChild(U.h("p", { "class": "gr-help-hi", text: t.explanationHindi }));
       }
@@ -286,7 +298,7 @@
       c.examples.forEach(function (e) {
         ex.appendChild(U.h("div", { "class": "gr-ex" }, [
           U.h("div", { "class": "gr-ex-en", text: e.en }),
-          U.h("div", { "class": "gr-ex-hi", text: e.hi }),
+          showHindi(c) && e.hi ? U.h("div", { "class": "gr-ex-hi", text: e.hi }) : null,
           e.note ? U.h("div", { "class": "gr-ex-note", text: e.note }) : null
         ]));
       });
@@ -300,7 +312,7 @@
         return U.h("div", { "class": "gr-reference-item" }, [
           U.h("b", { text: m.name }),
           U.h("span", { text: m.use }),
-          U.h("span", { "class": "gr-ex-hi", text: m.hindi }),
+          showHindi(t) && m.hindi ? U.h("span", { "class": "gr-ex-hi", text: m.hindi }) : null,
           U.h("span", { "class": "gr-form-en", text: m.example })
         ]);
       })));
@@ -346,7 +358,7 @@
             U.h("td", { text: verb.v2 }),
             U.h("td", { text: verb.v3 }),
             U.h("td", {}, [
-              U.h("span", { "class": "gr-ex-hi", text: verb.hi }),
+              showHindi(t) && verb.hi ? U.h("span", { "class": "gr-ex-hi", text: verb.hi }) : null,
               U.h("span", { "class": "gr-form-en", text: verb.example })
             ])
           ]);
@@ -445,6 +457,8 @@
   }
   function buildSession(t, own) {
     var mine = own ? own.map(function (e) { return clone(e, t.id); }) : [];
+    var production = mine.filter(function (e) { return e.type === "produce"; });
+    var regular = mine.filter(function (e) { return e.type !== "produce"; });
     var pool = [];
     topics().forEach(function (x) {
       if (!x || x.level !== t.level || x.id === t.id) { return; }
@@ -454,7 +468,7 @@
     });
     var need = Math.max(0, 10 - mine.length);
     var picked = S.shuffle(pool).slice(0, need);
-    return S.shuffle(mine.concat(picked)).slice(0, 10);
+    return production.concat(S.shuffle(regular.concat(picked))).slice(0, 10);
   }
   function norm(s) {
     return String(s || "").toLowerCase().replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ").trim();
@@ -522,14 +536,71 @@
       body.innerHTML = "";
       var it = items[i];
       if (!it) { finish(); return; }
-      if (it.type === "order") { drawOrder(it); } else { drawChoice(it); }
+      if (it.type === "order") { drawOrder(it); }
+      else if (it.type === "produce") { drawProduction(it); }
+      else { drawChoice(it); }
     }
 
     function typeLabel(it) {
       if (it.type === "chooser") { return "Choose the correct sentence"; }
       if (it.type === "cloze") { return "Fill the gap"; }
       if (it.type === "spot") { return "Find the mistake"; }
+      if (it.type === "produce") { return "Write it in your own words"; }
       return "Put the words in order";
+    }
+
+    function drawProduction(it) {
+      var input = U.h("textarea", {
+        "class": "gr-production-input", rows: 3, placeholder: "Write your sentence here…",
+        "aria-label": "Your sentence"
+      });
+      input.value = "";
+      var sample = U.h("div", {
+        "class": "gr-sentence gr-sentence-2"
+      }, [U.h("b", { text: "Example: " }), U.h("span", { text: it.sample })]);
+      sample.style.display = "none";
+      var reveal = U.h("button", {
+        "class": "btn btn-secondary", type: "button", text: "Show an example"
+      });
+      reveal.addEventListener("click", function () {
+        sample.style.display = sample.style.display === "none" ? "block" : "none";
+        reveal.textContent = sample.style.display === "none" ? "Show an example" : "Hide example";
+      });
+      var prompt = U.h("div", { "class": "prompt-card card" }, [
+        U.h("div", { "class": "prompt-sub", text: typeLabel(it) }),
+        U.h("div", { "class": "gr-sentence", text: it.prompt }),
+        U.h("p", { "class": "screen-sub", text: it.instruction })
+      ]);
+      var actions = U.h("div", { "class": "fc-actions" }, [
+        U.h("button", {
+          "class": "btn btn-secondary", type: "button", text: "I can do this"
+        }),
+        U.h("button", {
+          "class": "btn btn-secondary", type: "button", text: "I need more practice"
+        })
+      ]);
+      body.appendChild(prompt);
+      body.appendChild(input);
+      body.appendChild(reveal);
+      body.appendChild(sample);
+      body.appendChild(actions);
+
+      var rated = false;
+      actions.children[0].addEventListener("click", function () {
+        if (rated) { return; }
+        if (!input.value.trim()) {
+          U.toast("Write your own sentence before rating it.");
+          input.focus();
+          return;
+        }
+        rated = true;
+        after(it, true, "Good work — you made your own sentence.");
+      });
+      actions.children[1].addEventListener("click", function () {
+        if (rated) { return; }
+        rated = true;
+        after(it, false, "Compare your sentence with the example and try again.");
+      });
     }
 
     function drawChoice(it) {

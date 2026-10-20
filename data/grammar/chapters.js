@@ -1,6 +1,6 @@
-// The grammar course as a book: 6 chapters.
+// The grammar course as a book: seven sections (Getting Started + chapters 1–6).
 // Each chapter is a phase of Ravi's life. One character carries the story
-// across all 47 topics so a reader can follow the grammar without studying it.
+// across 53 topics so a reader can follow the grammar without studying it.
 window.GRAMMAR_CHAPTERS = [
   {
     "chapter": 0,

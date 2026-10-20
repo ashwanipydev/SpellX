@@ -5,7 +5,8 @@
     "id": 10,
     "topic": "am-is-are",
     "title": "Am, Is, Are",
-    "titleHindi": "होना (am, is, are)",
+    "titleHindi": "Be क्रिया के वर्तमान रूप: am, is, are",
+    "hindiReviewed": true,
     "level": 1,
     "levelLabel": "Level 1 — Basic Grammar",
     "chapter": 1,
@@ -13,28 +14,28 @@
     "storyScene": [
             {
                   "en": "Ravi introduces himself at the office party.",
-                  "hi": "office party में रवि अपना पुरत introduction देते हैं।"
+                  "hi": "कार्यालय की पार्टी में रवि अपना परिचय देते हैं।"
             },
             {
                   "en": "\"I am Ravi. I am from Lucknow.\" He is happy to use the right am.",
-                  "hi": "I am Ravi. I am from Lucknow. सही am बोल कर वह खुश हैं।"
+                  "hi": "“मैं रवि हूँ। मैं लखनऊ से हूँ।” सही am का प्रयोग करके वह खुश होता है।"
             },
             {
                   "en": "Sam says, \"For he, she, it — use is. For we, you, they — use are.\"",
-                  "hi": "सैम कहते हैं: he, she, it के लिए is — we, you, they के लिए are।"
+                  "hi": "सैम कहते हैं, “he, she, it के साथ is और we, you, they के साथ are का प्रयोग करें।”"
             },
             {
                   "en": "Ravi practices: \"She is happy. They are friends. It is raining outside.\"",
-                  "hi": "रवि practice करते हैं: She is happy. They are friends. It is raining outside."
+                  "hi": "रवि अभ्यास करता है: “She is happy. They are friends. It is raining outside.”"
             },
             {
                   "en": "That night Ravi tells his family, \"We are proud of your work, Ravi.\"",
-                  "hi": "उस रात रवि को परिवार बोलते हैं: We are proud of your work, Ravi."
+                  "hi": "उस रात रवि का परिवार उससे कहता है, “हमें तुम्हारे काम पर गर्व है, रवि।”"
             }
       ],
     "storyRecap": {
             "en": "Ravi learned am, is and are — the three small forms of the verb to be.",
-            "hi": "रवि को am, is, are समझ आया — to be के तीन छोटे रूप।"
+            "hi": "रवि ने am, is और are सीखे—'to be' क्रिया के वर्तमान रूप।"
       },
     "whyRule": {
         "en": "Am, is, are all come from the Old English verb beon (to be), which had six or more forms: eom, eart, is, ead, are, ead. English kept only three. The verb to be is the most irregular verb in the language because it is the oldest — it predates most of the grammar we use.",
@@ -45,7 +46,7 @@
       "are"
     ],
     "summary": "The three present forms of be, and when to use each one.",
-    "explanationHindi": "am, is और are 'होना' क्रिया के वर्तमान काल के तीन रूप हैं। इनमें am केवल कर्ता I के साथ आता है, is एक व्यक्ति या वस्तु के लिए और are अनेक लोगों के लिए प्रयोग होता है। ये शब्द हमेशा कर्ता के तुरंत बाद आते हैं, जैसे 'मैं खुश हूँ' का अंग्रेज़ी रूप 'I am happy' होता है।",
+    "explanationHindi": "am, is और are 'be' क्रिया के वर्तमान रूप हैं। I के साथ am, he, she या it के साथ is, और we, you या they के साथ are का प्रयोग होता है। ये रूप कर्ता के बाद आते हैं: 'मैं खुश हूँ' का अंग्रेज़ी रूप 'I am happy' है।",
     "points": [
       "Use am with I, is with he, she, it, and are with we, you, they",
       "Place am, is or are just after the subject in the sentence",
@@ -74,7 +75,7 @@
       },
       {
         "en": "Are you ready now?",
-        "hi": "क्या तुम अब तैयार हो।",
+        "hi": "क्या तुम अब तैयार हो?",
         "note": "A question puts are before the subject."
       }
     ],
@@ -193,17 +194,11 @@
         "note": "A plural noun needs are, not is."
       },
       {
-        "type": "spot",
-        "prompt": "Find the mistake.",
-        "sentence": "I are happy with my work.",
-        "options": [
-          "I",
-          "are",
-          "happy with",
-          "my work."
-        ],
-        "answer": 1,
-        "note": "With the subject I we always use am."
+        "type": "produce",
+        "prompt": "Introduce yourself to a new colleague.",
+        "instruction": "Write two short sentences using am, is or are. Then read them aloud.",
+        "sample": "I am Ravi. I am from Lucknow.",
+        "note": "Use am with I, is with he/she/it, and are with we/you/they."
       }
     ],
     "sourceOrder": 10,
@@ -231,7 +226,7 @@
         "am only with I; is with he/she/it; are with we/you/they",
         "No do/does with be: say 'Is he ready?', not 'Does he be ready?'"
       ],
-      "hindiTip": "am, is और are 'होना' के तीन वर्तमान रूप हैं — I के साथ am, एक व्यक्ति या वस्तु के साथ is और अनेक के साथ are। इन्हें कर्ता के तुरंत बाद रखें।"
+      "hindiTip": "I के साथ am, he, she या it के साथ is, और we, you या they के साथ are का प्रयोग करें। इन रूपों को कर्ता के बाद रखें।"
     }
   }
 );

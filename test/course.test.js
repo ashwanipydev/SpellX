@@ -43,7 +43,7 @@ chk(dupes.length === 0, 'no duplicated script tags', dupes.join(', '));
 load('data/words.js');
 listed.forEach(function (f) { load('data/grammar/' + f); });
 ['js/store.js', 'js/srs.js', 'js/speech.js', 'js/modes/common.js', 'js/modes/home.js',
- 'js/modes/grammar.js', 'js/modes/stats.js'].forEach(load);
+ 'js/modes/grammar.js', 'js/modes/settings.js', 'js/modes/stats.js'].forEach(load);
 
 const S = B850.store;
 B850.data = S.normalise();
@@ -55,20 +55,20 @@ chk(typeof GRAMMAR_TOPICS !== 'undefined' && GRAMMAR_TOPICS.length === 53, 'regi
 chk(grammarTopics.length === 53, 'grammarTopics rebuilt with 53 entries', grammarTopics.length);
 chk(grammarExercises.length === 53, 'grammarExercises rebuilt with 53 entries', grammarExercises.length);
 chk(B850.data.total === 850, 'word dataset still 850', B850.data.total);
+chk(B850.state.settings.showGrammarHindi === false, 'reviewed Hindi help defaults to hidden');
 
 // ---- 3. per-topic detail
-const dev = /[\u0900-\u097F]/;
-let ex5 = 0, q10 = 0, pts3 = 0, hi = 0, idsOk = 0;
+let ex5 = 0, q10 = 0, pts3 = 0, unreviewedHindi = 0, idsOk = 0;
 grammarTopics.forEach(function (t) {
   if (t.id >= 1 && t.id <= 53) { idsOk += 1; }
-  if (dev.test(t.explanationHindi || '')) { hi += 1; }
+  if (t.explanationHindi && t.hindiReviewed !== true) { unreviewedHindi += 1; }
   if ((t.points || []).length === 3) { pts3 += 1; }
 });
 grammarExercises.forEach(function (c) {
   if ((c.examples || []).length === 5) { ex5 += 1; }
   if ((c.exercises || []).length === 10) { q10 += 1; }
 });
-chk(hi === 53, 'every topic has a Hindi explanation', hi);
+chk(unreviewedHindi === 52, 'only the reviewed Hindi topic is approved for display', unreviewedHindi);
 chk(pts3 === 53, 'every topic has 3 key points', pts3);
 chk(ex5 === 53, 'every topic has 5 examples', ex5);
 chk(q10 === 53, 'every topic has 10 exercises', q10);
@@ -82,23 +82,29 @@ chk(rulesOk === 53, 'every topic has a rule block with 3 forms', rulesOk);
 // ---- 3b. story + why fields
 let storyOk = 0, chOk = 0, whyOk = 0;
 grammarTopics.forEach(function (t) {
-  if (Array.isArray(t.storyScene) && t.storyScene.length >= 4 && t.storyScene.every(function (l) { return l.en && l.hi; })) { storyOk += 1; }
+  if (t.storyReviewed && Array.isArray(t.storyScene) && t.storyScene.length >= 4 && t.storyScene.every(function (l) { return l.en; })) { storyOk += 1; }
   if (typeof t.chapter === 'number' && typeof t.chapterTitle === 'string') { chOk += 1; }
-  if (t.whyRule && t.whyRule.en && t.whyRule.hi) { whyOk += 1; }
+  if (t.whyRule && t.whyRule.en) { whyOk += 1; }
 });
-chk(storyOk === 53, 'every topic has a story scene with >= 4 lines', storyOk);
+chk(storyOk === 23, 'only audited English story scenes are approved for display', storyOk);
+const mismatchedStoryIds = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 32, 34, 35, 37, 38, 39, 41, 42, 43, 44, 45, 47];
+chk(mismatchedStoryIds.every(function (id) {
+  return !grammarTopics.filter(function (t) { return t.id === id; })[0].storyReviewed;
+}), 'known off-topic story scenes are withheld pending revision');
 chk(chOk === 53, 'every topic has chapter + chapterTitle', chOk);
-chk(whyOk === 53, 'every topic has a whyRule (EN + HI)', whyOk);
+chk(whyOk === 53, 'every topic has an English whyRule', whyOk);
 
 // ---- 4. levels view
 let err = null;
 try { B850.screens.grammar.render({}); } catch (e) { err = e; }
 chk(!err, 'levels view renders', err && err.message);
 chk(env.main.querySelectorAll('.topic-row').length === 53, '53 topic rows', env.main.querySelectorAll('.topic-row').length);
-chk(env.main.querySelectorAll('.level-head').length === 7, '7 chapter sections', env.main.querySelectorAll('.level-head').length);
+chk(env.main.querySelectorAll('.level-head').length === 7, '7 curriculum sections', env.main.querySelectorAll('.level-head').length);
 chk(env.main.querySelectorAll('.book-ch-intro').length === 7, '7 chapter intros rendered', env.main.querySelectorAll('.book-ch-intro').length);
-chk(env.main.querySelectorAll('.book-ch-intro-hi').length === 7, '7 chapter Hindi intros rendered', env.main.querySelectorAll('.book-ch-intro-hi').length);
+chk(env.main.querySelectorAll('.book-ch-intro-hi').length === 0, 'unreviewed Hindi chapter intros stay hidden', env.main.querySelectorAll('.book-ch-intro-hi').length);
 chk(env.main.querySelectorAll('.topic-num').length === 53, '53 numbered topic rows', env.main.querySelectorAll('.topic-num').length);
+chk(env.main.querySelector('.topic-num').textContent === '0.1', 'chapter numbering follows the stored 0–6 structure');
+chk(env.main.querySelector('.screen-sub').textContent.indexOf('53 topics across 7 sections') !== -1, 'course count matches topic and section data');
 
 // ---- 5. topic view with the new detail
 err = null;
@@ -107,16 +113,35 @@ chk(!err, 'topic view renders', err && err.message);
 const title = env.main.querySelector('.q-title');
 chk(title && title.textContent === 'Simple Present', 'topic title', title ? title.textContent : 'none');
 chk(env.main.querySelectorAll('.gr-ex').length === 5, '5 examples rendered', env.main.querySelectorAll('.gr-ex').length);
-chk(!!env.main.querySelector('.gr-help'), 'Hindi explanation card rendered');
+chk(!!env.main.querySelector('.gr-help'), 'English key-points card rendered');
+chk(env.main.querySelectorAll('.gr-help-hi').length === 0, 'unreviewed Hindi explanations and tips stay hidden');
 chk(env.main.querySelectorAll('.gr-points li').length === 3, '3 rule points rendered', env.main.querySelectorAll('.gr-points li').length);
 chk(!!env.main.querySelector('.gr-rule'), 'rule card rendered');
 chk(env.main.querySelectorAll('.gr-form').length === 3, '3 rule forms rendered', env.main.querySelectorAll('.gr-form').length);
-chk(!!env.main.querySelector('.gr-story'), 'story card rendered for topic 19');
-chk(env.main.querySelectorAll('.gr-story-line').length >= 4, 'story scene has >= 4 lines', env.main.querySelectorAll('.gr-story-line').length);
-chk(!!env.main.querySelector('.gr-story-recap'), 'story recap rendered');
-chk(!!env.main.querySelector('.gr-why'), 'why card rendered for topic 19');
-chk(!!env.main.querySelector('.gr-why-en') && env.main.querySelector('.gr-why-en').textContent.length > 30, 'why card has EN text');
-chk(!!env.main.querySelector('.gr-why-hi'), 'why card has HI text');
+chk(!env.main.querySelector('.gr-story'), 'unmatched story scene is withheld from topic 19');
+chk(!env.main.querySelector('.gr-why'), 'unreviewed historical note is withheld for topic 19');
+chk(!env.main.querySelector('.gr-why-hi'), 'unreviewed Hindi why text stays hidden');
+chk(env.main.querySelectorAll('.gr-ex-hi').length === 0, 'unreviewed Hindi example translations stay hidden');
+
+B850.screens.grammar.render({ view: 'topic', id: 10 });
+chk(!!env.main.querySelector('.gr-story'), 'audited story card renders for topic 10');
+chk(env.main.querySelectorAll('.gr-story-line').length >= 4, 'audited story has at least four English lines');
+chk(env.main.querySelectorAll('.gr-ex-hi').length === 0, 'reviewed Hindi remains hidden by default');
+
+B850.screens.settings.render();
+const hindiHelpSwitch = env.main.querySelectorAll('.switch')[0];
+chk(!!hindiHelpSwitch, 'settings offers a Hindi grammar help preference');
+chk(hindiHelpSwitch && hindiHelpSwitch.getAttribute('aria-checked') === 'false', 'Hindi help switch starts off');
+if (hindiHelpSwitch) { hindiHelpSwitch.click(); }
+chk(B850.state.settings.showGrammarHindi === true, 'Hindi grammar preference persists when enabled');
+B850.screens.grammar.render({ view: 'topic', id: 10 });
+chk(env.main.querySelectorAll('.gr-ex-hi').length === 5, 'reviewed example translations appear when enabled');
+chk(!!env.main.querySelector('.gr-help-hi') && !!env.main.querySelector('.gr-story-hi'),
+  'reviewed explanation and story translations appear when enabled');
+B850.screens.grammar.render({ view: 'topic', id: 19 });
+chk(env.main.querySelectorAll('.gr-help-hi').length === 0, 'enabling Hindi does not expose unreviewed content');
+S.state.settings.showGrammarHindi = false;
+S.save(S.state);
 
 B850.screens.grammar.render({ view: 'topic', id: 28 });
 chk(env.main.querySelectorAll('.kw-chip.linked').length >= 3, 'keywords still cross-link to the word deck', env.main.querySelectorAll('.kw-chip.linked').length);
@@ -159,6 +184,26 @@ if (clickable) {
   const saved = env.storage['b850:v1'] || '';
   chk(saved.indexOf('"grammar"') !== -1, 'grammar progress persisted');
 }
+B850.screens.grammar.render({ view: 'practice', id: 10 });
+const productionInput = env.main.querySelector('.gr-production-input');
+chk(!!productionInput, 'early grammar practice includes a sentence-production task');
+const productionButtons = env.main.querySelectorAll('.btn');
+const showExample = productionButtons.filter(function (b) { return b.textContent === 'Show an example'; })[0];
+const canDoIt = productionButtons.filter(function (b) { return b.textContent === 'I can do this'; })[0];
+chk(!!showExample && !!canDoIt, 'production task offers an optional model and self-assessment');
+if (showExample && canDoIt && productionInput) {
+  showExample.click();
+  chk(env.main.querySelector('.gr-sentence-2').style.display === 'block', 'model answer can be revealed on demand');
+  const beforeProduction = B850.state.answers.total;
+  canDoIt.click();
+  chk(B850.state.answers.total === beforeProduction, 'production task requires learner input before self-rating');
+  productionInput.value = 'I am learning English.';
+  canDoIt.click();
+  chk(B850.state.answers.total === beforeProduction + 1, 'self-rated production task records practice');
+}
+chk(grammarExercises.filter(function (c) { return c.topicId === 10 || c.topicId === 15 || c.topicId === 36 || c.topicId === 43; })
+  .every(function (c) { return c.exercises.some(function (e) { return e.type === 'produce'; }); }),
+  'communication production tasks appear in early and applied lessons');
 
 // ---- 7. stats block
 B850.state.grammar = {
@@ -186,12 +231,14 @@ chk(!!grammarCard, 'home shows the Grammar card');
 if (grammarCard) {
   const texts = grammarCard.querySelectorAll('.mode-desc').map(function (d) { return d.textContent; });
   chk(texts.join(' ').indexOf('53 topics') !== -1, 'card describes the course', texts.join(' | '));
+  chk(texts.some(function (t) { return /\/53 done$/.test(t); }), 'home progress uses the current topic total', texts.join(' | '));
 }
 
 // ---- 9. legacy save migration
 env.storage['b850:v1'] = JSON.stringify({ version: 1, xp: 42, settings: { langFirst: 'hindi', voiceURI: '', rate: 0.9, sound: false, goal: 20 }, answers: { total: 5, correct: 3 }, daily: { date: S.todayStr(), count: 2 }, streak: { count: 1, lastDate: S.todayStr() }, seen: { 1: 1 }, learned: { 1: 1 }, sessions: {}, accuracy: {}, srs: {}, lastMode: { mode: 'quiz' }, updatedAt: 1 });
 const legacy = S.load();
 chk(legacy.xp === 42 && legacy.grammar && Object.keys(legacy.grammar).length === 0, 'legacy save migrates', 'xp=' + legacy.xp);
+chk(legacy.settings.showGrammarHindi === false, 'legacy saves migrate with Hindi help hidden');
 B850.state = legacy;
 err = null;
 try { B850.screens.grammar.render({}); } catch (e) { err = e; }
