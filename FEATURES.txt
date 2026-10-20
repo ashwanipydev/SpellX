@@ -1,5 +1,5 @@
 ====================================================================
-  850 Basic English — Complete Feature List
+  SpellX dudal — Complete Feature List
 ====================================================================
 A mobile-first, dependency-free web game that teaches the 850 words
 of Ogden's Basic English to Hindi-speaking learners.
@@ -124,10 +124,12 @@ Grammar
  GRAMMAR COURSE (53 topics, 5 levels, 7 sections) — LIVE
 --------------------------------------------------------------------
 - data/grammar/ holds one file per topic, plus chapters.js, the
-  supplementary chapter-six data, and index.js. Each topic
+  supplementary chapter-six data, story-scenes.js, and index.js. Each topic
   file is a classic script that pushes its own object onto
   window.GRAMMAR_TOPICS, so load order does not matter and a missing
-  file cannot scramble the others. index.js loads last and rebuilds
+  file cannot scramble the others. story-scenes.js supplies one
+  continuous Ravi narrative with a scene matched to each lesson;
+  index.js loads last and rebuilds
   the two arrays the app already uses (grammarTopics and
   grammarExercises), so the screen, the store and the tests needed no
   change for the split.
@@ -136,6 +138,8 @@ Grammar
     keywords[], summary, optional explanationHindi, points[3],
     rules {pattern, forms[3], exceptions, optional hindiTip},
     examples[5] {en, optional hi, note}, exercises[10],
+    English story scene[4] and recap are provided in story-scenes.js;
+    each scene records its lesson id, rule focus and review status,
     optional modalGuide / verbFormGroups / studyGuide /
     pronunciationGuide references,
     sourceOrder, source
@@ -239,8 +243,8 @@ Grammar
 - Grammar course includes 53 topics, 265 examples, 530 practice items,
   the expanded modal guide, 76 V1/V2/V3 rows and pronunciation practice.
 - Reviewed Hindi grammar help is opt-in and hidden by default; unreviewed
-  translations are omitted. Story scenes are displayed only after their
-  English lesson alignment has been checked.
+  translations are omitted. All 53 English story scenes are aligned to
+  their lesson and follow Ravi preparing a Lucknow reading room.
 
 ====================================================================
  IMPLEMENTATION PLAN — GRAMMAR COURSE

@@ -31,8 +31,11 @@ let m;
 while ((m = re.exec(html))) { listed.push(m[1].replace('data/grammar/', '')); }
 
 const onDisk = fs.readdirSync(path.join(ws, 'data', 'grammar')).filter(function (f) { return /\.js$/.test(f); }).sort();
-chk(listed.length === 56, 'index.html lists 53 topic files + chapters.js + ch6.js + index.js', listed.length);
+chk(listed.length === 57, 'index.html lists all grammar data and the story scenes', listed.length);
 chk(listed[listed.length - 1] === 'index.js', 'index.js is loaded last', listed[listed.length - 1]);
+chk(listed[listed.length - 2] === 'story-scenes.js', 'story scenes load before the derived course index');
+chk(fs.readFileSync(path.join(ws, 'sw.js'), 'utf8').indexOf('story-scenes.js') !== -1,
+  'service worker precaches the connected story data');
 chk(listed.length - 1 === onDisk.length - 1, 'every file on disk is listed', onDisk.length);
 const missing = onDisk.filter(function (f) { return listed.indexOf(f) === -1; });
 chk(missing.length === 0, 'no data/grammar file is missing from index.html', missing.join(', '));
@@ -82,15 +85,36 @@ chk(rulesOk === 53, 'every topic has a rule block with 3 forms', rulesOk);
 // ---- 3b. story + why fields
 let storyOk = 0, chOk = 0, whyOk = 0;
 grammarTopics.forEach(function (t) {
-  if (t.storyReviewed && Array.isArray(t.storyScene) && t.storyScene.length >= 4 && t.storyScene.every(function (l) { return l.en; })) { storyOk += 1; }
+  const story = GRAMMAR_STORY_SCENES[t.id];
+  if (t.storyReviewed && story && story.lessonId === t.id && story.reviewed === true &&
+      story.ruleFocus && Array.isArray(t.storyScene) && t.storyScene.length >= 4 &&
+      t.storyScene.length <= 6 && t.storyScene.every(function (l) { return l.en && !l.hi; }) &&
+      t.storyRecap && t.storyRecap.en) { storyOk += 1; }
   if (typeof t.chapter === 'number' && typeof t.chapterTitle === 'string') { chOk += 1; }
   if (t.whyRule && t.whyRule.en) { whyOk += 1; }
 });
-chk(storyOk === 23, 'only audited English story scenes are approved for display', storyOk);
-const mismatchedStoryIds = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 32, 34, 35, 37, 38, 39, 41, 42, 43, 44, 45, 47];
-chk(mismatchedStoryIds.every(function (id) {
-  return !grammarTopics.filter(function (t) { return t.id === id; })[0].storyReviewed;
-}), 'known off-topic story scenes are withheld pending revision');
+chk(storyOk === 53, 'all lessons have reviewed, concise, English-only story scenes and recaps', storyOk);
+chk(Object.keys(GRAMMAR_STORY_SCENES).length === 53, 'story data covers exactly the 53 lesson ids');
+chk(grammarTopics.every(function (t) {
+  return GRAMMAR_STORY_SCENES[t.id] && GRAMMAR_STORY_SCENES[t.id].ruleFocus;
+}), 'every story declares the grammar point it is written to demonstrate');
+const storyExamples = {
+  19: "opens each Saturday",
+  20: "I am arranging the books",
+  21: "We opened the doors at ten",
+  22: "I was carrying the boxes",
+  23: "We will add a second session",
+  24: "will be choosing their books",
+  25: "We have welcomed forty families",
+  26: "had already chosen their books",
+  27: "will have listed all the books",
+  41: "First, Meera found a torch"
+};
+chk(Object.keys(storyExamples).every(function (id) {
+  return GRAMMAR_STORY_SCENES[id].scene.some(function (line) {
+    return line.en.indexOf(storyExamples[id]) !== -1;
+  });
+}), 'tense and narrative lessons demonstrate their target forms in context');
 chk(chOk === 53, 'every topic has chapter + chapterTitle', chOk);
 chk(whyOk === 53, 'every topic has an English whyRule', whyOk);
 
@@ -118,7 +142,10 @@ chk(env.main.querySelectorAll('.gr-help-hi').length === 0, 'unreviewed Hindi exp
 chk(env.main.querySelectorAll('.gr-points li').length === 3, '3 rule points rendered', env.main.querySelectorAll('.gr-points li').length);
 chk(!!env.main.querySelector('.gr-rule'), 'rule card rendered');
 chk(env.main.querySelectorAll('.gr-form').length === 3, '3 rule forms rendered', env.main.querySelectorAll('.gr-form').length);
-chk(!env.main.querySelector('.gr-story'), 'unmatched story scene is withheld from topic 19');
+chk(!!env.main.querySelector('.gr-story'), 'revised story renders for topic 19');
+chk(env.main.querySelectorAll('.gr-story-line').length >= 4, 'simple present story scene has four lines');
+chk(env.main.querySelector('.gr-story').textContent.indexOf('opens each Saturday') !== -1,
+  'simple present story demonstrates a recurring routine');
 chk(!env.main.querySelector('.gr-why'), 'unreviewed historical note is withheld for topic 19');
 chk(!env.main.querySelector('.gr-why-hi'), 'unreviewed Hindi why text stays hidden');
 chk(env.main.querySelectorAll('.gr-ex-hi').length === 0, 'unreviewed Hindi example translations stay hidden');
@@ -136,8 +163,8 @@ if (hindiHelpSwitch) { hindiHelpSwitch.click(); }
 chk(B850.state.settings.showGrammarHindi === true, 'Hindi grammar preference persists when enabled');
 B850.screens.grammar.render({ view: 'topic', id: 10 });
 chk(env.main.querySelectorAll('.gr-ex-hi').length === 5, 'reviewed example translations appear when enabled');
-chk(!!env.main.querySelector('.gr-help-hi') && !!env.main.querySelector('.gr-story-hi'),
-  'reviewed explanation and story translations appear when enabled');
+chk(!!env.main.querySelector('.gr-help-hi') && !env.main.querySelector('.gr-story-hi'),
+  'reviewed Hindi explanations appear while unrevised story translations stay absent');
 B850.screens.grammar.render({ view: 'topic', id: 19 });
 chk(env.main.querySelectorAll('.gr-help-hi').length === 0, 'enabling Hindi does not expose unreviewed content');
 S.state.settings.showGrammarHindi = false;
