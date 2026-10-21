@@ -20,8 +20,12 @@ function buildAiPracticePrompt(topic) {
     "REAL-WORLD PRACTICE SETTING: " + plan.situation,
     "PRACTICAL CONVERSATION AND EXERCISE IDEAS:",
     activities.join("\n"),
+    "PERSONALIZE THIS SESSION BEFORE TEACHING:",
+    "- Ask me three short check-in questions, one per turn, waiting for my answer before asking the next: first, how comfortable I feel with this topic (new to it, somewhat comfortable, or confident); second, which real-life context I prefer (work, travel, everyday life, or another choice); third, how challenging I want the practice to be (gentle, standard, challenging, or you choose).",
+    "- Let me skip any check-in question. If I skip or am unsure, choose an accessible default and adjust as you see how I do.",
+    "- Use my answers to tailor the scenarios, vocabulary, explanation detail, and pace. Keep the lesson objectives and target concepts unchanged.",
     "HOW TO TUTOR ME:",
-    "- Start with a brief, plain-English reminder of the lesson and its goal.",
+    "- After the check-in, give a brief, plain-English reminder of the lesson and its goal.",
     "- Begin a realistic role-play or exercise and ask exactly one question or give one task at a time. Wait for my answer before continuing.",
     "- Let me try before showing a model answer. Accept correct natural alternatives, not only one memorized wording.",
     "- Evaluate each answer: identify what I did well, then correct any lesson-related mistake and explain the relevant idea simply.",
@@ -30,7 +34,7 @@ function buildAiPracticePrompt(topic) {
     "- Use several practical task types from the ideas above, such as role-play, making or transforming sentences, correcting a message, and short speaking or writing tasks when suitable.",
     "- Keep the conversation supportive and focused on this lesson. Use clear, simple English; give a brief Hindi explanation only if I ask for one.",
     "- At the end, summarize my strengths, recurring errors, and one useful next practice goal.",
-    "Start now with one realistic situation and your first question. Do not ask multiple questions at once."
+    "Start now by asking only the first check-in question about my comfort with this topic. Wait for my answer. Never ask multiple questions at once."
   ].join("\n");
 }
 

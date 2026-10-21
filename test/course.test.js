@@ -89,12 +89,22 @@ chk(grammarTopics.every(function (t) {
     t.aiPracticePrompt.indexOf("WHAT THIS LESSON TEACHES: " + t.summary) !== -1 &&
     t.aiPracticePrompt.indexOf("SKILLS TO DEVELOP:") !== -1 &&
     t.aiPracticePrompt.indexOf("REAL-WORLD PRACTICE SETTING:") !== -1 &&
+    t.aiPracticePrompt.indexOf("PERSONALIZE THIS SESSION BEFORE TEACHING:") !== -1 &&
+    t.aiPracticePrompt.indexOf("three short check-in questions, one per turn") !== -1 &&
+    t.aiPracticePrompt.indexOf("how comfortable I feel") !== -1 &&
+    t.aiPracticePrompt.indexOf("which real-life context I prefer") !== -1 &&
+    t.aiPracticePrompt.indexOf("how challenging I want the practice to be") !== -1 &&
+    t.aiPracticePrompt.indexOf("Let me skip any check-in question") !== -1 &&
+    t.aiPracticePrompt.indexOf("tailor the scenarios, vocabulary, explanation detail, and pace") !== -1 &&
+    t.aiPracticePrompt.indexOf("Keep the lesson objectives and target concepts unchanged") !== -1 &&
+    t.aiPracticePrompt.indexOf("After the check-in, give a brief") !== -1 &&
     t.aiPracticePrompt.indexOf("exactly one question") !== -1 &&
     t.aiPracticePrompt.indexOf("Wait for my answer") !== -1 &&
+    t.aiPracticePrompt.indexOf("Start now by asking only the first check-in question") !== -1 &&
     t.aiPracticePrompt.indexOf("If I struggle repeatedly") !== -1 &&
     t.aiPracticePrompt.indexOf("At the end, summarize") !== -1 &&
     t.aiPracticePrompt.indexOf("correct") !== -1;
-}), 'every lesson prompt explains its goals, real-world practice and tutor feedback behavior');
+}), 'every lesson prompt includes goals, real-world practice, adaptive tutoring and learner check-in');
 const totalQ = grammarExercises.reduce(function (a, c) { return a + c.exercises.length; }, 0);
 chk(totalQ === 530, '530 exercises in total', totalQ);
 const storyLinkedExercises = grammarExercises.reduce(function (count, c) {
