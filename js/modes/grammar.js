@@ -431,6 +431,57 @@
       })));
     }
 
+    if (t.aiPracticePrompt) {
+      var promptCard = U.h("div", { "class": "card gr-ai-practice" }, [
+        U.h("div", { "class": "prompt-sub", text: "Practice with an AI tutor" }),
+        U.h("p", {
+          "class": "screen-sub",
+          text: "Copy this lesson-specific prompt into ChatGPT or another AI agent for an interactive, real-world tutoring session."
+        })
+      ]);
+      var promptText = U.h("textarea", {
+        "class": "gr-ai-prompt-text",
+        rows: 9,
+        readonly: "readonly",
+        "aria-label": "AI tutor prompt for " + t.title
+      });
+      promptText.value = t.aiPracticePrompt;
+      var promptStatus = U.h("p", {
+        "class": "gr-ai-prompt-status",
+        role: "status",
+        "aria-live": "polite"
+      });
+      var copyPrompt = U.h("button", {
+        "class": "btn btn-secondary",
+        type: "button",
+        text: "Copy AI tutor prompt"
+      });
+      copyPrompt.addEventListener("click", function () {
+        function selectForManualCopy() {
+          promptText.focus();
+          if (typeof promptText.select === "function") { promptText.select(); }
+          promptStatus.textContent = "Copy was unavailable. The prompt is selected; copy it and paste it into your AI agent.";
+          U.announce(promptStatus.textContent);
+        }
+        var clipboard = window.navigator && window.navigator.clipboard;
+        if (!clipboard || typeof clipboard.writeText !== "function") {
+          selectForManualCopy();
+          return;
+        }
+        Promise.resolve().then(function () {
+          return clipboard.writeText(t.aiPracticePrompt);
+        }).then(function () {
+          promptStatus.textContent = "Prompt copied. Paste it into your AI agent to begin.";
+          U.announce(promptStatus.textContent);
+        }, selectForManualCopy);
+      });
+      promptCard.appendChild(promptText);
+      promptCard.appendChild(U.h("div", { "class": "gr-ai-prompt-actions" }, [copyPrompt]));
+      promptCard.appendChild(promptStatus);
+      root.appendChild(U.h("h2", { "class": "section-title", text: "AI practice prompt" }));
+      root.appendChild(promptCard);
+    }
+
     var hasEx = !!(c && c.exercises && c.exercises.length);
     root.appendChild(U.h("div", { "class": "fc-actions" }, [
       U.h("button", {

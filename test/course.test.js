@@ -31,11 +31,13 @@ let m;
 while ((m = re.exec(html))) { listed.push(m[1].replace('data/grammar/', '')); }
 
 const onDisk = fs.readdirSync(path.join(ws, 'data', 'grammar')).filter(function (f) { return /\.js$/.test(f); }).sort();
-chk(listed.length === 57, 'index.html lists all grammar data and the story scenes', listed.length);
+chk(listed.length === 58, 'index.html lists all grammar data, tutor prompts and story scenes', listed.length);
 chk(listed[listed.length - 1] === 'index.js', 'index.js is loaded last', listed[listed.length - 1]);
 chk(listed[listed.length - 2] === 'story-scenes.js', 'story scenes load before the derived course index');
 chk(fs.readFileSync(path.join(ws, 'sw.js'), 'utf8').indexOf('story-scenes.js') !== -1,
   'service worker precaches the connected story data');
+chk(fs.readFileSync(path.join(ws, 'sw.js'), 'utf8').indexOf('ai-practice-prompts.js') !== -1,
+  'service worker precaches AI practice prompts');
 chk(listed.length - 1 === onDisk.length - 1, 'every file on disk is listed', onDisk.length);
 const missing = onDisk.filter(function (f) { return listed.indexOf(f) === -1; });
 chk(missing.length === 0, 'no data/grammar file is missing from index.html', missing.join(', '));
@@ -57,6 +59,12 @@ B850.ui.navigate = function (name, params) { B850.screens[name].render(params); 
 chk(typeof GRAMMAR_TOPICS !== 'undefined' && GRAMMAR_TOPICS.length === 53, 'registry holds 53 topics', typeof GRAMMAR_TOPICS !== 'undefined' ? GRAMMAR_TOPICS.length : 'missing');
 chk(grammarTopics.length === 53, 'grammarTopics rebuilt with 53 entries', grammarTopics.length);
 chk(grammarExercises.length === 53, 'grammarExercises rebuilt with 53 entries', grammarExercises.length);
+chk(Object.keys(GRAMMAR_AI_PRACTICE_PROMPTS).length === 53, 'AI tutor scenarios cover all 53 lessons',
+  Object.keys(GRAMMAR_AI_PRACTICE_PROMPTS).length);
+chk(Object.keys(GRAMMAR_AI_PRACTICE_PROMPTS).every(function (id) {
+  const plan = GRAMMAR_AI_PRACTICE_PROMPTS[id];
+  return plan && plan.situation && Array.isArray(plan.activities) && plan.activities.length >= 3;
+}), 'every lesson prompt has a real-world scenario and varied activity ideas');
 chk(B850.data.total === 850, 'word dataset still 850', B850.data.total);
 chk(B850.state.settings.showGrammarHindi === false, 'reviewed Hindi help defaults to hidden');
 
@@ -76,6 +84,17 @@ chk(pts3 === 53, 'every topic has 3 key points', pts3);
 chk(ex5 === 53, 'every topic has 5 examples', ex5);
 chk(q10 === 53, 'every topic has 10 exercises', q10);
 chk(idsOk === 53, 'topic ids 1..53 present', idsOk);
+chk(grammarTopics.every(function (t) {
+  return typeof t.aiPracticePrompt === 'string' && t.aiPracticePrompt.length > 500 &&
+    t.aiPracticePrompt.indexOf("WHAT THIS LESSON TEACHES: " + t.summary) !== -1 &&
+    t.aiPracticePrompt.indexOf("SKILLS TO DEVELOP:") !== -1 &&
+    t.aiPracticePrompt.indexOf("REAL-WORLD PRACTICE SETTING:") !== -1 &&
+    t.aiPracticePrompt.indexOf("exactly one question") !== -1 &&
+    t.aiPracticePrompt.indexOf("Wait for my answer") !== -1 &&
+    t.aiPracticePrompt.indexOf("If I struggle repeatedly") !== -1 &&
+    t.aiPracticePrompt.indexOf("At the end, summarize") !== -1 &&
+    t.aiPracticePrompt.indexOf("correct") !== -1;
+}), 'every lesson prompt explains its goals, real-world practice and tutor feedback behavior');
 const totalQ = grammarExercises.reduce(function (a, c) { return a + c.exercises.length; }, 0);
 chk(totalQ === 530, '530 exercises in total', totalQ);
 const storyLinkedExercises = grammarExercises.reduce(function (count, c) {
@@ -156,6 +175,18 @@ chk(env.main.querySelector('.gr-story').textContent.indexOf('opens each Saturday
 chk(!env.main.querySelector('.gr-why'), 'unreviewed historical note is withheld for topic 19');
 chk(!env.main.querySelector('.gr-why-hi'), 'unreviewed Hindi why text stays hidden');
 chk(env.main.querySelectorAll('.gr-ex-hi').length === 0, 'unreviewed Hindi example translations stay hidden');
+const aiPrompt = env.main.querySelector('.gr-ai-prompt-text');
+chk(!!aiPrompt && aiPrompt.value.indexOf('Simple Present') !== -1,
+  'topic lesson displays its tailored AI tutor prompt');
+chk(!!aiPrompt && aiPrompt.hasAttribute('readonly'),
+  'AI tutor prompt is available as selectable text');
+const copyPrompt = env.main.querySelector('.gr-ai-prompt-actions button');
+chk(!!copyPrompt && copyPrompt.textContent === 'Copy AI tutor prompt', 'lesson offers a prompt copy action');
+if (copyPrompt) {
+  copyPrompt.click();
+  chk(env.main.querySelector('.gr-ai-prompt-status').textContent.indexOf('copy it') !== -1,
+    'copy action explains manual copying when clipboard access is unavailable');
+}
 
 B850.screens.grammar.render({ view: 'topic', id: 10 });
 chk(!!env.main.querySelector('.gr-story'), 'audited story card renders for topic 10');

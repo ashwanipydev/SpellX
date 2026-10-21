@@ -8,8 +8,9 @@ of Ogden's Basic English to Hindi-speaking learners.
  CORE PURPOSE
 --------------------------------------------------------------------
 - Teaches the 850 words of Ogden's Basic English to Hindi speakers
-- Also ships a playable 53-topic English grammar course (5 levels,
-  530 practice activities, 265 example sentences, one data file per topic)
+- Also ships a playable 53-topic English grammar course (7 sections,
+  530 practice activities, 265 example sentences, copy-ready AI tutor prompts
+  for every lesson)
 - Mobile-first, zero dependencies (vanilla HTML/CSS/JavaScript)
 - Zero network calls — everything is local
 - Runs by double-clicking index.html from file:// (no server needed)
