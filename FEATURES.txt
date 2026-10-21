@@ -66,19 +66,24 @@ Typing
   - Diff-style correction on failure
 
 Spelling Puzzle
+  - Choose Relaxed practice (untimed) or a Timed challenge
+    (the harder-word timer awards a bonus but never ends the round)
   - Build the word letter-by-letter from shuffled tiles
   - 3 equivalent input paths:
-      * Drag a tile onto a slot (wrong letter bounces back to tray)
-      * Tap a tile to place it
+      * Drag a tile onto a slot
+      * Tap a tile to place it, including an incorrect guess to practice from
       * Type on a physical keyboard (letters + Backspace / arrows)
+  - After a miss, keep correctly positioned letters and return the rest
+    to the tray for a supported retry
   - Difficulty ramp: (1) letters only, (2) +2-3 decoys,
     (3) hide the English gloss (Hindi-only),
-    (4) words >= 6 letters with a soft 60s bonus timer
+    (4) hardest words with a soft 60s bonus timer in timed mode
   - Hints cost XP and never block (hear it / first letter /
     English meaning / example sentence)
   - Free "Show word" reveal button when stuck (0 XP, marks seen)
   - Clean solve promotes one SRS box; two wrong completions queue
     the word into Review
+  - Session summary reports solved, revealed, and Review words
   - Success card shows the word, pronunciation, and both examples
 
 Review
