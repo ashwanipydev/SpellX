@@ -342,55 +342,43 @@ chk(!!combinedCard, 'home offers combined Words + Grammar practice');
 if (combinedCard) { combinedCard.click(); }
 chk(env.main.querySelector('.q-title') && env.main.querySelector('.q-title').textContent === 'Words + Grammar',
   'combined practice builder opens from Home');
-const comboTopic = env.main.querySelector('.combo-topic-select');
-const comboSearch = env.main.querySelector('.combo-word-search');
+const comboChapter = env.main.querySelector('.combo-chapter-select');
+const comboCategory = env.main.querySelector('.combo-category-select');
 const comboCopy = env.main.querySelector('.combo-copy');
-chk(!!comboTopic && !!comboSearch && !!comboCopy, 'builder offers grammar, vocabulary, and prompt controls');
-if (comboTopic && comboSearch && comboCopy) {
-  comboTopic.value = '2';
-  comboTopic.dispatch('change');
-  chk(comboCopy.disabled, 'prompt stays unavailable until at least three words are selected');
-  function addComboWord(name) {
-    comboSearch.value = name;
-    comboSearch.dispatch('input');
-    const result = env.main.querySelectorAll('.combo-word-result').filter(function (button) {
-      const label = button.querySelector('.combo-word-result-name');
-      return label && label.textContent.toLowerCase() === name;
-    })[0];
-    if (result) { result.click(); }
-    return !!result;
-  }
-  const addedWords = ['book', 'come', 'give', 'go', 'keep'].map(addComboWord);
-  chk(addedWords.every(Boolean), 'learner can select known words from the 850-word list');
-  chk(env.main.querySelectorAll('.combo-selected-word').length === 5, 'builder supports up to five selected words');
-  comboSearch.value = 'need';
-  comboSearch.dispatch('input');
-  chk(env.main.querySelector('.combo-word-result') && env.main.querySelector('.combo-word-result').hasAttribute('disabled'),
-    'builder prevents selecting more than five words');
+chk(!!comboChapter && !!comboCategory && !!comboCopy, 'builder offers chapter, vocabulary category, and prompt controls');
+chk(!env.main.querySelector('.combo-word-search') && !env.main.querySelector('.combo-selected-words'),
+  'builder does not ask learners to pick individual words');
+if (comboChapter && comboCategory && comboCopy) {
+  chk(comboChapter.querySelectorAll('option').length === 8 && comboCategory.querySelectorAll('option').length === 6,
+    'builder lists all grammar chapters and five vocabulary categories');
+  comboChapter.value = '1';
+  comboChapter.dispatch('change');
+  chk(comboCopy.disabled, 'prompt stays unavailable until both categories are selected');
+  comboCategory.value = 'things_general';
+  comboCategory.dispatch('change');
   const combinedPrompt = env.main.querySelector('.combo-prompt-text');
-  chk(!!combinedPrompt && !comboCopy.disabled, 'prompt becomes available with a lesson and five words');
-  chk(!!combinedPrompt && combinedPrompt.value.indexOf('GRAMMAR LESSON: Nouns') !== -1 &&
-    combinedPrompt.value.indexOf('This lesson has no formal rule card') !== -1,
-    'combined prompt uses lesson concepts without inventing a rule');
-  chk(!!combinedPrompt && ['book', 'come', 'give', 'go', 'keep'].every(function (word) {
-    return combinedPrompt.value.indexOf(word + ' — ') !== -1;
-  }), 'combined prompt includes every selected word and meaning');
-  chk(!!combinedPrompt && combinedPrompt.value.indexOf('Example: Keep this book with you.') !== -1,
-    'combined prompt includes source example sentences');
-  const removeBook = env.main.querySelectorAll('.combo-selected-word').filter(function (item) {
-    return item.textContent.indexOf('book — ') === 0;
-  })[0];
-  if (removeBook) { removeBook.querySelector('.combo-remove-word').click(); }
-  chk(env.main.querySelectorAll('.combo-selected-word').length === 4 &&
-    !!combinedPrompt && combinedPrompt.value.indexOf('book — ') === -1,
-    'removing a selected word refreshes the prompt');
+  chk(!!combinedPrompt && !comboCopy.disabled, 'prompt becomes available after selecting a chapter and category');
+  chk(!!combinedPrompt && combinedPrompt.value.indexOf('GRAMMAR CHAPTER: The First Words') !== -1 &&
+    combinedPrompt.value.indexOf('LESSON: Nouns') !== -1,
+    'combined prompt uses the selected chapter and its lesson objectives');
+  chk(!!combinedPrompt && combinedPrompt.value.indexOf('VOCABULARY CATEGORY: Things — General') !== -1 &&
+    combinedPrompt.value.indexOf('need — to want something very much') !== -1 &&
+    combinedPrompt.value.indexOf('come — to move toward here') === -1,
+    'combined prompt includes meanings from the selected category only');
+  chk(!!combinedPrompt && combinedPrompt.value.indexOf('No formal rule is provided for this lesson') !== -1 &&
+    combinedPrompt.value.indexOf('without inventing one') !== -1,
+    'chapter prompt practises concepts without forcing rules onto every lesson');
+  chk(!!combinedPrompt && combinedPrompt.value.indexOf('Choose an appropriate, manageable subset of words') !== -1 &&
+    combinedPrompt.value.indexOf('according to my confidence and performance') !== -1 &&
+    combinedPrompt.value.indexOf('Do not try to use every word in one session') !== -1,
+    'AI tutor chooses a manageable vocabulary set and adapts as the learner responds');
   chk(!!combinedPrompt && combinedPrompt.value.indexOf('one question or give one task at a time') !== -1 &&
-    combinedPrompt.value.indexOf('Correct mistakes related to the selected words or grammar') !== -1,
+    combinedPrompt.value.indexOf('Correct relevant vocabulary or lesson mistakes') !== -1,
     'combined prompt guides interactive, corrective AI tutoring');
-  comboTopic.value = '19';
-  comboTopic.dispatch('change');
-  chk(!!combinedPrompt && combinedPrompt.value.indexOf('RELEVANT RULE OR PATTERN: S + V1(+s/es) + O') !== -1,
-    'combined prompt includes a relevant rule when the lesson has one');
+  comboChapter.value = '3';
+  comboChapter.dispatch('change');
+  chk(!!combinedPrompt && combinedPrompt.value.indexOf('APPLICABLE RULE OR PATTERN: S + V1(+s/es) + O') !== -1,
+    'combined prompt includes applicable rules from chapter lessons');
   comboCopy.click();
   chk(env.main.querySelectorAll('.combo-status').some(function (status) {
     return status.textContent.indexOf('copy it and paste it') !== -1;

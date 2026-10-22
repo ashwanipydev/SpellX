@@ -12,7 +12,8 @@ of Ogden's Basic English to Hindi-speaking learners.
   530 practice activities, 265 example sentences, copy-ready AI tutor prompts
   for every lesson that tailor practice to learner confidence, context, and challenge)
 - Combined Words + Grammar AI practice builds a copy-ready tutor prompt from
-  one lesson and 3–5 learner-selected words; the AI tutor runs externally
+  one vocabulary category and grammar chapter; the external AI tutor chooses
+  words from the category and adapts the practice to learner performance
 - Mobile-first, zero dependencies (vanilla HTML/CSS/JavaScript)
 - Zero network calls — everything is local
 - Runs by double-clicking index.html from file:// (no server needed)

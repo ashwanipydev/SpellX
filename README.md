@@ -34,7 +34,7 @@ works fully offline after the first load (e.g. in airplane mode or as an install
 
 - Playable from `file://` at a 360×640 phone viewport, no server.
 - All modes: flashcards (Learn), the 4 quiz variants, Listening, Typing, Spelling, Review, Words + Grammar AI practice, Stats, Settings.
-- Words + Grammar lets learners combine one lesson with 3–5 selected vocabulary words in a copy-ready, adaptive AI tutor prompt. The AI runs separately after the learner pastes the prompt.
+- Words + Grammar lets learners choose one vocabulary category and grammar chapter for a copy-ready AI tutor prompt. The tutor selects words from that category and adapts practice as the learner responds; the AI runs separately after the prompt is pasted.
 - Progress / streak / SRS survive reload, tab backgrounding and browser restart (localStorage).
 - All 850 words reachable; category counts reconcile to 850 (100 + 400 + 200 + 100 + 50).
 - Zero external requests (DevTools → Network shows only local files).
