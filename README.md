@@ -33,7 +33,8 @@ works fully offline after the first load (e.g. in airplane mode or as an install
 ### Testing checklist used for this release
 
 - Playable from `file://` at a 360×640 phone viewport, no server.
-- All modes: flashcards (Learn), the 4 quiz variants, Listening, Typing, Spelling, Review, Stats, Settings.
+- All modes: flashcards (Learn), the 4 quiz variants, Listening, Typing, Spelling, Review, Words + Grammar AI practice, Stats, Settings.
+- Words + Grammar lets learners combine one lesson with 3–5 selected vocabulary words in a copy-ready, adaptive AI tutor prompt. The AI runs separately after the learner pastes the prompt.
 - Progress / streak / SRS survive reload, tab backgrounding and browser restart (localStorage).
 - All 850 words reachable; category counts reconcile to 850 (100 + 400 + 200 + 100 + 50).
 - Zero external requests (DevTools → Network shows only local files).
@@ -64,6 +65,7 @@ works fully offline after the first load (e.g. in airplane mode or as an install
         ├── typing.js          # Typing drill with diff correction
         ├── spelling.js        # Spelling Puzzle: build the word from letter tiles
         ├── review.js          # Spaced-repetition session
+        ├── ai-practice.js     # Combined vocabulary + grammar tutor prompt builder
         ├── stats.js           # mastery, accuracy sparkline, reset
         └── settings.js        # language, voice, rate, sound, goal, reset
 ```

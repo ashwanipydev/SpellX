@@ -38,6 +38,10 @@ chk(fs.readFileSync(path.join(ws, 'sw.js'), 'utf8').indexOf('story-scenes.js') !
   'service worker precaches the connected story data');
 chk(fs.readFileSync(path.join(ws, 'sw.js'), 'utf8').indexOf('ai-practice-prompts.js') !== -1,
   'service worker precaches AI practice prompts');
+chk(fs.readFileSync(path.join(ws, 'sw.js'), 'utf8').indexOf('js/modes/ai-practice.js') !== -1,
+  'service worker precaches the combined AI practice screen');
+chk(html.indexOf('js/modes/ai-practice.js') > html.indexOf('js/modes/grammar.js'),
+  'combined AI practice loads after grammar lesson data');
 chk(listed.length - 1 === onDisk.length - 1, 'every file on disk is listed', onDisk.length);
 const missing = onDisk.filter(function (f) { return listed.indexOf(f) === -1; });
 chk(missing.length === 0, 'no data/grammar file is missing from index.html', missing.join(', '));
@@ -48,7 +52,7 @@ chk(dupes.length === 0, 'no duplicated script tags', dupes.join(', '));
 load('data/words.js');
 listed.forEach(function (f) { load('data/grammar/' + f); });
 ['js/store.js', 'js/srs.js', 'js/speech.js', 'js/modes/common.js', 'js/modes/home.js',
- 'js/modes/grammar.js', 'js/modes/settings.js', 'js/modes/stats.js'].forEach(load);
+ 'js/modes/grammar.js', 'js/modes/ai-practice.js', 'js/modes/settings.js', 'js/modes/stats.js'].forEach(load);
 
 const S = B850.store;
 B850.data = S.normalise();
@@ -330,6 +334,67 @@ if (grammarCard) {
   const texts = grammarCard.querySelectorAll('.mode-desc').map(function (d) { return d.textContent; });
   chk(texts.join(' ').indexOf('53 topics') !== -1, 'card describes the course', texts.join(' | '));
   chk(texts.some(function (t) { return /\/53 done$/.test(t); }), 'home progress uses the current topic total', texts.join(' | '));
+}
+const combinedCard = env.main.querySelectorAll('.mode-card').filter(function (c) {
+  return c.querySelectorAll('.mode-name').some(function (n) { return n.textContent === 'Words + Grammar'; });
+})[0];
+chk(!!combinedCard, 'home offers combined Words + Grammar practice');
+if (combinedCard) { combinedCard.click(); }
+chk(env.main.querySelector('.q-title') && env.main.querySelector('.q-title').textContent === 'Words + Grammar',
+  'combined practice builder opens from Home');
+const comboTopic = env.main.querySelector('.combo-topic-select');
+const comboSearch = env.main.querySelector('.combo-word-search');
+const comboCopy = env.main.querySelector('.combo-copy');
+chk(!!comboTopic && !!comboSearch && !!comboCopy, 'builder offers grammar, vocabulary, and prompt controls');
+if (comboTopic && comboSearch && comboCopy) {
+  comboTopic.value = '2';
+  comboTopic.dispatch('change');
+  chk(comboCopy.disabled, 'prompt stays unavailable until at least three words are selected');
+  function addComboWord(name) {
+    comboSearch.value = name;
+    comboSearch.dispatch('input');
+    const result = env.main.querySelectorAll('.combo-word-result').filter(function (button) {
+      const label = button.querySelector('.combo-word-result-name');
+      return label && label.textContent.toLowerCase() === name;
+    })[0];
+    if (result) { result.click(); }
+    return !!result;
+  }
+  const addedWords = ['book', 'come', 'give', 'go', 'keep'].map(addComboWord);
+  chk(addedWords.every(Boolean), 'learner can select known words from the 850-word list');
+  chk(env.main.querySelectorAll('.combo-selected-word').length === 5, 'builder supports up to five selected words');
+  comboSearch.value = 'need';
+  comboSearch.dispatch('input');
+  chk(env.main.querySelector('.combo-word-result') && env.main.querySelector('.combo-word-result').hasAttribute('disabled'),
+    'builder prevents selecting more than five words');
+  const combinedPrompt = env.main.querySelector('.combo-prompt-text');
+  chk(!!combinedPrompt && !comboCopy.disabled, 'prompt becomes available with a lesson and five words');
+  chk(!!combinedPrompt && combinedPrompt.value.indexOf('GRAMMAR LESSON: Nouns') !== -1 &&
+    combinedPrompt.value.indexOf('This lesson has no formal rule card') !== -1,
+    'combined prompt uses lesson concepts without inventing a rule');
+  chk(!!combinedPrompt && ['book', 'come', 'give', 'go', 'keep'].every(function (word) {
+    return combinedPrompt.value.indexOf(word + ' — ') !== -1;
+  }), 'combined prompt includes every selected word and meaning');
+  chk(!!combinedPrompt && combinedPrompt.value.indexOf('Example: Keep this book with you.') !== -1,
+    'combined prompt includes source example sentences');
+  const removeBook = env.main.querySelectorAll('.combo-selected-word').filter(function (item) {
+    return item.textContent.indexOf('book — ') === 0;
+  })[0];
+  if (removeBook) { removeBook.querySelector('.combo-remove-word').click(); }
+  chk(env.main.querySelectorAll('.combo-selected-word').length === 4 &&
+    !!combinedPrompt && combinedPrompt.value.indexOf('book — ') === -1,
+    'removing a selected word refreshes the prompt');
+  chk(!!combinedPrompt && combinedPrompt.value.indexOf('one question or give one task at a time') !== -1 &&
+    combinedPrompt.value.indexOf('Correct mistakes related to the selected words or grammar') !== -1,
+    'combined prompt guides interactive, corrective AI tutoring');
+  comboTopic.value = '19';
+  comboTopic.dispatch('change');
+  chk(!!combinedPrompt && combinedPrompt.value.indexOf('RELEVANT RULE OR PATTERN: S + V1(+s/es) + O') !== -1,
+    'combined prompt includes a relevant rule when the lesson has one');
+  comboCopy.click();
+  chk(env.main.querySelectorAll('.combo-status').some(function (status) {
+    return status.textContent.indexOf('copy it and paste it') !== -1;
+  }), 'combined prompt offers a manual-copy fallback');
 }
 
 // ---- 9. legacy save migration

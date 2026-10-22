@@ -11,6 +11,8 @@ of Ogden's Basic English to Hindi-speaking learners.
 - Also ships a playable 53-topic English grammar course (7 sections,
   530 practice activities, 265 example sentences, copy-ready AI tutor prompts
   for every lesson that tailor practice to learner confidence, context, and challenge)
+- Combined Words + Grammar AI practice builds a copy-ready tutor prompt from
+  one lesson and 3–5 learner-selected words; the AI tutor runs externally
 - Mobile-first, zero dependencies (vanilla HTML/CSS/JavaScript)
 - Zero network calls — everything is local
 - Runs by double-clicking index.html from file:// (no server needed)
@@ -123,6 +125,10 @@ Grammar
   - Session = 10 items mixed across the level, instant feedback
   - Keyword chips cross-link into the 850-word deck (pronunciation,
     Hindi meaning, examples) when the keyword is a Basic English word
+  - Words + Grammar practice combines a selected grammar topic with 3–5
+    words, meanings and examples from the 850-word list in one AI tutor prompt
+  - Combined prompts use topic-specific rules only when present and guide
+    the external AI tutor to practise one question at a time with adaptive feedback
   - Mastery per topic (done at 6 correct), +12 XP per correct answer
   - Grammar progress rides in the same "b850:v1" save, migrates old
     saves safely, and never touches the 850-word seen/learned maps
