@@ -53,18 +53,6 @@
       { "type": "chooser", "prompt": "Which cluster produces a silent letter in English?", "options": ["kn-", "st-", "cl-", "gr-"], "answer": 0, "note": "kn- produces a silent k: knight, knee, knelt." }
     ],
     "sourceOrder": 50,
-    "source": "Write It Right — Ch6",
-    "rules": {
-      "pattern": "Silent letters = historical fossils",
-      "forms": [
-        { "kind": "positive", "formula": "Old English clusters: kn-, wr-, gn-", "en": "knight (k silent), write (w silent), gnaw (g silent)" },
-        { "kind": "negative", "formula": "French/Latin borrowings", "en": "island (s silent), psychology (p silent), doubt (t silent)" },
-        { "kind": "question", "formula": "Vowel Shift leftovers", "en": "read past tense, people — spelling kept, sound changed" }
-      ],
-      "exceptions": [
-        "Some silent letters are still visible in related words: sign (silent s) but signal (s pronounced)"
-      ],
-      "hindiTip": "Silent letters ग़लती नहों — अकलिपि म इतिहास ह। kn- cluster (knight), Latin insula (island), French doute (doubt)। अकशर रह गई, आवाज गई।"
-    }
+    "source": "Write It Right — Ch6"
   }
 );

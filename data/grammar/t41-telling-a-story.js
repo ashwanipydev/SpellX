@@ -205,31 +205,6 @@
       }
     ],
     "sourceOrder": 41,
-    "source": "English Grammar Topics list supplied by user",
-    "rules": {
-      "pattern": "First/Then/Finally + S + V2 + O",
-      "forms": [
-        {
-          "kind": "positive",
-          "formula": "First/Then + S + V2 + O",
-          "en": "First we ate sweet mangoes under the tree."
-        },
-        {
-          "kind": "negative",
-          "formula": "Then + S + did + not + V1 + O",
-          "en": "Then the old man did not see the bus."
-        },
-        {
-          "kind": "question",
-          "formula": "Did + S + V1 + O?",
-          "en": "Did you enjoy the fair last week?"
-        }
-      ],
-      "exceptions": [
-        "Many past verbs are irregular: go-went, see-saw, eat-ate",
-        "Use was/were + V-ing to set the scene before the main event"
-      ],
-      "hindiTip": "कहानी में हर घटना को क्रम से रखिए और पूरी हो चुकी बातों के लिए दूसरा रूप (V2) लगाइए। क्रम स्पष्ट करने के लिए First, Then, After that और Finally जोड़िए, और नकारात्मक वाक्य में did not के साथ क्रिया का पहला रूप रखिए।"
-    }
+    "source": "English Grammar Topics list supplied by user"
   }
 );

@@ -107,15 +107,14 @@ Settings
 
 Grammar
   - 53 topics in 5 levels across 7 sections (chapter data numbered 0–6)
-  - Level list -> topic (RULE card, English summary,
-    3 rule points, keywords, 5 examples) -> practice
-  - Rule card = formula pattern, 3 labelled forms (positive /
-    negative / question, or form / example / avoid on the skills
-    topics), exceptions, and an optional reviewed Hindi memory tip
+  - Level list -> topic (optional relevant rule/pattern card, English summary,
+    3 key points, keywords, 5 examples) -> practice
+  - Rule cards appear only when a lesson has a useful, relevant rule or
+    pattern; their examples and forms are specific to that topic
   - 530 practice activities (10 per topic): chooser, cloze, word-order,
     spot-the-mistake, and self-assessed sentence production
   - Every practice item includes a matching line from its lesson's Ravi story
-    as a clue for applying the same grammar rule
+    as a clue for applying the same lesson concept
   - Hindi help is hidden by default and only shown when enabled and
     explicitly marked reviewed; lesson stories are withheld until their
     English scenes are checked against the lesson topic
@@ -144,7 +143,7 @@ Grammar
 - Topic fields (inside each t*.js file):
     id, topic (slug), title, titleHindi, level (1-5), levelLabel,
     keywords[], summary, optional explanationHindi, points[3],
-    rules {pattern, forms[3], exceptions, optional hindiTip},
+    optional rules {pattern, forms[], exceptions, optional hindiTip},
     examples[5] {en, optional hi, note}, exercises[10],
     English story scene[4] and recap are provided in story-scenes.js;
     each scene records its lesson id, rule focus and review status,
@@ -391,8 +390,8 @@ ACCEPTANCE CRITERIA
       grammar accuracy and the weakest level
   [x] One data file per topic, all 53 listed in index.html and
       precached by the service worker (cache b850-v4)
-  [x] Every topic has a formula rule block: pattern + 3 labelled
-      forms + exceptions + a Hindi tip, rendered as a Rule card
+  [x] Topic-specific rule blocks are optional and render only when
+      a lesson has a relevant rule or pattern
   [x] No new dependencies, no build step; app scripts load clean
 
 KNOWN LIMITS

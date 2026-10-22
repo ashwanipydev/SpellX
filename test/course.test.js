@@ -103,7 +103,17 @@ chk(grammarTopics.every(function (t) {
     t.aiPracticePrompt.indexOf("Start now by asking only the first check-in question") !== -1 &&
     t.aiPracticePrompt.indexOf("If I struggle repeatedly") !== -1 &&
     t.aiPracticePrompt.indexOf("At the end, summarize") !== -1 &&
-    t.aiPracticePrompt.indexOf("correct") !== -1;
+    t.aiPracticePrompt.indexOf("correct") !== -1 &&
+    t.aiPracticePrompt.indexOf("do not invent or force a grammar rule") !== -1 &&
+    (t.rules
+      ? t.aiPracticePrompt.indexOf("LESSON-SPECIFIC RULE OR PATTERN:\n" + t.rules.pattern) !== -1 &&
+        (t.rules.forms || []).every(function (form) {
+          return t.aiPracticePrompt.indexOf("- " + form.formula + ": " + form.en) !== -1;
+        }) &&
+        (t.rules.exceptions || []).every(function (exception) {
+          return t.aiPracticePrompt.indexOf(exception) !== -1;
+        })
+      : t.aiPracticePrompt.indexOf("LESSON-SPECIFIC RULE OR PATTERN:") === -1);
 }), 'every lesson prompt includes goals, real-world practice, adaptive tutoring and learner check-in');
 const totalQ = grammarExercises.reduce(function (a, c) { return a + c.exercises.length; }, 0);
 chk(totalQ === 530, '530 exercises in total', totalQ);
@@ -114,9 +124,12 @@ const storyLinkedExercises = grammarExercises.reduce(function (count, c) {
   }) ? c.exercises.length : 0);
 }, 0);
 chk(storyLinkedExercises === 530, 'every grammar exercise links to a line from its topic story', storyLinkedExercises);
-let rulesOk = 0;
-grammarTopics.forEach(function (t) { if (t.rules && t.rules.pattern && (t.rules.forms || []).length === 3) { rulesOk += 1; } });
-chk(rulesOk === 53, 'every topic has a rule block with 3 forms', rulesOk);
+const topicsWithoutRule = [1, 2, 11, 13, 30, 36, 41, 42, 43, 44, 45, 48, 50];
+chk(grammarTopics.filter(function (t) { return !t.rules; }).map(function (t) { return t.id; }).join(',') === topicsWithoutRule.join(','),
+  'rule cards are omitted from lessons focused on concepts or practical skills');
+chk(grammarTopics.every(function (t) {
+  return !t.rules || (t.rules.pattern && Array.isArray(t.rules.forms) && t.rules.forms.length > 0);
+}), 'each supplied rule block has a pattern and at least one relevant form');
 
 // ---- 3b. story + why fields
 let storyOk = 0, chOk = 0, whyOk = 0;
@@ -197,6 +210,11 @@ if (copyPrompt) {
   chk(env.main.querySelector('.gr-ai-prompt-status').textContent.indexOf('copy it') !== -1,
     'copy action explains manual copying when clipboard access is unavailable');
 }
+B850.screens.grammar.render({ view: 'topic', id: 2 });
+chk(!env.main.querySelector('.gr-rule'), 'noun lesson does not show an unrelated sentence-pattern rule');
+const nounAiPrompt = env.main.querySelector('.gr-ai-prompt-text');
+chk(!!nounAiPrompt && nounAiPrompt.value.indexOf('LESSON-SPECIFIC RULE OR PATTERN:') === -1,
+  'AI tutor prompt for a concept lesson does not invent a formal rule');
 
 B850.screens.grammar.render({ view: 'topic', id: 10 });
 chk(!!env.main.querySelector('.gr-story'), 'audited story card renders for topic 10');
@@ -245,7 +263,7 @@ chk(!!clickable, 'practice offers an answer control');
 const practiceStory = env.main.querySelector('.gr-practice-story');
 chk(!!practiceStory, 'practice question shows its Ravi story context');
 chk(!!practiceStory && practiceStory.textContent.indexOf('From Ravi’s story') !== -1,
-  'practice story context explains its connection to the rule');
+  'practice story context explains its connection to the lesson concept');
 if (clickable) {
   const before = B850.state.answers.total;
   const opt = env.main.querySelector('.option');

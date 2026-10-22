@@ -199,31 +199,6 @@
       }
     ],
     "sourceOrder": 45,
-    "source": "English Grammar Topics list supplied by user",
-    "rules": {
-      "pattern": "S + V1(+s/es) + O + every day",
-      "forms": [
-        {
-          "kind": "positive",
-          "formula": "S + V1 + O + every day",
-          "en": "I practise English every day."
-        },
-        {
-          "kind": "negative",
-          "formula": "S + do + not + V1 + O",
-          "en": "I do not watch television daily."
-        },
-        {
-          "kind": "question",
-          "formula": "Do + S + V1 + O?",
-          "en": "Do you practise English every day?"
-        }
-      ],
-      "exceptions": [
-        "Practise is the verb, practice is the noun: I practise daily",
-        "Never put am before a present verb: say I practise, not I am practise"
-      ],
-      "hindiTip": "रोज़ दस मिनट ज़ोर से पाँच सरल वाक्य बोलें — एक सकारात्मक, एक नकारात्मक और एक प्रश्न। अपनी आवाज़ रिकॉर्ड करके एक बार सुनें और गलती सुधारें।"
-    }
+    "source": "English Grammar Topics list supplied by user"
   }
 );

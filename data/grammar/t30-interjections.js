@@ -206,31 +206,6 @@
       }
     ],
     "sourceOrder": 30,
-    "source": "English Grammar Topics list supplied by user",
-    "rules": {
-      "pattern": "Interj! + S + V",
-      "forms": [
-        {
-          "kind": "positive",
-          "formula": "Interj! + S + V2 + O",
-          "en": "Hurrah! We won the match."
-        },
-        {
-          "kind": "negative",
-          "formula": "Interj, + S + did + not + V1 + O",
-          "en": "Alas, I did not win the race."
-        },
-        {
-          "kind": "question",
-          "formula": "Interj, + do/does + S + V1 + O?",
-          "en": "Oh, do you want some tea?"
-        }
-      ],
-      "exceptions": [
-        "Hurrah shows joy, Ouch shows pain, Alas shows sorrow",
-        "Use ! for strong feeling and a comma for a mild one"
-      ],
-      "hindiTip": "खुशी के लिए Hurrah, हैरानी के लिए Wow, दर्द के लिए Ouch और दुख के लिए Alas का प्रयोग करें। विस्मयादिबोधक शब्द के बाद कॉमा या विस्मयादिबोधक चिह्न ज़रूर लगाएँ।"
-    }
+    "source": "English Grammar Topics list supplied by user"
   }
 );

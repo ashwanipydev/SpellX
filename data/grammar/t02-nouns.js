@@ -209,31 +209,6 @@
       }
     ],
     "sourceOrder": 2,
-    "source": "English Grammar Topics list supplied by user",
-    "rules": {
-      "pattern": "S + V + O",
-      "forms": [
-        {
-          "kind": "positive",
-          "formula": "S + V1(+s/es) + O",
-          "en": "The farmer keeps two cows."
-        },
-        {
-          "kind": "negative",
-          "formula": "S + do/does + not + V1 + O",
-          "en": "The farmer does not keep a goat."
-        },
-        {
-          "kind": "question",
-          "formula": "Do/Does + S + V1 + O?",
-          "en": "Does the farmer keep cows?"
-        }
-      ],
-      "exceptions": [
-        "The plural of child is children, not childs.",
-        "Some nouns do not change: one sheep, two sheep."
-      ],
-      "hindiTip": "संज्ञा व्यक्ति, स्थान, जानवर या वस्तु का नाम बताती है। एक से अधिक के लिए बहुवचन रूप प्रयोग करें, जैसे book से books।"
-    }
+    "source": "English Grammar Topics list supplied by user"
   }
 );

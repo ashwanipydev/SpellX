@@ -194,31 +194,6 @@
       }
     ],
     "sourceOrder": 43,
-    "source": "English Grammar Topics list supplied by user",
-    "rules": {
-      "pattern": "Greeting + short reply + one question back",
-      "forms": [
-        {
-          "kind": "positive",
-          "formula": "It + was + nice + to + V1 + you",
-          "en": "It was nice to meet you today."
-        },
-        {
-          "kind": "negative",
-          "formula": "S + do + not + V1 + O",
-          "en": "I do not understand that question."
-        },
-        {
-          "kind": "question",
-          "formula": "May + I + V1 + O?",
-          "en": "May I ask your name please?"
-        }
-      ],
-      "exceptions": [
-        "Polite requests use could or would, not can: Could you help me?",
-        "Answer with a full sentence, not one word: I am fine, thanks"
-      ],
-      "hindiTip": "बातचीत में पहले पूरी बात सुनें, फिर छोटा जवाब दें और एक छोटा सवाल वापस पूछें। अभिवादन, धन्यवाद और विदा के तैयार वाक्य याद रखें।"
-    }
+    "source": "English Grammar Topics list supplied by user"
   }
 );

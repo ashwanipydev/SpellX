@@ -197,31 +197,6 @@
       }
     ],
     "sourceOrder": 36,
-    "source": "English Grammar Topics list supplied by user",
-    "rules": {
-      "pattern": "S + V + O (+ time/place)",
-      "forms": [
-        {
-          "kind": "positive",
-          "formula": "S + V1(+s/es) + O",
-          "en": "She drinks tea every morning."
-        },
-        {
-          "kind": "negative",
-          "formula": "S + do/does + not + V1 + O",
-          "en": "He does not like cold milk."
-        },
-        {
-          "kind": "question",
-          "formula": "Do/Does + S + V1 + O?",
-          "en": "Do you need help with these bags?"
-        }
-      ],
-      "exceptions": [
-        "he/she/it add -s or -es, but have becomes has",
-        "Plural S take the plain V1: they go, we have"
-      ],
-      "hindiTip": "पहले कर्ता, फिर क्रिया और फिर कर्म रखें; समय और स्थान वाले शब्द वाक्य के अंत में रखें। he, she, it के साथ क्रिया में -s लगाइए, पर they और we के साथ सादी क्रिया रहती है।"
-    }
+    "source": "English Grammar Topics list supplied by user"
   }
 );

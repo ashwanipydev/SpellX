@@ -205,31 +205,6 @@
       }
     ],
     "sourceOrder": 42,
-    "source": "English Grammar Topics list supplied by user",
-    "rules": {
-      "pattern": "Topic sentence + details + linking word",
-      "forms": [
-        {
-          "kind": "positive",
-          "formula": "S + V1(+s/es) + O",
-          "en": "My town has one small and busy market."
-        },
-        {
-          "kind": "negative",
-          "formula": "S + do/does + not + V1 + O",
-          "en": "A paragraph does not need many main ideas."
-        },
-        {
-          "kind": "question",
-          "formula": "Does + S + V1 + O?",
-          "en": "Does your paragraph start with one clear idea?"
-        }
-      ],
-      "exceptions": [
-        "Never join two linking words: use and or but, not and but",
-        "he/she/it take has, not have: My town has one market"
-      ],
-      "hindiTip": "हर अनुच्छेद में एक ही मुख्य विचार रखिए और उसे पहले वाक्य में साफ़ लिखिए। बाद के वाक्यों में also, because या so जैसे जोड़ने वाले शब्द लगाइए और हर वाक्य छोटा तथा एक ही काल में रखिए।"
-    }
+    "source": "English Grammar Topics list supplied by user"
   }
 );

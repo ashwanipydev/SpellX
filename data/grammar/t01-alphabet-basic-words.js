@@ -205,31 +205,6 @@
       }
     ],
     "sourceOrder": 1,
-    "source": "English Grammar Topics list supplied by user",
-    "rules": {
-      "pattern": "Capital letter + S + V + O",
-      "forms": [
-        {
-          "kind": "positive",
-          "formula": "Capital letter + S + V + O",
-          "en": "Ravi reads a good book."
-        },
-        {
-          "kind": "negative",
-          "formula": "N + do/does + not + start with small letter",
-          "en": "A name does not start with a small letter."
-        },
-        {
-          "kind": "question",
-          "formula": "What + is + the first N?",
-          "en": "What is the first letter?"
-        }
-      ],
-      "exceptions": [
-        "I is always a capital letter, even in the middle of a sentence.",
-        "Names of people and languages take a capital first letter."
-      ],
-      "hindiTip": "अंग्रेज़ी में छब्बीस अक्षर A से Z तक तय क्रम में आते हैं। हर वाक्य का पहला अक्षर और नामों का पहला अक्षर हमेशा बड़ा लिखें।"
-    }
+    "source": "English Grammar Topics list supplied by user"
   }
 );

@@ -53,18 +53,6 @@
       { "type": "chooser", "prompt": "Which of these words has a silent letter?", "options": ["listen", "time", "read", "go"], "answer": 0, "note": "The final -en in listen is silent." }
     ],
     "sourceOrder": 48,
-    "source": "Write It Right — Ch6",
-    "rules": {
-      "pattern": "Spelling ≠ Sound (historical)",
-      "forms": [
-        { "kind": "positive", "formula": "Silent letters: knight, knife, listen", "en": "The k in knight is silent." },
-        { "kind": "negative", "formula": "One pattern, many sounds: ough", "en": "ough = /u/ (through), /ʌf/ (tough), /oʊ/ (though), /uː/ (dough)" },
-        { "kind": "question", "formula": "Why? Great Vowel Shift + printing press", "en": "Spelling froze in 1500; sounds kept changing until 1700." }
-      ],
-      "exceptions": [
-        "Some silent letters came from French or Latin: island (from Latin insula), psalm (from Greek)"
-      ],
-      "hindiTip": "अंग्रेज़ी क आवाजेँ 500 साल पहिले बदल गईं, लेकिन अकलिपि जमा रही। इसलिये silent letters व weird ough patterns हें। पुराना अकशर = पुरानी आवाज क फॉसिल।"
-    }
+    "source": "Write It Right — Ch6"
   }
 );

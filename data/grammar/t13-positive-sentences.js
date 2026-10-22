@@ -203,31 +203,6 @@
       }
     ],
     "sourceOrder": 13,
-    "source": "English Grammar Topics list supplied by user",
-    "rules": {
-      "pattern": "S + V + O",
-      "forms": [
-        {
-          "kind": "positive",
-          "formula": "S + V1(+s/es) + O",
-          "en": "She reads a book."
-        },
-        {
-          "kind": "negative",
-          "formula": "S + do/does + not + V1 + O",
-          "en": "She does not read a book."
-        },
-        {
-          "kind": "question",
-          "formula": "Do/Does + S + V1 + O?",
-          "en": "Does she read a book?"
-        }
-      ],
-      "exceptions": [
-        "he/she/it take -s but have becomes has",
-        "Plural subjects keep V1: they play, children go"
-      ],
-      "hindiTip": "सकारात्मक वाक्य में कर्ता पहले, फिर क्रिया और फिर कर्म आता है। he, she, it के साथ क्रिया में -s या -es जोड़ना न भूलें।"
-    }
+    "source": "English Grammar Topics list supplied by user"
   }
 );

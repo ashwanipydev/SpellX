@@ -203,31 +203,6 @@
       }
     ],
     "sourceOrder": 11,
-    "source": "English Grammar Topics list supplied by user",
-    "rules": {
-      "pattern": "S + V + O (S = who/what)",
-      "forms": [
-        {
-          "kind": "positive",
-          "formula": "S + V + O",
-          "en": "The birds sing a sweet song."
-        },
-        {
-          "kind": "negative",
-          "formula": "S + do/does + not + V + O",
-          "en": "The girls do not sing sad songs."
-        },
-        {
-          "kind": "question",
-          "formula": "Do/Does + S + V + O?",
-          "en": "Do the girls sing a happy song?"
-        }
-      ],
-      "exceptions": [
-        "A predicate must have a verb, not only an -ing word",
-        "Singular S takes V+s, plural S takes plain V"
-      ],
-      "hindiTip": "हर अंग्रेज़ी वाक्य दो भागों में बँटा होता है — पहले कर्ता (subject) और फिर विधेय (predicate)। विधेय में क्रिया ज़रूर होती है, इसलिए बिना क्रिया वाला समूह पूरा वाक्य नहीं बनता।"
-    }
+    "source": "English Grammar Topics list supplied by user"
   }
 );

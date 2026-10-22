@@ -199,31 +199,6 @@
       }
     ],
     "sourceOrder": 44,
-    "source": "English Grammar Topics list supplied by user",
-    "rules": {
-      "pattern": "S + V1(+s/es) + O",
-      "forms": [
-        {
-          "kind": "positive",
-          "formula": "S + V1(+s/es) + O",
-          "en": "My brother works in a bank."
-        },
-        {
-          "kind": "negative",
-          "formula": "S + do/does + not + V1 + O",
-          "en": "She does not go to the market daily."
-        },
-        {
-          "kind": "question",
-          "formula": "Do/Does + S + V1 + O?",
-          "en": "Does your brother speak English well?"
-        }
-      ],
-      "exceptions": [
-        "Possession takes have, never am having: say I have two brothers",
-        "After did not use V1: she did not come, not she did not came"
-      ],
-      "hindiTip": "कर्ता he, she या it हो तो क्रिया में s जोड़ना कभी न भूलें। प्रश्न में वह s does पर चला जाता है और मुख्य क्रिया V1 रहती है।"
-    }
+    "source": "English Grammar Topics list supplied by user"
   }
 );
