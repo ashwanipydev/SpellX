@@ -14,14 +14,16 @@ of Ogden's Basic English to Hindi-speaking learners.
 - Combined Words + Grammar AI practice builds a copy-ready tutor prompt from
   one vocabulary category and grammar chapter; the external AI tutor chooses
   words from the category and adapts the practice to learner performance
+- English Reading offers six original passages across Beginner, Intermediate
+  and Advanced levels, on-demand Hindi word/sentence help, speech playback,
+  comprehension and vocabulary exercises, saved words and progress
 - Mobile-first, zero dependencies (vanilla HTML/CSS/JavaScript)
-- Zero network calls — everything is local
+- No app-initiated external calls — lessons and learning data are local
 - Runs by double-clicking index.html from file:// (no server needed)
-- Installable PWA + full offline (service worker over http/https)
+- Installable PWA + offline lessons and learning data (service worker over http/https)
 - Saffron English design system: saffron/amber primary, emerald +
   indigo accents, tactile 3D-lip controls, light + dark themes
-- System fonts + emoji/SVG icons only (no external fonts/CDNs, so
-  offline / file:// / zero-network stays intact)
+- System fonts + emoji/SVG icons only (no remote fonts/CDNs or assets)
 - English-only UI chrome; word content (Hindi/Devanagari/examples)
   kept verbatim from the dataset
 
@@ -33,12 +35,12 @@ of Ogden's Basic English to Hindi-speaking learners.
 - Spelling - tile puzzle
 - Quiz     - 4-option rounds
 - Review   - spaced repetition, with a due-count badge
-- Grammar, Stats, Listening, Typing and Settings are reached from
+- Grammar, English Reading, Stats, Listening, Typing and Settings are reached from
   the Home mode grid and the header profile (settings) button.
   (A 6th tab does not fit a 360 px phone, so Grammar stays on Home.)
 
 --------------------------------------------------------------------
- MODES — 10 LIVE
+ MODES — 11 LIVE
 --------------------------------------------------------------------
 Home
   - Streak counter, daily-goal progress ring
@@ -134,6 +136,24 @@ Grammar
   - Grammar progress rides in the same "b850:v1" save, migrates old
     saves safely, and never touches the 850-word seen/learned maps
 
+English Reading
+  - Six original passages across Beginner, Intermediate and Advanced;
+    everyday stories, workplace email, software work, interviews and a
+    fictional news-style explainer
+  - Read the full passage or one sentence at a time, adjust text size and
+    speech speed, and reveal Hindi translations/simple explanations on demand
+  - Click words for Hindi meaning, simple English definition, pronunciation,
+    an example and optional save to a personal vocabulary list
+  - en-US SpeechSynthesis reads sentence-by-sentence and highlights the
+    current sentence; unavailable audio falls back to text
+  - Four activities per passage: comprehension multiple choice, fill-in
+    the blank, vocabulary meaning and sentence ordering; progress, best
+    score and answers persist
+  - Optional browser speech recognition compares recognized words with one
+    sentence; the result is explicitly not a pronunciation-accuracy score.
+    Browser speech services may process audio; SpellX does not store recordings.
+  - Optional copy-ready tutor prompt; no live AI or external API calls
+
 --------------------------------------------------------------------
  GRAMMAR COURSE (53 topics, 5 levels, 7 sections) — LIVE
 --------------------------------------------------------------------
@@ -221,8 +241,10 @@ Grammar
 - manifest.webmanifest makes the app installable (portrait, SVG icon)
 - sw.js precaches the app shell + dataset, stale-while-revalidate
 - After the first load, works with the network disconnected
-- Zero runtime network calls: no analytics, fonts, or images
+- No app-initiated runtime network calls: no analytics, AI APIs, fonts, or images
   (inline SVG, emoji, CSS only)
+- Reading passages, progress and dictionary data are local; the optional
+  browser speech-recognition service is browser-managed and may use network
 
 --------------------------------------------------------------------
  ARCHITECTURE / DATA
@@ -235,6 +257,7 @@ Grammar
   variants, defensive field guards):
     data/words.js    - 850 words (pronunciation, EN + HI glosses,
                        two example sentences each)
+    data/reading.js  - original leveled English reading passages and exercises
     data/grammar/    - 47 topic files (t01..t47), each self-registering
                        on window.GRAMMAR_TOPICS, plus index.js which
                        derives grammarTopics + grammarExercises
@@ -259,6 +282,9 @@ Grammar
 - Reviewed Hindi grammar help is opt-in and hidden by default; unreviewed
   translations are omitted. All 53 English story scenes are aligned to
   their lesson and follow Ravi preparing a Lucknow reading room.
+- English Reading stores level selection, completed passages and best
+  comprehension scores, saved vocabulary, and reading answer accuracy in
+  the existing "b850:v1" local save.
 
 ====================================================================
  IMPLEMENTATION PLAN — GRAMMAR COURSE

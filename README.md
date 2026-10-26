@@ -3,9 +3,10 @@
 A mobile-first, dependency-free web game that teaches the **850 words of Ogden's Basic
 English** to **Hindi-speaking learners**. Styled with the **Saffron English** design
 system (warm saffron/amber + emerald + indigo, tactile "3D-lip" controls). Vanilla
-HTML/CSS/JavaScript only — no frameworks, no build step, no network calls, no external
-assets. All UI chrome is in **English**; the word content (Hindi glosses, Devanagari
-pronunciations, example sentences) is kept verbatim from the dataset.
+HTML/CSS/JavaScript only — no frameworks, no build step, no app-initiated external
+requests, and no external assets. Optional browser speech recognition is browser-managed
+and may use its own service. All UI chrome is in **English**; the word content (Hindi
+glosses, Devanagari pronunciations, example sentences) is kept verbatim from the dataset.
 
 ![status](https://img.shields.io/badge/dependencies-none-brightgreen) ![license](https://img.shields.io/badge/license-your%20data-blue)
 
@@ -14,8 +15,9 @@ pronunciations, example sentences) is kept verbatim from the dataset.
 **Option A — just open it (no server needed).**
 Double-click `index.html` (or drag it into a browser tab). Everything, including the word
 dataset, loads from local files over `file://`. The service worker is skipped automatically
-in that mode (browsers don't allow it on `file://`), which is fine — the app needs no
-network at all.
+in that mode (browsers don't allow it on `file://`), which is fine — the app's lessons and
+data need no network. Browser speech recognition may use a browser-provided service if you
+choose to use it.
 
 **Option B — serve it (recommended for testing / PWA install).**
 
@@ -33,11 +35,12 @@ works fully offline after the first load (e.g. in airplane mode or as an install
 ### Testing checklist used for this release
 
 - Playable from `file://` at a 360×640 phone viewport, no server.
-- All modes: flashcards (Learn), the 4 quiz variants, Listening, Typing, Spelling, Review, Words + Grammar AI practice, Stats, Settings.
+- All modes: flashcards (Learn), the 4 quiz variants, Listening, Typing, Spelling, Review, Grammar, English Reading, Words + Grammar AI practice, Stats, Settings.
 - Words + Grammar lets learners choose one vocabulary category and grammar chapter for a copy-ready AI tutor prompt. The tutor selects words from that category and adapts practice as the learner responds; the AI runs separately after the prompt is pasted.
 - Progress / streak / SRS survive reload, tab backgrounding and browser restart (localStorage).
 - All 850 words reachable; category counts reconcile to 850 (100 + 400 + 200 + 100 + 50).
-- Zero external requests (DevTools → Network shows only local files).
+- No app-initiated external requests (DevTools → Network shows only local files unless you explicitly use browser speech recognition).
+- English Reading includes original Beginner / Intermediate / Advanced passages, on-demand Hindi help, comprehension activities, saved vocabulary, and optional speech playback/recognition.
 - Keyboard only: `1–4` pick options, `Enter`/`Space` flip/advance, `Esc` back.
 - Verified at 360×640, 390×844, 768 and 1440 px widths.
 
@@ -51,7 +54,8 @@ works fully offline after the first load (e.g. in airplane mode or as an install
 ├── css/
 │   └── styles.css             # styles source of truth: light/dark, reduced-motion, 360-first
 ├── data/
-│   └── words.js               # THE dataset (classic script, `const vocabulary`)
+│   ├── words.js               # THE dataset (classic script, `const vocabulary`)
+│   └── reading.js             # original passages, glosses and exercises
 └── js/
     ├── store.js               # normalisation, versioned localStorage, day/streak/XP
     ├── srs.js                 # SM-2-lite / 6-box Leitner scheduler
@@ -66,6 +70,7 @@ works fully offline after the first load (e.g. in airplane mode or as an install
         ├── spelling.js        # Spelling Puzzle: build the word from letter tiles
         ├── review.js          # Spaced-repetition session
         ├── ai-practice.js     # Combined vocabulary + grammar tutor prompt builder
+        ├── reading.js         # English Reading: passages, help, speech, exercises
         ├── stats.js           # mastery, accuracy sparkline, reset
         └── settings.js        # language, voice, rate, sound, goal, reset
 ```
@@ -129,6 +134,7 @@ their Basic English PDF and are preserved verbatim in `data/words.js` (each row'
 | **Typing** | Given the Hindi meaning, type the English word. Case-insensitive, trimmed, tolerant of `/` variants, diff-style correction on failure. |
 | **Spelling Puzzle** | Choose **Relaxed practice** (untimed) or a **Timed challenge** (the existing 60-second timer on harder words is bonus-only and never ends the round). Build words from shuffled tiles with drag, tap, or physical keyboard input (`Backspace`/arrows). The prompt shows pronunciation, meaning, target length, and session progress. After a miss, correctly placed letters stay marked and the remaining letters return for a retry; repeated misses queue the word into Review. Hints cost XP and never block (hear it / first letter / English meaning / example sentence), and a free **"Show word"** reveals the answer when needed. The session summary reports solved, revealed, and Review words. |
 | **Review** | Leitner/SM-2-lite: 6 boxes, intervals 0/1/2/4/8/16 days. Correct → up a box; wrong → box 0 and re-queued later in the same session (after ≥ 3 other cards when possible). Only due cards appear; the tab shows the due count. |
+| **English Reading** | Six original, leveled passages; read sentence-by-sentence or as a whole, reveal Hindi help on demand, save vocabulary, listen, and practise comprehension, vocabulary, fill-in-the-blank and sentence ordering. |
 | **Stats** | Per-category mastery, accuracy sparkline (14 days), words due, longest streak, level/XP, confirm-guarded reset. |
 | **Settings** | Hindi-first vs English-first prompts, TTS voice + rate, sound on/off, daily goal size (10/20/30/50), reset. All persisted. |
 
@@ -142,9 +148,13 @@ countdown pressure.
 - `window.speechSynthesis` with an explicitly chosen `en-US` voice; the async
   `voiceschanged` event is handled (plus a short poll on Safari). Rate ≈ 0.9, pitch 1.
 - Any in-flight utterance is cancelled before a new one starts.
+- English Reading reuses en-US speech synthesis to read each sentence in sequence and highlight the active sentence.
 - **Graceful degradation:** if speech synthesis or an English voice is unavailable, audio
   controls are hidden, the Listening mode shows a text explanation, and the quiz's audio
   variant falls back to a text question. Nothing breaks.
+- Read-aloud comparison is offered only when the browser exposes SpeechRecognition. It
+  reports a speech-recognition word-match estimate, not pronunciation accuracy. The
+  browser may process audio using its own service; SpellX does not store recordings.
 
 ## Accessibility
 
@@ -162,8 +172,10 @@ countdown pressure.
 - `manifest.webmanifest` makes the app installable as a PWA (portrait, custom SVG icon).
 - `sw.js` precaches the app shell and the dataset, then serves stale-while-revalidate for
   the rest. After the first load, the app works with the network disconnected.
-- On `file://` there is no service worker (and none is needed) — the app has zero runtime
-  network calls by design: no analytics, no fonts, no images (inline SVG, emoji, CSS only).
+- On `file://` there is no service worker (and none is needed) — the app makes no
+  app-initiated external network calls: no analytics, AI APIs, fonts or images (inline
+  SVG, emoji, CSS only). Browser-provided speech recognition may use a browser service;
+  that is disclosed before practice.
 
 ## Decisions (judgement calls made where the spec was ambiguous)
 
