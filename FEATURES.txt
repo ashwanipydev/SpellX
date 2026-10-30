@@ -137,9 +137,19 @@ Grammar
     saves safely, and never touches the 850-word seen/learned maps
 
 English Reading
-  - Six original passages across Beginner, Intermediate and Advanced;
-    everyday stories, workplace email, software work, interviews and a
-    fictional news-style explainer
+  - Browse open-licensed Wikipedia articles across Networking, Operating
+    Systems, DevOps, History and Learning; the catalogue includes articles
+    about TCP/IP, DNS, Linux, continuous integration, computing history and Apollo 11
+  - Article text loads on request, displays Wikipedia contributor attribution,
+    a CC BY-SA 4.0 license link and a link to the exact source revision
+  - Save complete article text in the local app for offline reading, with a
+    one-million-character storage cap; unsaved articles need a connection
+  - Copy the complete attributed article or a guided ChatGPT prompt that asks
+    for a one-line summary first, then simple explanation, sentence patterns,
+    grammar rules, vocabulary meanings/examples and comprehension practice
+  - No AI service is called by SpellX; the learner chooses where to paste prompts
+  - Six original passages across Beginner, Intermediate and Advanced remain
+    available for everyday, workplace and software comprehension practice
   - Read the full passage or one sentence at a time, adjust text size and
     speech speed, and reveal Hindi translations/simple explanations on demand
   - Click words for Hindi meaning, simple English definition, pronunciation,
@@ -152,7 +162,7 @@ English Reading
   - Optional browser speech recognition compares recognized words with one
     sentence; the result is explicitly not a pronunciation-accuracy score.
     Browser speech services may process audio; SpellX does not store recordings.
-  - Optional copy-ready tutor prompt; no live AI or external API calls
+  - Optional copy-ready tutor prompt; no live AI API calls
 
 --------------------------------------------------------------------
  GRAMMAR COURSE (53 topics, 5 levels, 7 sections) — LIVE

@@ -27,7 +27,9 @@ python -m http.server 8000
 ```
 
 Then open <http://localhost:8000>. Served this way the service worker registers and the app
-works fully offline after the first load (e.g. in airplane mode or as an installed PWA).
+works offline after the first load for bundled lessons and previously saved articles
+(e.g. in airplane mode or as an installed PWA). New Wikipedia articles need a connection
+the first time they are opened.
 
 > Any static file server works (`npx serve`, XAMPP, …). `python -m http.server` is the
 > one with zero dependencies.
@@ -39,8 +41,9 @@ works fully offline after the first load (e.g. in airplane mode or as an install
 - Words + Grammar lets learners choose one vocabulary category and grammar chapter for a copy-ready AI tutor prompt. The tutor selects words from that category and adapts practice as the learner responds; the AI runs separately after the prompt is pasted.
 - Progress / streak / SRS survive reload, tab backgrounding and browser restart (localStorage).
 - All 850 words reachable; category counts reconcile to 850 (100 + 400 + 200 + 100 + 50).
-- No app-initiated external requests (DevTools → Network shows only local files unless you explicitly use browser speech recognition).
-- English Reading includes original Beginner / Intermediate / Advanced passages, on-demand Hindi help, comprehension activities, saved vocabulary, and optional speech playback/recognition.
+- Wikipedia article requests occur only when an article is opened; copied/saved text includes source and license attribution. No AI API is called.
+- English Reading includes a topic-filtered Wikipedia library (Networking, Operating Systems, DevOps, History and Learning), locally saved article text, and copy-ready prompts for article summary, sentence structure, grammar and vocabulary study.
+- Original Beginner / Intermediate / Advanced passages, Hindi help, comprehension activities, saved vocabulary, and optional speech playback/recognition remain available.
 - Keyboard only: `1–4` pick options, `Enter`/`Space` flip/advance, `Esc` back.
 - Verified at 360×640, 390×844, 768 and 1440 px widths.
 
@@ -55,7 +58,7 @@ works fully offline after the first load (e.g. in airplane mode or as an install
 │   └── styles.css             # styles source of truth: light/dark, reduced-motion, 360-first
 ├── data/
 │   ├── words.js               # THE dataset (classic script, `const vocabulary`)
-│   └── reading.js             # original passages, glosses and exercises
+│   └── reading.js             # article catalogue, original passages, glosses and exercises
 └── js/
     ├── store.js               # normalisation, versioned localStorage, day/streak/XP
     ├── srs.js                 # SM-2-lite / 6-box Leitner scheduler
@@ -134,7 +137,7 @@ their Basic English PDF and are preserved verbatim in `data/words.js` (each row'
 | **Typing** | Given the Hindi meaning, type the English word. Case-insensitive, trimmed, tolerant of `/` variants, diff-style correction on failure. |
 | **Spelling Puzzle** | Choose **Relaxed practice** (untimed) or a **Timed challenge** (the existing 60-second timer on harder words is bonus-only and never ends the round). Build words from shuffled tiles with drag, tap, or physical keyboard input (`Backspace`/arrows). The prompt shows pronunciation, meaning, target length, and session progress. After a miss, correctly placed letters stay marked and the remaining letters return for a retry; repeated misses queue the word into Review. Hints cost XP and never block (hear it / first letter / English meaning / example sentence), and a free **"Show word"** reveals the answer when needed. The session summary reports solved, revealed, and Review words. |
 | **Review** | Leitner/SM-2-lite: 6 boxes, intervals 0/1/2/4/8/16 days. Correct → up a box; wrong → box 0 and re-queued later in the same session (after ≥ 3 other cards when possible). Only due cards appear; the tab shows the due count. |
-| **English Reading** | Six original, leveled passages; read sentence-by-sentence or as a whole, reveal Hindi help on demand, save vocabulary, listen, and practise comprehension, vocabulary, fill-in-the-blank and sentence ordering. |
+| **English Reading** | Browse Wikipedia articles by technical topic or history; open article text in-app, save it locally, and copy the complete attributed text or a ChatGPT study prompt. The prompt asks for a one-line summary first, then simple explanation, sentence patterns, grammar rules, vocabulary meanings/examples and comprehension practice. Six original leveled passages and exercises remain available. |
 | **Stats** | Per-category mastery, accuracy sparkline (14 days), words due, longest streak, level/XP, confirm-guarded reset. |
 | **Settings** | Hindi-first vs English-first prompts, TTS voice + rate, sound on/off, daily goal size (10/20/30/50), reset. All persisted. |
 
@@ -170,12 +173,16 @@ countdown pressure.
 ## Offline support
 
 - `manifest.webmanifest` makes the app installable as a PWA (portrait, custom SVG icon).
-- `sw.js` precaches the app shell and the dataset, then serves stale-while-revalidate for
-  the rest. After the first load, the app works with the network disconnected.
+- `sw.js` precaches the app shell and bundled datasets, then serves stale-while-revalidate
+  for the rest. Bundled lessons and locally saved articles work offline; fetching a new
+  Wikipedia article requires a connection.
 - On `file://` there is no service worker (and none is needed) — the app makes no
-  app-initiated external network calls: no analytics, AI APIs, fonts or images (inline
-  SVG, emoji, CSS only). Browser-provided speech recognition may use a browser service;
-  that is disclosed before practice.
+  app-initiated external network calls except a user-requested Wikipedia article fetch;
+  there are no analytics or AI API calls. Article text is attributed to Wikipedia
+  contributors under CC BY-SA 4.0, with a link to the specific source revision. Saved
+  article text uses the existing local save, capped at 1,000,000 characters in total.
+  Browser-provided speech recognition may use a browser service; that is disclosed
+  before practice.
 
 ## Decisions (judgement calls made where the spec was ambiguous)
 

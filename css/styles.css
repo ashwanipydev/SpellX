@@ -617,6 +617,17 @@ main.content{max-width:480px;margin:0 auto;padding:calc(var(--topbar-h) + 20px) 
 .reading-levels .chip[aria-pressed="true"],.reading-toolbar .chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-lip)}
 .reading-levels .chip,.reading-toolbar .chip{min-height:44px}
 .reading-passage-card{width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-align:left;color:var(--text);font:inherit;cursor:pointer}
+.reading-search{width:100%;min-height:44px;padding:10px 12px;border:1px solid var(--line-2);border-radius:var(--radius-sm);background:var(--card);color:var(--text);font:inherit}
+.reading-article-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.reading-article-card{width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-align:left;color:var(--text);font:inherit;cursor:pointer}
+.reading-article-topic,.reading-citation{font-size:13px;color:var(--text-2)}
+.reading-article-meta,.reading-article-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.reading-article-actions>*{flex:1 1 220px}
+.reading-citation{line-height:1.6}
+.reading-citation a{color:var(--accent);font-weight:700}
+.reading-article-body{max-width:76ch;padding:12px 0;font-size:18px;line-height:1.8;overflow-wrap:anywhere}
+.reading-article-body p{margin:0 0 1.15em}
+.reading-article-body p:last-child{margin-bottom:0}
 .reading-passage-card:focus-visible,.reading-word:focus-visible{outline:3px solid var(--indigo);outline-offset:2px}
 .reading-card-meta,.reading-note,.reading-speech-status{font-size:13px;color:var(--text-2)}
 .reading-text{padding:14px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow)}
@@ -650,4 +661,5 @@ main.content{max-width:480px;margin:0 auto;padding:calc(var(--topbar-h) + 20px) 
 .reading-prompt{display:block;width:100%;min-height:200px;margin:8px 0;padding:12px;border:1px solid var(--line-2);border-radius:var(--radius-sm);background:var(--card-2);color:var(--text);font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;resize:vertical}
 .reading-prompt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 @media(max-width:380px){.reading-controls{grid-template-columns:1fr}.reading-heading .screen-title{font-size:27px}}
+@media(max-width:600px){.reading-article-list{grid-template-columns:1fr}.reading-article-actions>*{flex-basis:100%}.reading-article-body{font-size:17px}}
 @media(prefers-reduced-motion:reduce){.reading-sentence.is-speaking{scroll-behavior:auto}}

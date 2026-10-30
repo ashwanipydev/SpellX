@@ -11,16 +11,25 @@
   function passages() {
     return B850.reading && Array.isArray(B850.reading.passages) ? B850.reading.passages : [];
   }
+  function articles() {
+    return B850.reading && Array.isArray(B850.reading.articles) ? B850.reading.articles : [];
+  }
+  function articleById(id) {
+    var list = articles();
+    for (var i = 0; i < list.length; i++) { if (list[i].id === id) { return list[i]; } }
+    return null;
+  }
 
   function readingState() {
     var state = S.state;
     if (!state.reading || typeof state.reading !== "object" || Array.isArray(state.reading)) {
-      state.reading = { level: "beginner", completed: {}, savedWords: {}, totalCorrect: 0, totalAnswered: 0 };
+      state.reading = { level: "beginner", completed: {}, savedWords: {}, savedArticles: {}, totalCorrect: 0, totalAnswered: 0 };
     }
     var read = state.reading;
     if (["beginner", "intermediate", "advanced"].indexOf(read.level) === -1) { read.level = "beginner"; }
     if (!read.completed || typeof read.completed !== "object" || Array.isArray(read.completed)) { read.completed = {}; }
     if (!read.savedWords || typeof read.savedWords !== "object" || Array.isArray(read.savedWords)) { read.savedWords = {}; }
+    if (!read.savedArticles || typeof read.savedArticles !== "object" || Array.isArray(read.savedArticles)) { read.savedArticles = {}; }
     if (typeof read.totalCorrect !== "number") { read.totalCorrect = 0; }
     if (typeof read.totalAnswered !== "number") { read.totalAnswered = 0; }
     return read;
@@ -58,7 +67,67 @@
     root.appendChild(U.h("h1", { "class": "screen-title", text: "English Reading" }));
     root.appendChild(U.h("p", {
       "class": "screen-sub",
-      text: "Tap any word for its meaning, pronunciation and example. Reveal Hindi sentence help only when you need it."
+      text: "Read open-licensed articles on technology, history and science. Save articles to this device or copy them into a study session."
+    }));
+    root.appendChild(U.h("h2", { "class": "section-title", text: "Open articles" }));
+    var topics = ["All topics", "Networking", "Operating systems", "DevOps", "History and learning"];
+    root.appendChild(U.h("div", { "class": "reading-levels", role: "group", "aria-label": "Article topics" },
+      topics.map(function (topic) {
+        var selected = (read.articleTopic || "All topics") === topic;
+        return U.h("button", {
+          "class": "chip", type: "button", text: topic,
+          "aria-pressed": selected ? "true" : "false",
+          onclick: function () { read.articleTopic = topic; S.save(S.state); renderLibrary(); }
+        });
+      })
+    ));
+    var query = U.h("input", {
+      "class": "reading-search", type: "search", placeholder: "Search articles",
+      "aria-label": "Search articles", value: ""
+    });
+    root.appendChild(query);
+    root.appendChild(U.h("button", {
+      "class": "btn btn-secondary btn-block", type: "button",
+      text: "Saved articles (" + Object.keys(read.savedArticles).length + ")",
+      onclick: function () { B850.ui.navigate("reading", { view: "saved-articles" }); }
+    }));
+    var articleList = U.h("div", { "class": "reading-article-list" });
+    function drawArticles() {
+      articleList.innerHTML = "";
+      var term = String(query.value || "").toLowerCase().trim();
+      var selectedTopic = read.articleTopic || "All topics";
+      var results = articles().filter(function (article) {
+        return (selectedTopic === "All topics" || article.topic === selectedTopic) &&
+          (!term || (article.title + " " + article.topic).toLowerCase().indexOf(term) !== -1);
+      });
+      if (!results.length) {
+        articleList.appendChild(U.h("p", { "class": "screen-sub", text: "No articles match this search." }));
+        return;
+      }
+      results.forEach(function (article) {
+        var saved = read.savedArticles[article.id];
+        articleList.appendChild(U.h("button", {
+          "class": "card reading-article-card", type: "button",
+          "aria-label": "Read " + article.title + (saved ? ", saved offline" : ""),
+          onclick: function () { B850.ui.navigate("reading", { view: "article", id: article.id }); }
+        }, [
+          U.h("span", { "class": "reading-article-topic", text: article.topic + " · " + labelForLevel(article.level) }),
+          U.h("strong", { text: article.title }),
+          U.h("span", { "class": "reading-card-meta", text: saved ? "Saved on this device" : "Wikipedia · CC BY-SA 4.0" })
+        ]));
+      });
+    }
+    query.addEventListener("input", drawArticles);
+    drawArticles();
+    root.appendChild(articleList);
+    root.appendChild(U.h("p", {
+      "class": "screen-sub reading-note",
+      text: "Article text is retrieved from Wikipedia when opened. Text is shared under CC BY-SA 4.0; attribution stays with copies. Saved articles are available offline."
+    }));
+    root.appendChild(U.h("h2", { "class": "section-title", text: "Comprehension practice" }));
+    root.appendChild(U.h("p", {
+      "class": "screen-sub",
+      text: "Short leveled passages with optional Hindi support, vocabulary and comprehension exercises."
     }));
     root.appendChild(U.h("div", { "class": "reading-levels", role: "group", "aria-label": "Reading level" },
       LEVELS.map(function (level) {
@@ -404,6 +473,186 @@
     U.render(root);
   }
 
+  var articleRequest = 0;
+  var ARTICLE_SAVE_LIMIT = 1000000;
+  var WIKIPEDIA_LICENSE = "https://creativecommons.org/licenses/by-sa/4.0/";
+
+  function articleUrl(title) {
+    return "https://en.wikipedia.org/wiki/" + encodeURIComponent(title.replace(/ /g, "_"));
+  }
+
+  function fetchArticle(entry) {
+    if (!window.fetch) { return Promise.reject(new Error("This browser cannot load articles from the web.")); }
+    var endpoint = "https://en.wikipedia.org/w/api.php?action=query&prop=extracts%7Cinfo%7Crevisions&inprop=url&rvprop=ids%7Ctimestamp&explaintext=1&format=json&formatversion=2&origin=*&titles=" + encodeURIComponent(entry.title);
+    return window.fetch(endpoint, { headers: { Accept: "application/json" } }).then(function (response) {
+      if (!response.ok) { throw new Error("Wikipedia returned an error (" + response.status + ")."); }
+      return response.json();
+    }).then(function (data) {
+      var page = data && data.query && data.query.pages && data.query.pages[0];
+      if (!page || page.missing || !page.extract) { throw new Error("Wikipedia did not return this article."); }
+      var revision = page.revisions && page.revisions[0] || {};
+      return {
+        id: entry.id, title: page.title || entry.title, topic: entry.topic,
+        level: entry.level, text: page.extract, url: page.fullurl || articleUrl(entry.title),
+        revid: revision.revid || null, updated: revision.timestamp || null,
+        source: "Wikipedia", license: "CC BY-SA 4.0"
+      };
+    });
+  }
+
+  function buildArticleTutorPrompt(article) {
+    return "I am an English learner reading an authentic article. Start with a one-line summary of what the article is about. Then explain it in simple English without changing its facts. Help me study the writing: explain the structure of important sentences, the paragraph patterns, and the main grammar rules, quoting short examples from the article. Connect those grammar patterns to clear, real-world technical writing and explain when each pattern is useful. Teach useful vocabulary with simple meanings and a new example sentence for each word. Explain technical ideas plainly. Finish by asking one comprehension question and wait for my answer.\n\n" +
+      "Article: " + article.title + "\nSource: " + article.url + "\nLicense: " + article.license + "\n\n" + article.text;
+  }
+
+  function copyOrShow(text, title, copiedLabel) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      try {
+        navigator.clipboard.writeText(text).then(function () { U.toast(copiedLabel); }, function () {
+          showCopySheet(text, title);
+        });
+      } catch (error) { showCopySheet(text, title); }
+    } else { showCopySheet(text, title); }
+  }
+
+  function showCopySheet(text, title) {
+    var area = U.h("textarea", { "class": "reading-prompt", readonly: "readonly", "aria-label": title });
+    area.value = text;
+    U.openSheet({
+      title: title,
+      body: U.h("div", {}, [
+        U.h("p", { "class": "screen-sub", text: "Select the text below and copy it." }),
+        area
+      ]),
+      actions: [{ label: "Close", value: "close", primary: true }]
+    });
+    area.focus();
+    area.select();
+  }
+
+  function saveArticle(article) {
+    var read = readingState(), previous = read.savedArticles[article.id];
+    var total = Object.keys(read.savedArticles).reduce(function (sum, id) {
+      return sum + (id === article.id ? 0 : String(read.savedArticles[id].text || "").length);
+    }, 0);
+    if (article.text.length > ARTICLE_SAVE_LIMIT || total + article.text.length > ARTICLE_SAVE_LIMIT) {
+      U.toast("Saved article storage is full. Remove an article before saving another.");
+      return false;
+    }
+    read.savedArticles[article.id] = article;
+    if (!S.save(S.state)) {
+      if (previous) { read.savedArticles[article.id] = previous; }
+      else { delete read.savedArticles[article.id]; }
+      U.toast("This device could not save the article.");
+      return false;
+    }
+    U.toast("Article saved on this device");
+    return true;
+  }
+
+  function renderArticleView(article) {
+    var root = U.h("section", { "class": "screen reading-screen reading-article-screen", "aria-label": article.title });
+    root.appendChild(heading(article.title, renderLibrary));
+    root.appendChild(U.h("div", { "class": "reading-article-meta" }, [
+      U.h("span", { "class": "pill pill-accent", text: article.topic }),
+      U.h("span", { "class": "pill", text: labelForLevel(article.level) }),
+      U.h("span", { "class": "pill", text: "Wikipedia · " + article.license })
+    ]));
+    var citationUrl = article.revid ? article.url + (article.url.indexOf("?") === -1 ? "?" : "&") + "oldid=" + article.revid : article.url;
+    root.appendChild(U.h("p", { "class": "reading-citation" }, [
+      "Text by Wikipedia contributors, licensed under ",
+      U.h("a", { href: WIKIPEDIA_LICENSE, target: "_blank", rel: "noopener noreferrer", text: "CC BY-SA 4.0" }),
+      ". ",
+      U.h("a", { href: citationUrl, target: "_blank", rel: "noopener noreferrer", text: "View source article" })
+    ]));
+    var body = U.h("article", { "class": "reading-article-body" });
+    String(article.text).split(/\n\s*\n/).forEach(function (paragraph) {
+      var text = paragraph.trim();
+      if (text) { body.appendChild(U.h("p", { text: text })); }
+    });
+    root.appendChild(body);
+    var isSaved = !!readingState().savedArticles[article.id];
+    root.appendChild(U.h("div", { "class": "reading-article-actions" }, [
+      U.h("button", {
+        "class": isSaved ? "btn btn-secondary" : "btn", type: "button",
+        text: isSaved ? "Remove saved article" : "Save for offline reading",
+        onclick: function () {
+          var read = readingState();
+          if (read.savedArticles[article.id]) {
+            delete read.savedArticles[article.id]; S.save(S.state); U.toast("Saved article removed");
+            renderArticleView(article);
+          } else if (saveArticle(article)) { renderArticleView(article); }
+        }
+      }),
+      U.h("button", {
+        "class": "btn btn-secondary", type: "button", text: "Copy complete article",
+        onclick: function () {
+          copyOrShow(article.title + "\nSource: " + citationUrl + "\nLicense: " + article.license + "\n\n" + article.text, "Copy complete article", "Article copied");
+        }
+      }),
+      U.h("button", {
+        "class": "btn btn-secondary", type: "button", text: "Copy article + ChatGPT study prompt",
+        onclick: function () { copyOrShow(buildArticleTutorPrompt(article), "Copy ChatGPT study prompt", "Article and study prompt copied"); }
+      })
+    ]));
+    root.appendChild(U.h("p", {
+      "class": "screen-sub reading-note",
+      text: "SpellX does not connect to ChatGPT. Paste a copied prompt into the AI service you choose; review its explanations against the source."
+    }));
+    root.appendChild(U.h("button", {
+      "class": "btn btn-secondary btn-block", type: "button", text: "Back to articles",
+      onclick: renderLibrary
+    }));
+    U.render(root);
+  }
+
+  function renderArticle(id) {
+    var entry = articleById(id);
+    if (!entry) { renderLibrary(); return; }
+    var request = ++articleRequest;
+    setLastMode({ view: "article", id: id });
+    var root = U.h("section", { "class": "screen reading-screen reading-article-loading", "aria-label": "Loading article" });
+    root.appendChild(heading(entry.title, renderLibrary));
+    root.appendChild(U.h("p", { "class": "screen-sub", role: "status", text: "Loading the article from Wikipedia…" }));
+    U.render(root);
+    var saved = readingState().savedArticles[id];
+    var loaded = saved ? Promise.resolve(saved) : fetchArticle(entry);
+    loaded.then(function (article) {
+      if (request === articleRequest && document.getElementById("main").querySelector(".reading-article-loading")) {
+        renderArticleView(article);
+      }
+    }).catch(function (error) {
+      if (request !== articleRequest || !document.getElementById("main").querySelector(".reading-article-loading")) { return; }
+      var failed = U.h("section", { "class": "screen reading-screen", "aria-label": "Article unavailable" });
+      failed.appendChild(heading(entry.title, renderLibrary));
+      failed.appendChild(U.h("p", { "class": "feedback no", role: "alert", text: error.message + " If you saved this article earlier, open it from Saved articles." }));
+      failed.appendChild(U.h("a", { "class": "btn btn-secondary", href: articleUrl(entry.title), target: "_blank", rel: "noopener noreferrer", text: "Open Wikipedia article" }));
+      failed.appendChild(U.h("button", { "class": "btn btn-secondary btn-block", type: "button", text: "Back to articles", onclick: renderLibrary }));
+      U.render(failed);
+    });
+  }
+
+  function renderSavedArticles() {
+    var read = readingState();
+    var saved = Object.keys(read.savedArticles).map(function (id) { return read.savedArticles[id]; })
+      .sort(function (a, b) { return a.title.localeCompare(b.title); });
+    var root = U.h("section", { "class": "screen reading-screen", "aria-label": "Saved articles" });
+    root.appendChild(heading("Saved articles", renderLibrary));
+    root.appendChild(U.h("p", { "class": "screen-sub", text: saved.length + " articles saved on this device." }));
+    if (!saved.length) { root.appendChild(U.h("p", { "class": "screen-sub", text: "Save an article while online to read it here later." })); }
+    saved.forEach(function (article) {
+      root.appendChild(U.h("button", {
+        "class": "card reading-article-card", type: "button",
+        onclick: function () { B850.ui.navigate("reading", { view: "article", id: article.id }); }
+      }, [
+        U.h("span", { "class": "reading-article-topic", text: article.topic }),
+        U.h("strong", { text: article.title }),
+        U.h("span", { "class": "reading-card-meta", text: "Available offline · Wikipedia · " + article.license })
+      ]));
+    });
+    U.render(root);
+  }
+
   function recordAnswer(correct) {
     var state = S.state, read = readingState(), today = S.todayStr();
     S.touchDay(state);
@@ -633,13 +882,17 @@
       readingState();
       S.save(S.state);
       if (params.view === "passage") { renderPassage(params.id); return; }
+      if (params.view === "article") { renderArticle(params.id); return; }
+      if (params.view === "saved-articles") { renderSavedArticles(); return; }
       if (params.view === "exercise") { renderExercise(params.id, params); return; }
       if (params.view === "saved") { renderSaved(); return; }
       renderLibrary();
     },
     passages: passages,
+    articles: articles,
     findGloss: findGloss,
-    openTutorPrompt: renderTutorPrompt
+    openTutorPrompt: renderTutorPrompt,
+    buildArticleTutorPrompt: buildArticleTutorPrompt
   };
 
   var homeRender = B850.screens.home && B850.screens.home.render;
@@ -659,7 +912,7 @@
       }, [
         U.h("span", { "class": "mode-emoji", text: "📖", "aria-hidden": "true" }),
         U.h("span", { "class": "mode-name", text: "English Reading" }),
-        U.h("span", { "class": "mode-desc", text: "Original passages · Beginner to Advanced" }),
+        U.h("span", { "class": "mode-desc", text: "Open articles · Technical reading practice" }),
         U.h("span", { "class": "mode-desc", style: "margin-top:auto", text: totalDone + "/" + passages().length + " completed" })
       ]));
       S.save(S.state);

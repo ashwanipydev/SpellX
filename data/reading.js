@@ -159,6 +159,20 @@
       ]
     }
     ],
+    articles: [
+      { id: "internet-protocol-suite", title: "Internet protocol suite", topic: "Networking", level: "intermediate" },
+      { id: "transmission-control-protocol", title: "Transmission Control Protocol", topic: "Networking", level: "advanced" },
+      { id: "domain-name-system", title: "Domain Name System", topic: "Networking", level: "intermediate" },
+      { id: "world-wide-web", title: "World Wide Web", topic: "Networking", level: "beginner" },
+      { id: "linux", title: "Linux", topic: "Operating systems", level: "intermediate" },
+      { id: "operating-system", title: "Operating system", topic: "Operating systems", level: "beginner" },
+      { id: "unix", title: "Unix", topic: "Operating systems", level: "advanced" },
+      { id: "continuous-integration", title: "Continuous integration", topic: "DevOps", level: "intermediate" },
+      { id: "version-control", title: "Version control", topic: "DevOps", level: "beginner" },
+      { id: "docker-software", title: "Docker (software)", topic: "DevOps", level: "intermediate" },
+      { id: "history-of-computing", title: "History of computing", topic: "History and learning", level: "intermediate" },
+      { id: "apollo-11", title: "Apollo 11", topic: "History and learning", level: "beginner" }
+    ],
     glossary: {
     add: ["जोड़ना", "To put something together with something else.", "ad"],
     afternoon: ["दोपहर", "The part of the day after noon.", "af-ter-NOON"],

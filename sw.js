@@ -1,5 +1,5 @@
 "use strict";
-var CACHE = "b850-v14";
+var CACHE = "b850-v15";
 var SHELL = [
   "./", "./index.html", "./manifest.webmanifest", "./css/styles.css",
   "./data/words.js", "./data/reading.js",

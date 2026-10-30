@@ -39,7 +39,7 @@ const html = fs.readFileSync(path.join(ws, 'index.html'), 'utf8');
 const sw = fs.readFileSync(path.join(ws, 'sw.js'), 'utf8');
 assert(html.indexOf('data/reading.js') < html.indexOf('js/modes/reading.js'));
 assert(html.indexOf('js/modes/reading.js') < html.indexOf('js/app.js'));
-assert(sw.indexOf('b850-v14') !== -1);
+assert(sw.indexOf('b850-v15') !== -1);
 assert(sw.indexOf('data/reading.js') !== -1 && sw.indexOf('js/modes/reading.js') !== -1);
 const precached = new Set(Array.from(sw.matchAll(/"\.\/([^"]+)"/g), function (match) { return match[1]; }));
 const scriptPaths = Array.from(html.matchAll(/<script src="([^"]+)"/g), function (match) { return match[1]; });
@@ -47,8 +47,21 @@ assert(scriptPaths.every(function (script) { return precached.has(script); }), '
 assert(Array.from(precached).every(function (file) { return fs.existsSync(path.join(ws, file)); }), 'all precache files exist');
 
 const passages = B850.screens.reading.passages();
+const articles = B850.screens.reading.articles();
 const uncoveredWords = [];
 assert.strictEqual(passages.length, 6, 'six original passages are available');
+assert.strictEqual(articles.length, 12, 'the open article library covers technical and historical topics');
+assert(articles.some(function (article) { return article.topic === 'Networking'; }));
+assert(articles.some(function (article) { return article.topic === 'Operating systems'; }));
+assert(articles.some(function (article) { return article.topic === 'DevOps'; }));
+assert(articles.some(function (article) { return article.topic === 'History and learning'; }));
+const tutorPrompt = B850.screens.reading.buildArticleTutorPrompt({
+  title: 'Linux', url: 'https://en.wikipedia.org/wiki/Linux', license: 'CC BY-SA 4.0', text: 'Linux article text.'
+});
+assert(tutorPrompt.indexOf('Start with a one-line summary') !== -1, 'article tutor prompt requests a one-line summary first');
+assert(tutorPrompt.indexOf('grammar rules') !== -1 && tutorPrompt.indexOf('vocabulary') !== -1);
+assert(tutorPrompt.indexOf('real-world technical writing') !== -1);
+assert(tutorPrompt.indexOf('Linux article text.') !== -1, 'article tutor prompt includes the complete text');
 ['beginner', 'intermediate', 'advanced'].forEach(function (level) {
   assert.strictEqual(passages.filter(function (passage) { return passage.level === level; }).length, 2);
 });
@@ -78,6 +91,7 @@ assert(env.main.querySelectorAll('.mode-card').some(function (card) {
 
 B850.ui.navigate('reading');
 assert.strictEqual(env.main.querySelectorAll('.reading-passage-card').length, 2);
+assert.strictEqual(env.main.querySelectorAll('.reading-article-card').length, 12);
 const intermediate = env.main.querySelectorAll('.chip').filter(function (button) {
   return button.textContent === 'Intermediate';
 })[0];
@@ -210,4 +224,56 @@ assert(env.main.querySelectorAll('.reading-speaking .screen-sub')[1].textContent
 B850.ui.navigate('home');
 assert(FakeRecognition.instances[0].aborted, 'leaving Reading stops active speech recognition');
 window.SpeechRecognition = undefined;
-console.log('English Reading tests passed.');
+(async function () {
+  let fetchCount = 0;
+  let copiedText = '';
+  global.fetch = function () {
+    fetchCount += 1;
+    return Promise.resolve({
+      ok: true,
+      json: function () {
+        return Promise.resolve({ query: { pages: [{
+          title: 'Linux',
+          fullurl: 'https://en.wikipedia.org/wiki/Linux',
+          extract: 'Linux is an operating system.\n\nIt is used on many computers.',
+          revisions: [{ revid: 987, timestamp: '2026-10-30T00:00:00Z' }]
+        }] } });
+      }
+    });
+  };
+  navigator.clipboard = { writeText: function (text) { copiedText = text; return Promise.resolve(); } };
+  B850.ui.navigate('reading', { view: 'article', id: 'linux' });
+  await new Promise(function (resolve) { setTimeout(resolve, 0); });
+  assert(env.main.textContent.indexOf('Linux is an operating system.') !== -1, 'fetched article text renders inside the app');
+  assert(env.main.textContent.indexOf('CC BY-SA 4.0') !== -1, 'article attribution and license are shown');
+  assert(env.main.querySelector('a').getAttribute('href').indexOf('creativecommons.org') !== -1);
+  env.main.querySelectorAll('.reading-article-actions button').filter(function (button) {
+    return button.textContent === 'Save for offline reading';
+  })[0].click();
+  await new Promise(function (resolve) { setTimeout(resolve, 0); });
+  assert(B850.state.reading.savedArticles.linux, 'article text persists in local app state');
+  assert(JSON.parse(env.storage['b850:v1']).reading.savedArticles.linux, 'saved article persists to local storage');
+  global.fetch = function () { throw new Error('saved article should not fetch'); };
+  B850.ui.navigate('reading', { view: 'article', id: 'linux' });
+  await new Promise(function (resolve) { setTimeout(resolve, 0); });
+  assert.strictEqual(fetchCount, 1, 'saved article reopens without a network request');
+  assert(env.main.textContent.indexOf('It is used on many computers.') !== -1, 'saved article is available offline');
+  env.main.querySelectorAll('.reading-article-actions button').filter(function (button) {
+    return button.textContent === 'Copy complete article';
+  })[0].click();
+  assert(copiedText.indexOf('oldid=987') !== -1 && copiedText.indexOf('Linux is an operating system.') !== -1);
+  env.main.querySelectorAll('.reading-article-actions button').filter(function (button) {
+    return button.textContent === 'Copy article + ChatGPT study prompt';
+  })[0].click();
+  assert(copiedText.indexOf('Start with a one-line summary') !== -1 && copiedText.indexOf('It is used on many computers.') !== -1);
+  env.main.querySelectorAll('.reading-article-actions button').filter(function (button) {
+    return button.textContent === 'Remove saved article';
+  })[0].click();
+  assert.strictEqual(B850.state.reading.savedArticles.linux, undefined, 'saved article can be removed');
+  assert.strictEqual(fetchCount, 1, 'removing a saved article does not refetch it');
+  assert(env.main.textContent.indexOf('Linux is an operating system.') !== -1, 'article remains readable after removing its saved copy');
+  console.log('English Reading tests passed.');
+})().catch(function (error) {
+  console.error(error);
+  process.exitCode = 1;
+});
